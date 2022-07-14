@@ -31,11 +31,11 @@ class CreatePostsTable extends Migration
                 ->references("id")
                 ->on("products")
                 ->onDelete('cascade');
-            $table->unsignedBigInteger('client_id')->nullable();
-            $table->foreign("client_id")
-                ->references("id")
-                ->on("clients")
-                ->onDelete('cascade');
+            // $table->unsignedBigInteger('client_id')->nullable();
+            // $table->foreign("client_id")
+            //     ->references("id")
+            //     ->on("clients")
+            //     ->onDelete('cascade');
         });
     }
 
