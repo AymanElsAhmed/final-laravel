@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
+    use HasFactory;
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -17,11 +19,9 @@ class Post extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
     public function client()
     {
         return $this->belongsTo(Client::class);
     }
-
-
-    use HasFactory;
 }
