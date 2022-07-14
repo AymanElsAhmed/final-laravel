@@ -16,6 +16,26 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('title');
+            $table->string('description');
+            $table->string('from');
+            $table->string('to');
+            $table->double('deliver_price');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign("user_id")
+                ->references("id")
+                ->on("users")
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign("product_id")
+                ->references("id")
+                ->on("products")
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('client_id');
+            $table->foreign("client_id")
+                ->references("id")
+                ->on("clients")
+                ->onDelete('cascade');
         });
     }
 
