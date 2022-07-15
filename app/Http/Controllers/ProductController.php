@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $user = Auth::user();
+        // if ($user->role === 'delivery') {
+        //     // return redirect()->route('/');
+        //     abort(403);
+        //     // return view('home');
+        // }
+        // where('user_id', $user->id)->get();
+        $products = Product::all()->where('user_id', $user->id);
+        // dd($products);
 
         return view('products.index', [
             'products' => $products,
@@ -26,9 +42,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $auth = Auth::user();
+
+        return view('products.create', [
+            'user' => $auth
+        ]);
     }
 
     /**
@@ -39,7 +59,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd(request()->all());
+
+        $product = new Product(request()->all());
+        $product->user_id = Auth::user()->id;
+        $product->save();
+        // $user = new User();
+        // dd($request);
+        // $user->product()->create([$request]);
+        // $product->name = $request->get('name');
+        // $product->price = $request->get('price');
+        // $product->weight = $request->get('weight');
+        // $product->quantity = $request->get('quantity');
+        // $product->user_id = Auth::user()->id;
+        // $product->save();
     }
 
     /**
@@ -50,8 +83,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        $product = Product::findOrFail($id);
         return view('products.show', [
-            'product' => Product::findOrFail($id)
+            'product' => $product
         ]);
     }
 
@@ -63,8 +97,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $product = Product::findOrFail($id);
         return view('products.edit', [
-            'product' => Product::findOrFail($id)
+            'product' => $product
         ]);
     }
 

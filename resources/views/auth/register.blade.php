@@ -60,6 +60,28 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        <div class="form-check">
+                            <input class="form-check-input @error('role') is-invalid @enderror" type="radio" name="role" id="flexRadioDefault1" value="delivery">
+                            @error('role')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                delivery
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input @error('role') is-invalid @enderror" type="radio" name="role" id="flexRadioDefault2"  value="vendor">
+                            @error('role')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                vendor
+                            </label>
+                          </div>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
