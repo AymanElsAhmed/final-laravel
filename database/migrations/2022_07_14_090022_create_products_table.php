@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             // $table->string('product_pic');
             $table->double('price');
             $table->double('weight')->nullable();
-            $table->int('quantity')->default(1);
+            $table->integer('quantity')->default(1);
             $table->unsignedBigInteger('user_id');
             $table->foreign("user_id")
                 ->references("id")

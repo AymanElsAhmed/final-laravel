@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\PostController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::get("/edit/{index}", [PostController::class,  "edit"]);
+//Route::put("/update/{index}", [PostController::class,  "update"]);
+//Route::delete("/delete/{index}", [PostController::class,  "destroy"]);
+Route::resource('/posts', PostController::class);
 
 Auth::routes();
 

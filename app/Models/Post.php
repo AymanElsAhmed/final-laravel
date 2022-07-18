@@ -24,4 +24,10 @@ class Post extends Model
     {
         return $this->belongsTo(Client::class);
     }
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    
+
 }

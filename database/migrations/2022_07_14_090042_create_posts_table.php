@@ -25,17 +25,19 @@ class CreatePostsTable extends Migration
             $table->foreign("user_id")
                 ->references("id")
                 ->on("users")
+                ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->unsignedBigInteger('product_id');
             $table->foreign("product_id")
                 ->references("id")
                 ->on("products")
+                ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->unsignedBigInteger('client_id')->nullable();
-            $table->foreign("client_id")
-                ->references("id")
-                ->on("clients")
-                ->onDelete('cascade');
+           // $table->unsignedBigInteger('client_id')->nullable();
+            //$table->foreign("client_id")
+              //  ->references("id")
+                //->on("clients")
+                //->onDelete('cascade');
         });
     }
 
