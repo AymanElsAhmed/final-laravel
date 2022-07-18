@@ -38,6 +38,7 @@ class CreatePostsTable extends Migration
               //  ->references("id")
                 //->on("clients")
                 //->onDelete('cascade');
+           
         });
     }
 
