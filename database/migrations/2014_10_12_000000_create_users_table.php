@@ -16,10 +16,10 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            // $table->string('profile_pic');
-            // $table->string('national_id_pic');
-            //->unique()
-            $table->integer('phone_number')->nullable();
+            $table->string('profile_pic');
+            $table->string('national_id_pic')->unique();
+            $table->string('city');
+            $table->integer('phone_number')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -27,6 +27,27 @@ class CreateUsersTable extends Migration
             $table->enum('status', ['pending', 'accepted', 'refused'])->default('pending');
             $table->enum('role', ['vendor', 'delivery']);
             $table->timestamps();
+
+            $table->unsignedBigInteger('comment_id');
+            $table->foreign('comment_id')
+                ->references('id')
+                ->on('comments')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->unsignedBigInteger('post_id');
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')
+                ->references('id')
+                ->on('products')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
