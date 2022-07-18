@@ -83,18 +83,92 @@
                             </label>
                           </div>
 
+                          <div class="form-check">
+                            <input class="form-check-input @error('gender') is-invalid @enderror" type="radio" name="gender" id="flexRadioDefault1" value="male">
+                            @error('gender')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                male
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input @error('role') is-invalid @enderror" type="radio" name="gender" id="flexRadioDefault2"  value="female">
+                            @error('role')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                female
+                            </label>
+                          </div>
+
                           <div class="mb-3">
-                            <label class="form-label" for="inputImage">Image:</label>
+                            <label class="form-label" for="inputImage">profile_pic:</label>
                             <input
                                 type="file"
-                                name="image"
+                                name="profile_pic"
                                 id="inputImage"
-                                class="form-control @error('image') is-invalid @enderror">
+                                class="form-control @error('profile_pic') is-invalid @enderror">
                
-                            @error('image')
+                            @error('profile_pic')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="inputImage">national_id_first_pic:</label>
+                            <input
+                                type="file"
+                                name="national_id_first_pic"
+                                id="inputImage"
+                                class="form-control @error('national_id_first_pic') is-invalid @enderror">
+               
+                            @error('national_id_first_pic')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="inputImage">national_id_second_pic:</label>
+                            <input
+                                type="file"
+                                name="national_id_second_pic"
+                                id="inputImage"
+                                class="form-control @error('national_id_second_pic') is-invalid @enderror">
+               
+                            @error('national_id_second_pic')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                       
+
+                            <div class="col-md-6">
+                            <label class="form-label" for="inputImage">city:</label>
+
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required >
+
+                                @error('city')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6">
+                            <label class="form-label" for="inputImage">phone_number:</label>
+
+                                <input id="phone_number" type="number" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required >
+
+                                @error('phone_number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">

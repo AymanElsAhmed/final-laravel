@@ -1,10 +1,12 @@
 <?php
+
 use App\Http\Controllers\PostController;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Models\User;
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +43,10 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::resource('/products', ProductController::class)->middleware('auth');
+Route::get('/test', function () {
+    $users = User::all();
+    // dd($users);
+    // $user = Auth::user();
+    // dd($user);
+    return view('test', ['users' => $users]);
+});

@@ -17,21 +17,8 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('description');
-            $table->timestamp('delivery_date');
+            $table->string('delivery_date');
             $table->double('deliver_price');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign("user_id")
-                ->references("id")
-                ->on("users")
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-                $table->unsignedBigInteger('post_id');
-                $table->foreign("post_id")
-                    ->references("id")
-                    ->on("posts")
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
-
         });
     }
 

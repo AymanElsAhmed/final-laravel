@@ -21,24 +21,13 @@ class CreatePostsTable extends Migration
             $table->string('from');
             $table->string('to');
             $table->double('deliver_price');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign("user_id")
-                ->references("id")
-                ->on("users")
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->unsignedBigInteger('product_id');
-            $table->foreign("product_id")
-                ->references("id")
-                ->on("products")
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-           // $table->unsignedBigInteger('client_id')->nullable();
+
+            // $table->unsignedBigInteger('client_id')->nullable();
             //$table->foreign("client_id")
-              //  ->references("id")
-                //->on("clients")
-                //->onDelete('cascade');
-           
+            //  ->references("id")
+            //->on("clients")
+            //->onDelete('cascade');
+
         });
     }
 

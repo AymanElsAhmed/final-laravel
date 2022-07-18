@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -54,7 +55,13 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone_number' => ['required', 'numeric', 'min:11',  'unique:users'],
+            'city' => ['required', 'string'],
             'role' => ['required'],
+            'profile_pic' => ['required', 'mimes:jpg,png,jpeg,max:5048'],
+            'national_id_first_pic' => ['required', 'mimes:jpg,png,jpeg,max:5048'],
+            'national_id_second_pic' => ['required', 'mimes:jpg,png,jpeg,max:5048'],
+            'gender' => ['required', 'string']
         ]);
     }
 
@@ -73,6 +80,31 @@ class RegisterController extends Controller
         // echo ($ayman);
         // return
 
+        $profilePic = $data['profile_pic'];
+        $profileExt = $profilePic->guessExtension();
+        $profilePicName = time() . '-' . $data['name'] . 'Profile' . '.' . $profileExt;
+        $profilePic->move(public_path('profilepic'), $profilePicName);
+
+
+        $firstNationalId = $data['national_id_first_pic'];
+        $firstNationalIdExt = $firstNationalId->guessExtension();
+        $firstNationalIdName = time() . '-' . $data['name'] . 'First' . '.' . $firstNationalIdExt;
+        $firstNationalId->move(public_path('nationalIdPic'), $firstNationalIdName);
+
+
+        $secondNationalId = $data['national_id_second_pic'];
+        $secondNationalIdExt = $secondNationalId->guessExtension();
+        $secondNationalIdName = time() . '-' . $data['name'] . 'Second' . '.' . $secondNationalIdExt;
+        $secondNationalId->move(public_path('nationalIdPic'), $secondNationalIdName);
+
+        // $path = $profilePic->storePubliclyAs('mariam', "ayman3.$exxt");
+        // $url = Storage::url("mariam/ayman1.$exxt");
+        // $path = $profilePic->storeAs(
+        //     'ayman',
+        //     "ayman1.$exxt"
+        // );
+        // $storingPath = $data['profile_pic']->store('profiles');
+        // dd($path);
 
 
         return User::create([
@@ -80,8 +112,12 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
-            'phone_number' => $data['phonenumber'],
-            'city' => $data['city']
+            'phone_number' => $data['phone_number'],
+            'city' => $data['city'],
+            'gender' => $data['gender'],
+            'profile_pic' => $profilePicName,
+            'national_id_first_pic' => $firstNationalIdName,
+            'national_id_second_pic' => $secondNationalIdName,
         ]);
     }
 }

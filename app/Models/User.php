@@ -21,7 +21,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'phone_number',
+        'city',
+        'gender',
+        'profile_pic',
+        'national_id_first_pic',
+        'national_id_second_pic'
     ];
 
     /**
@@ -56,5 +62,4 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Comment::class);
     }
-
 }
