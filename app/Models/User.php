@@ -49,17 +49,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(Product::class);
     }
 
     public function posts()
     {
         return $this->hasMany(Post::class);
     }
-    public function comment()
+    public function comments()
     {
-        return $this->belongsTo(Comment::class);
+        return $this->hasMany(Comment::class);
     }
 }
