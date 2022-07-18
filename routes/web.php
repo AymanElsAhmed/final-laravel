@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\PostController;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,11 @@ Route::post('/image', function (Request $request) {
     // $request->file('image')->store('public/images' . $imageName);
     dd();
 });
+
+//Route::get("/edit/{index}", [PostController::class,  "edit"]);
+//Route::put("/update/{index}", [PostController::class,  "update"]);
+//Route::delete("/delete/{index}", [PostController::class,  "destroy"]);
+Route::resource('/posts', PostController::class);
 
 Auth::routes();
 
