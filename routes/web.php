@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,16 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/image', function () {
+    return view('image');
+});
+Route::post('/image', function (Request $request) {
+    $imageName = $request->file('image')->getClientOriginalName() . "ayman";
+    $path = $request->file('image')->store("public/uploads/$imageName");
+
+    // $request->file('image')->store('public/images' . $imageName);
+    dd();
 });
 
 Auth::routes();

@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            // $table->string('product_pic');
+            $table->string('product_pic');
             $table->double('price');
             $table->double('weight')->nullable();
             $table->integer('quantity')->default(1);
@@ -24,6 +24,12 @@ class CreateProductsTable extends Migration
             $table->foreign("user_id")
                 ->references("id")
                 ->on("users")
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreign("category_id")
+                ->references("id")
+                ->on("categories")
+                ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->timestamps();
         });
