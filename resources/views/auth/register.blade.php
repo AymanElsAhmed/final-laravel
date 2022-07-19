@@ -15,7 +15,7 @@
                                     <form class="mx-1 mx-md-4" method="POST" action="{{ route('register') }}"
                                         enctype="multipart/form-data">
                                         @csrf
-
+                                        
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
 
@@ -196,6 +196,31 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        <h6 class="mb-0 me-4">{{ __('Gender') }}</h6>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <div class="form-check form-check-inline mb-0 me-4">
+                                                <input class="form-check-input @error('role') is-invalid @enderror"
+                                                    type="radio" name="role" id="femaleGender" value="vendor" />
+                                                <label class="form-check-label"
+                                                    for="femaleGender">{{ __('Female') }}</label>
+                                            </div>
+                                            <div class="form-check form-check-inline mb-0 me-4">
+                                                <input class="form-check-input @error('gender') is-invalid @enderror"
+                                                    type="radio" name="role" id="maleGender" value="delivery" />
+                                                <label class="form-check-label"
+                                                    for="maleGender">{{ __('Male') }}</label>
+                                            </div>
+                                            @error('role')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+
 
 
                                         {{-- <div class="form-check d-flex justify-content-center mb-5">

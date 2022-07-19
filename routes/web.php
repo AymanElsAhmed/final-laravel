@@ -30,7 +30,7 @@ Route::post('/image', function (Request $request) {
     $path = $request->file('image')->store("public/uploads/$imageName");
 
     // $request->file('image')->store('public/images' . $imageName);
-    dd();
+
 });
 
 //Route::get("/edit/{index}", [PostController::class,  "edit"]);
@@ -43,6 +43,9 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::resource('/products', ProductController::class)->middleware('auth');
+Route::post('/reg', function (Request $request) {
+    dd($request);
+});
 Route::get('/test', function () {
     $users = User::all();
     // dd($users);
@@ -50,3 +53,7 @@ Route::get('/test', function () {
     // dd($user);
     return view('test', ['users' => $users]);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
