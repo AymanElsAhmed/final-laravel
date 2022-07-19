@@ -12,7 +12,8 @@
 
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{ __('Register') }}</p>
 
-                                    <form class="mx-1 mx-md-4" method="POST" action="{{ route('register') }} enctype="multipart/form-data">
+                                    <form class="mx-1 mx-md-4" method="POST" action="{{ route('register') }}"
+                                        enctype="multipart/form-data">
                                         @csrf
 
                                         <div class="d-flex flex-row align-items-center mb-4">
@@ -22,8 +23,7 @@
                                                 <label class="form-label" for="name">{{ __('Name') }}</label>
 
                                                 <input type="text" id="name" name="name" class="form-control"
-                                                    @error('name') is-invalid @enderror" value="{{ old('name') }}"
-                                                    required autofocus>
+                                                    @error('name') is-invalid @enderror" value="{{ old('name') }}">
 
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
@@ -41,8 +41,8 @@
                                                 <label class="form-label" for="email">{{ __('Your Email') }}</label>
 
                                                 <input type="email" id="email"
-                                                    class="form-control @error('email') is-invalid @enderror"
-                                                    name="email">
+                                                    class="form-control @error('email') is-invalid @enderror" name="email"
+                                                    value="{{ old('email') }}">
 
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
@@ -56,10 +56,9 @@
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="password">{{ __('Password') }}</label>
-                                                <input type="password" id="password"
-                                                    class="form-control
-                                                @error('password') is-invalid @enderror"
-                                                    required autocomplete="new-password" />
+                                                <input type="password" id="password" name="password"
+                                                    class="form-control @error('password') is-invalid @enderror"
+                                                    autocomplete="new-password">
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -67,7 +66,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-
 
 
                                         <div class="d-flex flex-row align-items-center mb-4">
@@ -94,10 +92,10 @@
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label"
                                                     for="phone_number">{{ __('Phone Number') }}</label>
-                                                <input type="tel" id="phone_number" name="phone_number"
+                                                <input type="number" id="phone_number" name="phone_number"
                                                     class="form-control
                                                 @error('phone_number') is-invalid @enderror"
-                                                    required>
+                                                    value="{{ old('phone_number') }}">
                                                 @error('phone_number')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -200,17 +198,16 @@
                                         </div>
 
 
-                                        <div class="form-check d-flex justify-content-center mb-5">
+                                        {{-- <div class="form-check d-flex justify-content-center mb-5">
                                             <input class="form-check-input me-2" type="checkbox" value=""
                                                 id="form2Example3c" />
                                             <label class="form-check-label" for="form2Example3">
                                                 I agree all statements in <a href="#!">Terms of service</a>
                                             </label>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="button"
-                                                class="btn btn-primary btn-lg">{{ __('Continue') }}</button>
+                                            <button class="btn btn-primary btn-lg">{{ __('Continue') }}</button>
                                         </div>
                                     </form>
                                 </div>
