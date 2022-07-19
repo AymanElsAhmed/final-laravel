@@ -10,14 +10,18 @@
     
     <div class="row mb-3 mt-3 g-5 " dir="rtl">
         @foreach ($products as $product)
-        <div class="card col-3">
+        <div class="card col-4">
         <img src="{{ asset('productpic'). '/'. $product->product_pic }}" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title text-center">{{$product->name}}</h5>
+        <h5 class="card-title text-center text-primary">{{$product->name}}</h5>
         
         <p class="card-text text-center">السعر: {{$product->price}}</p>
-        <p class="card-text text-center">الكمية: {{$product->quantity}}</p>
-        <a href="#" class="btn btn-primary center">Go somewhere</a>
+        <p class="card-text text-center  " >الكمية: {{$product->quantity}}</p>
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary">عرض </button>
+        <button type="submit" class="btn btn-warning">تعديل </button>
+        <button type="submit" class="btn btn-danger"> حذف  </button>
+        </div>
          </div>
   </div>
   @endforeach
@@ -70,5 +74,5 @@
                 </tbody>
             </table>
         @endif
-    </div> --}} --}}
+    </div> --}} 
 @endsection
