@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -57,7 +59,7 @@ class PostController extends Controller
     public function edit($index)
     {
         $post = Post::findOrFail($index);
-        return view("edit", ["data" => $post] );
+        return view("edit", ["data" => $post]);
     }
 
     /**
@@ -69,18 +71,18 @@ class PostController extends Controller
      */
     public function update($index)
     {
-       
+
         $post = Post::findOrFail($index);
-        $post->title=request("title");
-        $post->description=request("description");
-        $post->from=request("from");
-        $post->to=request("to");
-        $post->deliver_price=request("deliver_price");
-        $post->user_id=Auth::user()->id;
-        $post->product_id=request("product_id");
+        $post->title = request("title");
+        $post->description = request("description");
+        $post->from = request("from");
+        $post->to = request("to");
+        $post->deliver_price = request("deliver_price");
+        $post->user_id = Auth::user()->id;
+        $post->product_id = request("product_id");
 
         $post->save();
-        return redirect("homepage" );
+        return redirect("homepage");
     }
 
     /**
@@ -94,6 +96,6 @@ class PostController extends Controller
         $post = Post::findOrFail($index);
         $post->delete();
 
-         return redirect("/homepage" );
+        return redirect("/homepage");
     }
 }

@@ -1,7 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+<div class="container">
+    @if ($products->count() == 0)
+    <h3>{{ __('No Products Yet') }}</h3>
+@else
+
+    
+    
+    <div class="row mb-3 mt-3 g-5 " dir="rtl">
+        @foreach ($products as $product)
+        <div class="card col-3">
+        <img src="{{ asset('productpic'). '/'. $product->product_pic }}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title text-center">{{$product->name}}</h5>
+        
+        <p class="card-text text-center">السعر: {{$product->price}}</p>
+        <p class="card-text text-center">الكمية: {{$product->quantity}}</p>
+        <a href="#" class="btn btn-primary center">Go somewhere</a>
+         </div>
+  </div>
+  @endforeach
+    </div>
+    @endif
+</div>
+    {{-- <div class="container">
         @if ($products->count() == 0)
             <h3>{{ __('No Products Yet') }}</h3>
         @else
@@ -21,7 +44,7 @@
                         <tr>
                             <td>
                                 {{-- <a href="/products/{{ $product->id }}"> --}}
-                                <a href="{{ route('products.show', $product->id) }}">
+                                {{-- <a href="{{ route('products.show', $product->id) }}">
                                     {{ $product->name }}
                                 </a>
                             </td>
@@ -47,5 +70,5 @@
                 </tbody>
             </table>
         @endif
-    </div>
+    </div> --}} --}}
 @endsection

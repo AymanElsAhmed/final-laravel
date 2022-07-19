@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    use HasFactory; 
+    use HasFactory;
 
     protected $fillable = [
         'name',
@@ -17,6 +17,8 @@ class Product extends Model
         'weight',
         'quantity',
         'user_id',
+        'category_id',
+        'product_pic'
     ];
 
     /**

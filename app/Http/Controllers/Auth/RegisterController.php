@@ -82,19 +82,19 @@ class RegisterController extends Controller
 
         $profilePic = $data['profile_pic'];
         $profileExt = $profilePic->guessExtension();
-        $profilePicName = time() . '-' . $data['name'] . 'Profile' . '.' . $profileExt;
+        $profilePicName = time() . '-' . trim($data['name']) . 'Profile' . '.' . $profileExt;
         $profilePic->move(public_path('profilepic'), $profilePicName);
 
 
         $firstNationalId = $data['national_id_first_pic'];
         $firstNationalIdExt = $firstNationalId->guessExtension();
-        $firstNationalIdName = time() . '-' . $data['name'] . 'First' . '.' . $firstNationalIdExt;
+        $firstNationalIdName = time() . '-' . trim($data['name']) . 'First' . '.' . $firstNationalIdExt;
         $firstNationalId->move(public_path('nationalIdPic'), $firstNationalIdName);
 
 
         $secondNationalId = $data['national_id_second_pic'];
         $secondNationalIdExt = $secondNationalId->guessExtension();
-        $secondNationalIdName = time() . '-' . $data['name'] . 'Second' . '.' . $secondNationalIdExt;
+        $secondNationalIdName = time() . '-' . trim($data['name']) . 'Second' . '.' . $secondNationalIdExt;
         $secondNationalId->move(public_path('nationalIdPic'), $secondNationalIdName);
 
         // $path = $profilePic->storePubliclyAs('mariam', "ayman3.$exxt");
