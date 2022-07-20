@@ -90,7 +90,7 @@
         </div>
         <div class="bg-light border rounded-3">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" dir="rtl">
-            @foreach ($data as $post)
+            @foreach ($posts as $post)
                 <div class="col" >
                     <div class="card shadow-sm">
                       <img src="{{ asset('productpic'). '/'. $post->product->product_pic }}" class="card-img-top" alt="...">
