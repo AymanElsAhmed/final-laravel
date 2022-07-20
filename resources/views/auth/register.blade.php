@@ -15,16 +15,16 @@
                                     <form class="mx-1 mx-md-4" method="POST" action="{{ route('register') }}"
                                         enctype="multipart/form-data">
                                         @csrf
-                                        
+
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
 
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="name">{{ __('Name') }}</label>
 
-                                                <input type="text" id="name" name="name" class="form-control"
-                                                    @error('name') is-invalid @enderror" value="{{ old('name') }}">
-
+                                                <input type="text" id="name" name="name"
+                                                    class="form-control @error('name') is-invalid @enderror"
+                                                    value="{{ old('name') }}">
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
