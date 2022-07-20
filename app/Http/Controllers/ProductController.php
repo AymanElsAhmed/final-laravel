@@ -24,8 +24,11 @@ class ProductController extends Controller
     public function index(Request $request)
     {
 
-        $user = Auth::user();
-        $products = Product::all()->where('user_id', $user->id);
+        // $user = Auth::user();
+        // ddd();
+        $products = auth()->user()->products;
+        // $products = Product::all()->where('user_id', $user->id);
+        // dd($products);
 
         if ($request['search']) {
             $searchedProducts = $products->where('name', $request['search']);
@@ -112,6 +115,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        $this->authorize('view', Product::class);
         $product = Product::findOrFail($id);
         return view('products.show', [
             'product' => $product

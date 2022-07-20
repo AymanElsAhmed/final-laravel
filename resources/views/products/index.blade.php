@@ -18,6 +18,8 @@
     
 <div class="row mb-3 mt-3 g-5 " dir="rtl">
 
+    
+
     @foreach ($products as $product)
 
     <div class="card col-4">
