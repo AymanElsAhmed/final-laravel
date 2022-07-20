@@ -13,11 +13,13 @@
         <input type="text" class="form-control me-2" id="search" aria-describedby="search"  name="search" placeholder="البحث">
         <div id="search" class="form-text text-primary" >ابحث من خلال العنوان </div>
       </div>
-    
 
+    
 </form>
     
 <div class="row mb-3 mt-3 g-5 "  dir="rtl">
+
+    
 
     @foreach ($products as $product)
 
@@ -60,6 +62,7 @@
     </div>
     @endif
 </div>
+
     {{-- <div class="container">
         @if ($products->count() == 0)
             <h3>{{ __('No Products Yet') }}</h3>
@@ -107,4 +110,7 @@
             </table>
         @endif
     </div> --}}
+
+
+
 @endsection

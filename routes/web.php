@@ -36,7 +36,7 @@ Auth::routes();
 Route::resource('/posts', PostController::class);
 
 // crud  (only vendor can make all of crud operation on it)
-Route::resource('/products', ProductController::class)->middleware('auth');
+Route::resource('/products', ProductController::class)->middleware('is_vendor');
 
 // categories routes 
 //  All users can only read 
