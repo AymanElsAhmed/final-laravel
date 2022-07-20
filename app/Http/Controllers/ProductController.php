@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -20,21 +21,33 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $user = Auth::user();
+
+        // $user = Auth::user();
+        // ddd();
+        $products = auth()->user()->products;
+        // $products = Product::all()->where('user_id', $user->id);
+        // dd($products);
+
+        if ($request['search']) {
+            $searchedProducts = $products->where('name', $request['search']);
+            return view('products.index', [
+                'products' => $searchedProducts,
+            ]);
+        }
+
+        return view('products.index', [
+            'products' => $products,
+        ]);
         // if ($user->role === 'delivery') {
         //     // return redirect()->route('/');
         //     abort(403);
         //     // return view('home');
         // }
         // where('user_id', $user->id)->get();
-        $products = Product::all()->where('user_id', $user->id);
-        // dd($products);
 
-        return view('products.index', [
-            'products' => $products,
-        ]);
+        // dd($products);
     }
 
     /**
@@ -45,9 +58,11 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         $auth = Auth::user();
+        $cats = Category::all();
 
         return view('products.create', [
-            'user' => $auth
+            'user' => $auth,
+            'cats' => $cats
         ]);
     }
 
@@ -59,11 +74,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(request()->all());
 
-        $product = new Product(request()->all());
+        $request->validate([
+            'name' => ['required', 'min:3', 'max:255'],
+            'price' => ['required', 'numeric'],
+            'weight' => ['numeric'],
+            'quantity' => ['required', 'numeric'],
+            'quantity' => ['required'],
+            'category_id' => ['required'],
+            'product_pic' => ['required', 'mimes:jpg,png,jpeg,max:5048'],
+        ]);
+
+        $productPic = $request['product_pic'];
+        $productExt = $productPic->guessExtension();
+        $productPicName = time() . '-' . trim($request['name']) . 'Product' . '.' . $productExt;
+        $productPic->move(public_path('productpic'), $productPicName);
+
+
+        $product = new Product($request->except('product_pic'));
         $product->user_id = Auth::user()->id;
+        $product->product_pic = $productPicName;
         $product->save();
+        return redirect()->route('products.index');
         // $user = new User();
         // dd($request);
         // $user->product()->create([$request]);
@@ -83,6 +115,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        $this->authorize('view', Product::class);
         $product = Product::findOrFail($id);
         return view('products.show', [
             'product' => $product
@@ -98,8 +131,10 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
+        $cats = Category::all();
         return view('products.edit', [
-            'product' => $product
+            'product' => $product,
+            'cats' => $cats
         ]);
     }
 
@@ -113,14 +148,38 @@ class ProductController extends Controller
     // public function update(Request $request, $id)
     public function update(Product $product, Request $request)
     {
-        $validatedProduct = $request->validate([
+
+        $request->validate([
             'name' => ['required', 'min:3', 'max:255'],
             'price' => ['required', 'numeric'],
-            'weight' => ['required', 'numeric'],
+            'weight' => ['numeric'],
             'quantity' => ['required', 'numeric'],
+            'quantity' => ['required'],
+            'category_id' => ['required'],
+            'product_pic' => ['required', 'mimes:jpg,png,jpeg,max:5048'],
         ]);
 
-        $product->update($validatedProduct);
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->weight = $request->weight;
+        $product->quantity = $request->quantity;
+        $product->category_id = $request->category_id;
+
+        if ($request->hasFile('product_pic')) {
+
+            File::delete(public_path("productpic/" . $product->product_pic));
+
+            //            upload new photo
+            $newName =  time() . '-' . trim($request['name']) . 'Product' . '.' . $request['product_pic']->guessExtension();
+            $request->file('product_pic')->move(public_path('productpic'), $newName);
+
+            //            save to table
+            $product->product_pic = $newName;
+        }
+
+        $product->update();
+
+
 
         return redirect()->route('products.index');
     }
@@ -133,7 +192,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        Product::findOrFail($id)->delete();
+        $product = Product::findOrFail($id);
+        File::delete(public_path("productpic/" . $product->product_pic));
+        $product->delete();
 
         return redirect()->route('products.index');
     }
