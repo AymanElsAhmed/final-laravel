@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Post;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -13,7 +15,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        // FIXME
+        return view('posts.index', [
+           'posts' => Post::get()
+        ]);
     }
 
     /**
@@ -54,33 +59,54 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($index)
+    public function edit($id)
     {
-        $post = Post::findOrFail($index);
-        return view("edit", ["data" => $post] );
+        $user = Auth::user();
+        
+        // dd($user);
+
+        $products = Product::all()->where('user_id', $user->id);
+
+        $post = Post::findOrFail($id);
+        return view('posts.edit', [
+            'post' => $post,
+            'products'=>$products
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response $post
      */
-    public function update($index)
-    {
-       
-        $post = Post::findOrFail($index);
-        $post->title=request("title");
-        $post->description=request("description");
-        $post->from=request("from");
-        $post->to=request("to");
-        $post->deliver_price=request("deliver_price");
-        $post->user_id=Auth::user()->id;
-        $post->product_id=request("product_id");
+    public function update(Request $request, Post $post)
+    {  
+        $request->validate([
+            'title' => ['required', 'min:3', 'max:255'],
+            'description' => ['required', 'max:255'],
+            'from' => ['required', 'max:255'],
+            'to' => ['required', 'max:255'],
+            'deliver_price' => ['required', 'numeric'],
+            'product_id' => ['required', 'numeric'],
+        ]);
 
-        $post->save();
-        return redirect("homepage" );
+        $post->update($request->all());
+
+        return redirect()->route("posts.index");
+
+
+        // $post = Post::findOrFail($index);
+        // $post->title=request("title");
+        // $post->description=request("description");
+        // $post->from=request("from");
+        // $post->to=request("to");
+        // $post->deliver_price=request("deliver_price");
+        // $post->user_id=Auth::user()->id;
+        // $post->product_id=request("product_id");
+
+        // $post->save();
+        // return redirect()->route("posts.index");
     }
 
     /**
@@ -91,9 +117,9 @@ class PostController extends Controller
      */
     public function destroy($index)
     {
-        $post = Post::findOrFail($index);
-        $post->delete();
+        Post::findOrFail($index)->delete();
 
-         return redirect("/homepage" );
+        return redirect()->route('posts.index');
+
     }
 }
