@@ -22,7 +22,6 @@ class PostController extends Controller
     {
         $posts = Post::all();
         return view("posts.index", ["posts" => $posts]);
-
     }
 
     /**
@@ -68,9 +67,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-
-
-        return view("posts.show", ["data" => $post]);
+        return view("posts.show", ["post" => $post]);
     }
 
 
@@ -83,7 +80,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
-        
+
         // dd($user);
 
         $products = Product::all()->where('user_id', $user->id);
@@ -91,9 +88,8 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         return view('posts.edit', [
             'post' => $post,
-            'products'=>$products
+            'products' => $products
         ]);
-
     }
 
     /**
@@ -104,7 +100,7 @@ class PostController extends Controller
      */
 
     public function update(Request $request, Post $post)
-    {  
+    {
         $request->validate([
             'title' => ['required', 'min:3', 'max:255'],
             'description' => ['required', 'max:255'],
