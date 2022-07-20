@@ -90,7 +90,7 @@
         </div>
         <div class="bg-light border rounded-3">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" dir="rtl">
-            @foreach ($data as $post)
+            @foreach ($posts as $post)
                 <div class="col">
                     <div class="card shadow-sm">
                        <img src="media/1.webp" alt="">
@@ -202,14 +202,14 @@
                 <a class="nav-link disabled">Disabled</a>
               </li>
             </ul>
-            <form class="d-flex" role="search" type="get" action="{{url('/search')}}">
+            {{-- <form class="d-flex" role="search" type="get" action="{{url('/search')}}"> --}}
               <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
           </div>
         </div>
       </nav>
-      <a href="{{route('posts.create')}}" class="btn btn-info"> Create Post </a>
+      {{-- <a href="{{route('posts.create')}}" class="btn btn-info"> Create Post </a> --}}
    <table class="table"> 
         <tr> 
             <th>
@@ -232,32 +232,32 @@
             </th>
         </tr>    
         {{-- @dd($data) --}}
-        @foreach ($data as $post)
+        {{-- @foreach ($data as $post) --}}
             {{-- @dd($item) --}}
             <tr> 
-                <td> {{$loop->iteration}} </td>
+                {{-- <td> {{$loop->iteration}} </td> --}}
                 <td>
-                    {{$post["title"]}} 
+                    {{-- {{$post["title"]}}  --}}
                 </td> 
                 <td>
-                    {{$post["description"]}} 
+                    {{-- {{$post["description"]}}  --}}
                 </td>
                 <td>
-                    {{$post["from"]}} 
+                    {{-- {{$post["from"]}}  --}}
                 </td>
                 <td>
-                    {{$post["to"]}} 
+                    {{-- {{$post["to"]}}  --}}
                 </td>
                 <td>
-                    {{$post["deliver_price"]}} 
+                    {{-- {{$post["deliver_price"]}}  --}}
                 </td>
                 <td>
-                 <a class="btn btn-warning" href="{{route('posts.show' , [$post->id])}}">Show</a>
+                 {{-- <a class="btn btn-warning" href="{{route('posts.show' , [$post->id])}}">Show</a> --}}
                 </td>
                 
              </tr>
             
-        @endforeach
+        {{-- @endforeach --}}
 
 
 
