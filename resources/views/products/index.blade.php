@@ -8,20 +8,22 @@
 
 <form action="{{ route('products.index') }}" method="GET">
     
-    <div class="mb-3 text-center" dir="rtl">
-        <label for="search" class="form-label h2 text-primary">البحث</label>
-        <input type="text" class="form-control" id="search" aria-describedby="search"  name="search">
-        <div id="search" class="form-text">ابحث من خلال العنوان </div>
+    <div class = "w-50 m-auto text-center " dir="rtl" >
+        {{-- <label for="search" class="form-label h2 text-primary">البحث</label> --}}
+        <input type="text" class="form-control me-2" id="search" aria-describedby="search"  name="search" placeholder="البحث">
+        <div id="search" class="form-text text-primary" >ابحث من خلال العنوان </div>
       </div>
     
 
 </form>
     
-<div class="row mb-3 mt-3 g-5 " dir="rtl">
+<div class="row mb-3 mt-3 g-5 "  dir="rtl">
 
     @foreach ($products as $product)
 
-    <div class="card col-4">
+    {{-- <div class="card col-4 d-flex justify-content-between" style="margin-left:2px;"  > --}}
+    <div class="col-4"  >
+    <div class="card"  >
 
     <img src="{{ asset('productpic'). '/'. $product->product_pic }}" class="card-img-top" alt="...">
 
@@ -30,10 +32,9 @@
     <h5 class="card-title text-center text-primary">{{$product->name}}</h5>
 
    
-
     <p class="card-text text-center">السعر: {{$product->price}}</p>
 
-    <p class="card-text text-center  " >الكمية: {{$product->quantity}}</p>
+    <p class="card-text text-center">الكمية: {{$product->quantity}}</p>
 
     <div class="text-center">
 
@@ -42,17 +43,16 @@
 
     <a href="{{route("products.edit", $product->id)}}" class="btn btn-warning">تعديل </a>
         
-    <form action="{{ route("products.destroy", $product->id )}}" method="post">
+   <form action="{{ route("products.destroy", $product->id )}}" method="post" class="d-inline">
     @csrf
+    
     @method('DELETE')
 
-          <button type="submit" class="btn btn-danger"> حذف  </button>
+          <button type="submit" class="btn btn-danger">  حذف  </button>
     
     </form>
-   
-
     </div>
-
+     </div>
      </div>
 
 </div>
@@ -106,5 +106,5 @@
                 </tbody>
             </table>
         @endif
-    </div> --}} --}}
+    </div> --}}
 @endsection
