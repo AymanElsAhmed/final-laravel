@@ -97,11 +97,15 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-primary" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre href="#">
                                     <img  src="{{ asset('profilepic'). '/'. auth()->user()->profile_pic}}"  class="rounded-circle card-img-top " style="width:60px; height:50px">    
                                   </a>
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="/profile" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="/profile" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     my profile
-                                </a> 
+                                </a>  --}}
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item text-primary" href="/profile"
+                                    >
+                                        my profile
+                                    </a>
                                     <a class="dropdown-item text-primary" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

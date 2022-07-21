@@ -205,13 +205,13 @@
                                                 <input class="form-check-input @error('role') is-invalid @enderror"
                                                     type="radio" name="role" id="femaleGender" value="vendor" />
                                                 <label class="form-check-label"
-                                                    for="femaleGender">{{ __('Female') }}</label>
+                                                    for="femaleGender">{{ __('vendor') }}</label>
                                             </div>
                                             <div class="form-check form-check-inline mb-0 me-4">
                                                 <input class="form-check-input @error('gender') is-invalid @enderror"
                                                     type="radio" name="role" id="maleGender" value="delivery" />
                                                 <label class="form-check-label"
-                                                    for="maleGender">{{ __('Male') }}</label>
+                                                    for="maleGender">{{ __('delivery') }}</label>
                                             </div>
                                             @error('role')
                                                 <span class="invalid-feedback" role="alert">
