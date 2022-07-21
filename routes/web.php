@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ClientController;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,7 @@ Route::resource('/products', ProductController::class)->middleware('is_vendor');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
+Route::resource('/clients', ClientController::class)->middleware('is_vendor');
 
 
 Auth::routes();

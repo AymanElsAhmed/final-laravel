@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,8 +12,11 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
 
-    function __construct()
+    public function __construct()
     {
+        $this->middleware('is_vendor', ['except' => [
+            'search', 'index', 'show'
+        ]]);
     }
 
     public function search(Request $request)
@@ -84,15 +88,17 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post, User $user)
     {
-        $user = Auth::user();
 
+        $this->authorize('update', [$post, $user]);
         // dd($user);
 
+
+        // $products = Product::all()->where('user_id', $user->id);
         $products = Product::all()->where('user_id', $user->id);
 
-        $post = Post::findOrFail($id);
+
         return view('posts.edit', [
             'post' => $post,
             'products' => $products
@@ -142,9 +148,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($index)
+    public function destroy(Post $post, User $user)
     {
-        Post::findOrFail($index)->delete();
+        $this->authorize('delete', [$post, $user]);
+        $post->delete();
 
         return redirect()->route('posts.index');
     }

@@ -56,7 +56,8 @@ class ProductPolicy
      */
     public function update(User $user, Product $product)
     {
-        //
+        return $product->user_id === $user->id ? Response::allow()
+            : abort(404);
     }
 
     /**
@@ -68,7 +69,8 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product)
     {
-        //
+        return $product->user_id === $user->id ? Response::allow()
+            : abort(404);
     }
 
     /**

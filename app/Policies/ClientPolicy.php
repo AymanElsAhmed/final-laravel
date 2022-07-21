@@ -2,12 +2,12 @@
 
 namespace App\Policies;
 
-use App\Models\Post;
+use App\Models\Client;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
-class PostPolicy
+class ClientPolicy
 {
     use HandlesAuthorization;
 
@@ -26,12 +26,13 @@ class PostPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Post $post)
+    public function view(User $user, Client $client)
     {
-        //
+        return $user->id === $client->user_id ? Response::allow()
+            : abort(404);
     }
 
     /**
@@ -49,12 +50,12 @@ class PostPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Post $post)
+    public function update(User $user, Client $client)
     {
-        return $post->user_id === $user->id ? Response::allow()
+        return $user->id === $client->user_id ? Response::allow()
             : abort(404);
     }
 
@@ -62,12 +63,12 @@ class PostPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Post $post)
+    public function delete(User $user, Client $client)
     {
-        return $post->user_id === $user->id ? Response::allow()
+        return $user->id === $client->user_id ? Response::allow()
             : abort(404);
     }
 
@@ -75,10 +76,10 @@ class PostPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Post $post)
+    public function restore(User $user, Client $client)
     {
         //
     }
@@ -87,10 +88,10 @@ class PostPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Post $post)
+    public function forceDelete(User $user, Client $client)
     {
         //
     }

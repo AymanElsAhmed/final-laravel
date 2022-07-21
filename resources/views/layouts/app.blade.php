@@ -66,10 +66,10 @@
                               Clients
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <li><a class="dropdown-item text-primary" href="#">Action</a></li>
-                              <li><a class="dropdown-item text-primary" href="#">Another action</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item text-primary" href="#">Something else here</a></li>
+
+                                <li><a class="dropdown-item" href="{{route('clients.index')}}">All Clients</a></li>
+                                <li><a class="dropdown-item"href="{{route('clients.create')}}">Create Clients</a></li>
+
                             </ul>
                           </li>
                           @endvendor

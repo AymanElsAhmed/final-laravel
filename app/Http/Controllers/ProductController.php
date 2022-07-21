@@ -128,9 +128,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product, User $user)
     {
-        $product = Product::findOrFail($id);
+        // $user = auth()->user();
+        $this->authorize('update', [$product, $user]);
+        // $product = Product::findOrFail($id);
         $cats = Category::all();
         return view('products.edit', [
             'product' => $product,
@@ -190,9 +192,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product, User $user)
     {
-        $product = Product::findOrFail($id);
+        $this->authorize('delete', [$product, $user]);
         File::delete(public_path("productpic/" . $product->product_pic));
         $product->delete();
 
