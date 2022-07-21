@@ -63,8 +63,11 @@ Route::get('/test', function () {
     return view('test', ['users' => $users]);
 });
 
-// Route::get('/profile', function () {
-//     $user = Auth::user();
-//     dd($user);
-//     return view('profile.index', compact('user'));
-// })->middleware('auth');
+
+
+Route::get('/profile', function () {
+    $users = Auth::user();
+    $posts =  $users->posts;
+    $comments = $users->comments;
+    return view('profile.index', compact('users', 'posts', 'comments'));
+})->middleware('auth');

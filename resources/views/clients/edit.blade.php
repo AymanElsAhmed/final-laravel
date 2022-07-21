@@ -38,7 +38,7 @@ padding: 10px;">
   </div>
 
            
-            <button type="submit">حفظ</button>
+            <button type="submit" class="btn btn-info">حفظ</button>
         </form>
 
     </div> 
