@@ -28,7 +28,7 @@ class ProductController extends Controller
         // ddd();
         $products = auth()->user()->products;
         // $products = Product::all()->where('user_id', $user->id);
-        // dd($products);
+
 
         if ($request['search']) {
             $searchedProducts = $products->where('name', $request['search']);
@@ -113,10 +113,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user, Product $product)
     {
-        $this->authorize('view', Product::class);
-        $product = Product::findOrFail($id);
+        $this->authorize('view', [$product, $user]);
+        // $product = Product::findOrFail($id);
         return view('products.show', [
             'product' => $product
         ]);

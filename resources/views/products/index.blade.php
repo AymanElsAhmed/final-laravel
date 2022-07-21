@@ -6,17 +6,20 @@
     <h3>{{ __('No Products Yet') }}</h3>
 @else
 
-<form action="{{ route('products.index') }}" method="GET">
-    
-    <div class = "w-50 m-auto text-center " dir="rtl" >
+
+<div class="row" dir="rtl">
+<form action="{{ route('products.index') }}"  class="col-8 w-75" method="GET">
+    <div class = "w-50 m-auto text-center" dir="rtl" >
         {{-- <label for="search" class="form-label h2 text-primary">البحث</label> --}}
         <input type="text" class="form-control me-2" id="search" aria-describedby="search"  name="search" placeholder="البحث">
         <div id="search" class="form-text text-primary" >ابحث من خلال العنوان </div>
       </div>
-
-    
 </form>
+
+<button class="btn btn-primary col-2 h-25"> add product</button>
+</div>
     
+
 <div class="row mb-3 mt-3 g-5 "  dir="rtl">
 
     

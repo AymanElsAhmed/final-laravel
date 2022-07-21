@@ -60,3 +60,9 @@ Route::get('/test', function () {
     // dd($user);
     return view('test', ['users' => $users]);
 });
+
+// Route::get('/profile', function () {
+//     $user = Auth::user();
+//     dd($user);
+//     return view('profile.index', compact('user'));
+// })->middleware('auth');

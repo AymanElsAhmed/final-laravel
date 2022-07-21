@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class ProductPolicy
 {
@@ -30,7 +31,9 @@ class ProductPolicy
      */
     public function view(User $user, Product $product)
     {
-        return $product->user_id == auth()->user()->id;
+        // dd($user);
+        return $product->user_id === $user->id ? Response::allow()
+            : abort(404);
     }
 
     /**

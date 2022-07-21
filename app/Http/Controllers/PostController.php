@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+
+    function __construct()
+    {
+    }
+
     public function search(Request $request)
     {
 
@@ -68,6 +73,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+
         return view("posts.show1", ["post" => $post]);
     }
 
