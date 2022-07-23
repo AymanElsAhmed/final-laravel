@@ -10,6 +10,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\VendorOrderController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProfileController;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -55,6 +56,7 @@ Route::resource('/clients', ClientController::class)->middleware('is_vendor');
 Route::resource('/vendors', VendorOrderController::class)->middleware('is_vendor');
 Route::resource('/comments', CommentController::class);
 Route::resource('/orders', OrderController::class);
+Route::resource('/profiles', ProfileController::class);
 
 
 Auth::routes();
@@ -75,9 +77,9 @@ Route::get('/test', function () {
 
 
 
-Route::get('/profile', function () {
-    $users = Auth::user();
-    $posts =  $users->posts;
-    $comments = $users->comments;
-    return view('profile.index', compact('users', 'posts', 'comments'));
-})->middleware('auth');
+// Route::get('/profile', function () {
+//     $users = Auth::user();
+//     $posts =  $users->posts;
+//     $comments = $users->comments;
+//     return view('profile.index', compact('users', 'posts', 'comments'));
+// })->middleware('auth');
