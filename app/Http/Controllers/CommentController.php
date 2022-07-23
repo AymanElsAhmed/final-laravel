@@ -42,7 +42,7 @@ class CommentController extends Controller
     {
         $request->validate([
 
-            "description" => 'required|max:255',
+            "description" => 'required|max:255|alpha',
             "delivery_date" => 'required',
             "deliver_price" => 'required|numeric',
 
@@ -87,22 +87,18 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment, User $user)
     {
-        $this->authorize('update', [$user, $comment]);
+        // $this->authorize('update', [$user, $comment]);
+        // dd($request->all());
         $request->validate([
 
-            "description" => 'required|max:255',
+            "description" => 'required|max:255|alpha',
             "delivery_date" => 'required',
             "deliver_price" => 'required|numeric',
 
         ]);
-        $url = request()->headers->get('referer');
-        $urlArr = explode('/', $url);
-        $postId =  end($urlArr);
         $comment->update($request->all());
-        $comment->user_id = auth()->user()->id;
-        $comment->post_id = $postId;
         $comment->save();
-        return redirect()->route("posts.index");
+        return redirect()->route("posts.show", $comment->post_id);
     }
 
     /**

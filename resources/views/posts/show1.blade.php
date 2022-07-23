@@ -40,13 +40,13 @@
       @auth
 @delivery 
 <p>
-  <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">اضافة التعليقات</a>
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#addcomment" role="button" aria-expanded="false" aria-controls="addcomment">اضافة التعليقات</a>
 
 </p>
 <div class="row">
 
   <div class="col col-md-12 col-lg-12">
-    <div class="collapse multi-collapse" id="multiCollapseExample1">
+    <div class="collapse multi-collapse" id="addcomment">
       <div class="card card-body">
         <!-- store comment -->
         <form class="row g-3" dir="rtl" method="POST" action="{{ route('comments.store') }}" enctype="multipart/form-data" >
@@ -112,14 +112,51 @@
 @auth
 @delivery   
 @if(auth()->user()->id === $comment->user_id)
-<a href="{{route("comments.edit", $comment->id)}}" class="btn btn-warning">تعديل </a>
-          <form action="{{ route("comments.destroy", $comment->id )}}" method="post" class="mb-3">
+<a class="btn btn-primary" data-bs-toggle="collapse" href="#commentedit{{$loop->iteration}}" role="button" aria-expanded="false" aria-controls="commentedit{{$loop->iteration}}">تعديل</a>
+<form action="{{ route("comments.destroy", $comment->id )}}" method="post" class="mb-3">
             @csrf
             @method('DELETE')
-            
+           
             <button type="submit" class="btn btn-danger "> حذف  </button>
-            
+           
           </form>
+<div class="row">
+  <div class="col col-md-12 col-lg-12">
+    <div class="collapse multi-collapse" id="commentedit{{$loop->iteration}}">
+      <div class="card card-body">
+        <!-- store comment -->
+        <form action="{{ route('comments.update', $comment->id) }}" method="POST">
+                    @method('PUT')
+                    @csrf
+  {{-- <!-- <input class="hidden" name="post_id" value="{{$post->id}}"> --> --}}
+  <div class="col-12">
+      <label for="name" class="form-label text-primary">نبذة عن خبرتك</label>
+      <input type="text" class="form-control" id="description" name="description" value="{{ old('description', $comment->description) }}">
+      @error('description')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+    </div>
+    <div class="col-12">
+      <label for="price" class="form-label text-primary">تاريخ التسليم</label>
+      <input type="date" class="form-control" id="delivery_date" name="delivery_date" value="{{ old('delivery_date', $comment->delivery_date) }}">
+      @error('delivery_date')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+    </div>
+    <div class="col-12">
+      <label for="weight" class="form-label text-primary">سعر التوصيل</label>
+      <input type="number" class="form-control" id="deliver_price"  name="deliver_price" value="{{ old('deliver_price', $comment->deliver_price) }}">
+      @error('deliver_price')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+    </div>
+   
+ 
+    <div class="col-12 text-center">
+      <button type="submit" class="btn btn-primary">حفظ</button>
+    </div>
+  </form>
+</div>
           @endif
           @enddelivery
           @endauth
