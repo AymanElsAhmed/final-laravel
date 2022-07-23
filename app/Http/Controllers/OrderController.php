@@ -54,6 +54,7 @@ class OrderController extends Controller
         $order->delivery_id = $deliveryId;
         $order->post_id = $postId;
         $order->client_id = $clientId;
+        $order->comment_id = $commentId;
         $order->save();
         return redirect()->route("orders.index");
     }

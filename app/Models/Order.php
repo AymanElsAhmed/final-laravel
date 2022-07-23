@@ -14,6 +14,7 @@ class Order extends Model
         'delivery_id',
         'post_id',
         'client_id',
+        'comment_id'
     ];
 
     public function user(): BelongsTo
