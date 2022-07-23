@@ -42,6 +42,19 @@
                 @endforeach
             </select>
         </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">client name</label>
+            <select name="client_id" id="client_id">
+                {{-- <option value="0">{{ __('Choose Product') }}</option> --}}
+                @foreach ($clients as $client)
+                    <option value="{{$client->id}}"
+                       >{{ $client->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <a href="{{route("clients.create")}}" class="btn btn-primary">أضف عميل جديد </a>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

@@ -27,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('vendor', function () {
             return auth()->user()->role === 'vendor';
         });
+        Blade::if('delivery', function () {
+            return auth()->user()->role === 'delivery';
+        });
     }
 }

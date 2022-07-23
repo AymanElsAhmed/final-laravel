@@ -198,7 +198,7 @@
                                         </div>
 
 
-                                        <h6 class="mb-0 me-4">{{ __('Gender') }}</h6>
+                                        <h6 class="mb-0 me-4">{{ __('Role') }}</h6>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-check form-check-inline mb-0 me-4">

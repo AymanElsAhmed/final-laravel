@@ -20,6 +20,7 @@ class Post extends Model
         'deliver_price',
         'product_id',
         'user_id',
+        'client_id'
     ];
 
     /**

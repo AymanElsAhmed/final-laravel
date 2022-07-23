@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\VendorOrderController;
+use App\Http\Controllers\OrderController;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 
@@ -48,6 +52,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::resource('/clients', ClientController::class)->middleware('is_vendor');
+Route::resource('/vendors', VendorOrderController::class)->middleware('is_vendor');
+Route::resource('/comments', CommentController::class);
+Route::resource('/orders', OrderController::class);
 
 
 Auth::routes();
@@ -62,6 +69,9 @@ Route::get('/test', function () {
     // dd($user);
     return view('test', ['users' => $users]);
 });
+
+
+// Route::post('/testawy/{id}', [PostController::class, 'storecomment']);
 
 
 

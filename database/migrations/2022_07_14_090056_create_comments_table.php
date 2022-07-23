@@ -15,10 +15,11 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('description');
             $table->string('delivery_date');
             $table->double('deliver_price');
+            $table->enum('status', ['pending', 'accepted', 'refused'])->default('pending');
+            $table->timestamps();
         });
     }
 

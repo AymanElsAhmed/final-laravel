@@ -39,11 +39,13 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-
     {
+
         $user = Auth::user();
-        $product = Product::all()->where('user_id', $user->id);;
-        return view("posts.create", ["products" => $product]);
+        // dd($user);
+        $products = Product::all()->where('user_id', $user->id);;
+        $clients = $user->clients;
+        return view("posts.create", ["products" => $products, "clients" => $clients]);
     }
 
     /**
@@ -61,7 +63,8 @@ class PostController extends Controller
             "from" => 'required|string',
             "to" => 'required|string',
             "deliver_price" => 'required|numeric',
-            "product_id" => 'required'
+            "product_id" => 'required',
+            "client_id" => 'required'
         ]);
         $post = new Post(request()->all());
         $post->user_id = Auth::user()->id;
@@ -69,6 +72,22 @@ class PostController extends Controller
         return redirect()->route("posts.index");
     }
 
+    // public function storecomment(Request $request, Post $post)
+    // {
+    //     dd($post);
+    //     $request->validate([
+    //         "title" => 'required|max:100|string',
+    //         "description" => 'required|max:255|string',
+    //         "from" => 'required|string',
+    //         "to" => 'required|string',
+    //         "deliver_price" => 'required|numeric',
+    //         "product_id" => 'required'
+    //     ]);
+    //     $post = new Post(request()->all());
+    //     $post->user_id = Auth::user()->id;
+    //     $post->save();
+    //     return redirect()->route("posts.index");
+    // }
     /**
      * Display the specified resource.
      *
