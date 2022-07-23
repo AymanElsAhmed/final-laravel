@@ -56,7 +56,7 @@ Route::resource('/clients', ClientController::class)->middleware('is_vendor');
 Route::resource('/vendors', VendorOrderController::class)->middleware('is_vendor');
 Route::resource('/comments', CommentController::class);
 Route::resource('/orders', OrderController::class);
-Route::resource('/profiles', ProfileController::class);
+Route::resource('/profiles', ProfileController::class)->except(['create', 'store', 'destroy']);
 
 
 Auth::routes();
