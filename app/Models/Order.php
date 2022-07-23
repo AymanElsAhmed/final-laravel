@@ -21,8 +21,16 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function comment(): BelongsTo
+    {
+        return $this->belongsTo(Comment::class);
+    }
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
+    }
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
     }
 }
