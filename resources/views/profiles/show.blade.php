@@ -6,7 +6,7 @@
 
 
   {{-- @dd($postes); --}}
-  @if ($user->role == "vendor")
+@if ($user->role == "vendor")
         <div class="container">
         <div class="row">
             <div class=" col-md-12 col-lg-12 col-xl-12 mb-12 col-sm-12">
@@ -15,7 +15,7 @@
                 <div class="m-auto mt-3  "  dir="rtl">
                 <img src="{{ asset('profilepic'). '/'. $user->profile_pic}}"  class=" rounded-circle m-auto mt-3 " class="card-img-top" alt="..." style= "height: 100px; width:100px;" >    
        
-                  <h3 >{{ $user->name }} <a href=""><i class="fas fa-edit"></i>
+                  <h3 >{{ $user->name }} <a href="{{route('profiles.edit',$user->id)}}"><i class="fas fa-edit"></i>
 
                   </i>  </a> </h3>
                   

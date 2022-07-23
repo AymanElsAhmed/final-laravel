@@ -6,27 +6,19 @@
 
         <div class="container">
             <form class="row g-3" method="POST" 
-            action="{{ route('profiles.show') }}"
+            action="{{ route('profiles.update', $user->id) }}"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 {{-- @dd($user) --}}
 
-                <div class="col-12">
-                    <label for="name" class="form-label text-primary">{{ __('Name') }}</label>
-                    <input type="text" class="form-control" id="name" name="name"
-                        value="{{ $user->name ? $user->name : old('name') }}">
-                    @error('name')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-
+    
                 <div class="col-12">
                     <label for="city" class="form-label text-primary">{{ __('City') }}</label>
                     <input type="text" class="form-control" id="city" name="city"
                         value="{{ $user->city ? $user->city : old('city') }}">
-                    @error('price')
+                    @error('city')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -53,6 +45,7 @@
 
                 <div class="col-12">
                     <label for="userPic" class="form-label text-primary">{{ __('Photo') }}</label>
+                    <img src="{{asset('profilepic') . '/' . $user->profile_pic}}" alt="" class="img-fluid">
                     <input class="form-control" type="file" id="userPic" multiple name="profile_pic"
                         value="{{ $user->profile_pic ? asset('profilepic') . '/' . $user->profile_pic : old('profile_pic') }}">
                 </div>

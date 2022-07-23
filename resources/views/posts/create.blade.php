@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div style="margin: auto;
+width: 50%;
+box-shadow: 1px 2px 3px 4px rgba(104, 145, 184, 0.4);
+padding: 10px;">
+
+<p class="h1 text-center text-primary">إضافة بوست
+</p>
+    <div class="container">
     <form action="{{ route('posts.store') }}" method="POST">
         @csrf
 
@@ -60,3 +67,4 @@
     </form>
 </div>
 @endsection
+</div>
