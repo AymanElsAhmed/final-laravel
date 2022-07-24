@@ -9,7 +9,7 @@ padding: 10px;">
 <p class="h1 text-center text-primary"> إضافة عميل</p> 
 
 <div class="container" style="margin-bottom: 30px;">
-<form class="row g-3" dir="rtl" method="POST" action="{{ route('clients.store') }}" enctype="multipart/form-data" >
+<form class="row g-3"  method="POST" action="{{ route('clients.store') }}" enctype="multipart/form-data" >
   @csrf  
   <div class="col-12">
       <label for="name" class="form-label text-primary">الاسم</label>

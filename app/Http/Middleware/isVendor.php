@@ -20,7 +20,6 @@ class isVendor
         if (!auth()->check() || auth()->user()->role == 'delivery') {
             abort(403);
         }
-
         return $next($request);
     }
 }

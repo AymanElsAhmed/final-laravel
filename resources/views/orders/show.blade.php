@@ -1,67 +1,52 @@
 
-
-
-
 @extends('layouts.app')
 
+@section('styles')
+<style>
+  .card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+margin: auto;
+text-align: center;
+font-family: arial;
+}
 
+.title {
+color: grey;
+font-size: 18px;
+}
+
+button {
+border: none;
+outline: 0;
+display: inline-block;
+padding: 8px;
+color: white;
+background-color: #000;
+text-align: center;
+cursor: pointer;
+width: 100%;
+font-size: 18px;
+}
+
+/* a {
+text-decoration: none;
+font-size: 22px;
+color: black;
+} */
+
+button:hover, a:hover {
+opacity: 0.7;
+}
+.checked {
+color: gold;
+}
+
+
+</style>
+@endsection
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Delivery Profile</title>
-    <style>
-        .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin: auto;
-    text-align: center;
-    font-family: arial;
-  }
-  
-  .title {
-    color: grey;
-    font-size: 18px;
-  }
-  
-  button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-  }
-  
-  a {
-    text-decoration: none;
-    font-size: 22px;
-    color: black;
-  }
-  
-  button:hover, a:hover {
-    opacity: 0.7;
-  }
-  .checked {
-    color: gold;
-  }
-  
 
-    </style>
-</head>
-<body>
+
         <div class="container" >
         <div class="row"> 
       
@@ -151,10 +136,7 @@
            <div class="row" > 
             <div  class=" col-md-12 col-lg-12 col-xl-12 mb-12 col-sm-12">
             <h2 style="text-align:center">  </h2>
-           <div class="card" style=" max-width: 700px ;  ">
-       
-           
-   
+           <div class="card" style=" max-width: 700px ;  "> 
             <h1> {{$order->post-> title}}
               
             </h1>
@@ -162,9 +144,6 @@
             <p class="title"> {{$order->post->from}} </p>
             <p class="title"> {{$order->post->to}} </p>
             <p class="title">{{$order->post->deliver_price}} </p>
-
-            
-           
         </div> 
       
       
@@ -174,8 +153,6 @@
     </div>
     </div>
    
-</body>
-</html>
 
 
 

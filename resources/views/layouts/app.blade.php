@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
 
 <head>
     <meta charset="utf-8">
@@ -21,11 +21,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> --}}
 
-        @yield('styles')
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+
+
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @yield('styles')
 
 </head>
 
@@ -59,7 +66,8 @@
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item "
                                                 href="{{ route('posts.index') }}">{{ __('All Post') }}</a>
-                                        <li><a class="dropdown-item " href="{{ route('posts.create') }}">{{ __('Add Post') }}</a>
+                                        <li><a class="dropdown-item "
+                                                href="{{ route('posts.create') }}">{{ __('Add Post') }}</a>
 
                                     </ul>
                                 </li>
@@ -69,9 +77,10 @@
                                         {{ __('Products') }}
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item " href="{{ route('products.index') }}">{{ __('All Products') }}</a></li>
+                                        <li><a class="dropdown-item "
+                                                href="{{ route('products.index') }}">{{ __('All Products') }}</a></li>
                                         <li><a class="dropdown-item "href="{{ route('products.create') }}">
-                                            {{ __('Create Product') }}</a></li>
+                                                {{ __('Create Product') }}</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -81,8 +90,10 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                                        <li><a class="dropdown-item" href="{{ route('clients.index') }}">{{ __('All Clients') }}</a></li>
-                                        <li><a class="dropdown-item"href="{{ route('clients.create') }}">{{ __('Create Client') }}</a>
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('clients.index') }}">{{ __('All Clients') }}</a></li>
+                                        <li><a
+                                                class="dropdown-item"href="{{ route('clients.create') }}">{{ __('Create Client') }}</a>
                                         </li>
 
                                     </ul>
@@ -95,7 +106,8 @@
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item "
                                                 href="{{ route('orders.index') }}">{{ __('All Orders') }}</a>
-                                        <li><a class="dropdown-item " href="{{ route('vendors.index') }}">{{ __('Posts order') }}</a>
+                                        <li><a class="dropdown-item "
+                                                href="{{ route('vendors.index') }}">{{ __('Posts order') }}</a>
 
                                     </ul>
                                 </li>
@@ -105,7 +117,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
