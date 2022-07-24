@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container bg-light" dir="rtl">
+<div class="container bg-light" >
     <div class="row">
         <div class="col">
            {{-- title   desc details name hr productPrice delveryPrice from to hr  --}}
@@ -49,7 +49,7 @@
     <div class="collapse multi-collapse" id="addcomment">
       <div class="card card-body">
         <!-- store comment -->
-        <form class="row g-3" dir="rtl" method="POST" action="{{ route('comments.store') }}" enctype="multipart/form-data" >
+        <form class="row g-3"  method="POST" action="{{ route('comments.store') }}" enctype="multipart/form-data" >
   @csrf  
   {{-- <!-- <input class="hidden" name="post_id" value="{{$post->id}}"> --> --}}
   <div class="col-12">

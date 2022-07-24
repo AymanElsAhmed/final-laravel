@@ -6,7 +6,7 @@
 
   <div class="col-md-8 offset-md-2">
 
-    <div class="card mx-8" dir="rtl">
+    <div class="card mx-8" >
         <img src="{{ asset('productpic'). '/'. $product->product_pic }}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title text-center text-primary" >{{$product->name}} </h5>
@@ -16,7 +16,7 @@
     
           {{-- <p class="card-text"><small class="text-muted"{{$product->created_at}}></small></p> --}}
         </div>
-        <div class="d-grid gap-2 col-6 mx-auto mt-2" dir="rtl">
+        <div class="d-grid gap-2 col-6 mx-auto mt-2" >
           <a href="{{route("products.show", $product->id)}}" class="btn btn-primary ">عرض </a>
           {{-- <a href="{{route("products.show", $product->id)}}" class="btn btn-primary col-3">{{__('Offer')}}</a> --}}
           

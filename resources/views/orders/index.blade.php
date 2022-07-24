@@ -9,12 +9,12 @@
 @else
 
 
-<div class="row" dir="rtl">
+<div class="row" >
 <button class="btn btn-primary col-2 h-25"> add product</button>
 </div>
     
 
-<div class="row mb-3 mt-3 g-5 "  dir="rtl">
+<div class="row mb-3 mt-3 g-5 "  >
 
     
 

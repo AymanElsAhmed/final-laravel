@@ -23,7 +23,7 @@
             <div class=" col-md-12 col-lg-12 col-xl-12 mb-12 col-sm-12">
                 <h2  class="text-center text-primary"> الملف الشخصي للتاجر </h2>
                <div class="card " >
-                <div class="m-auto mt-3  "  dir="rtl">
+                <div class="m-auto mt-3  "  >
                 <img src="{{ asset('profilepic'). '/'. auth()->user()->profile_pic}}"  class=" rounded-circle m-auto mt-3 " class="card-img-top" alt="..." style= "height: 100px; width:100px;" >    
        
                   <h3 >{{ $users->name }} <a href=""><i class="fas fa-edit"></i>
@@ -42,7 +42,7 @@
                 </div>
       <h5 class=" text-primary text-center"> المنشورات الخاصه بي </h5>
       <div class="bg-light border rounded-3">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" dir="rtl">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" >
         @foreach ($posts as $post)
         
             <div class="col" >
@@ -68,7 +68,7 @@
       </div>
       <h5 class=" text-primary text-center"> الكومنتات الخاصه بي </h5>
       <div class="bg-light border rounded-3">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" dir="rtl">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" >
         
         
             <div class="col" >
@@ -92,7 +92,7 @@
            <h5 class=" text-primary text-center" >  طرق التواصل </h5>
       <div >
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 me-4 " dir="rtl">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 me-4 " >
         
         
           <p >{{ $users->email }} <a href=""> <i class="fas fa-envelope"></i>   </a> </p>
@@ -122,7 +122,7 @@
       <div class=" col-md-12 col-lg-12 col-xl-12 mb-12 col-sm-12">
           <h2  class="text-center text-primary"> الملف الشخصي  للمندوب</h2>
          <div class="card " >
-          <div class="m-auto mt-3  "  dir="rtl">
+          <div class="m-auto mt-3  "  >
           <img src="{{ asset('profilepic'). '/'. auth()->user()->profile_pic}}"  class=" rounded-circle m-auto mt-3 " class="card-img-top" alt="..." style= "height: 100px; width:100px;" >    
  
             <h3 >{{ $users->name }} <a href=""><i class="fas fa-edit"></i>
@@ -141,7 +141,7 @@
           </div>
           <h5 class=" text-primary text-center"> الطلبات الخاصه بي </h5>
           <div class="bg-light border rounded-3">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 text-center" dir="rtl">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 text-center" >
             @foreach ($comments as $comment)
             
                 <div class="col" >
@@ -163,7 +163,7 @@
           </div>
           <h5 class=" text-primary text-center"> الكومنتات الخاصه بي </h5>
           <div class="bg-light border rounded-3">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" dir="rtl">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" >
             
             
                 <div class="col" >
@@ -187,7 +187,7 @@
                <h5 class=" text-primary text-center" >  طرق التواصل </h5>
           <div >
     
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 me-4 " dir="rtl">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 me-4 " >
             
             
               <p >{{ $users->email }} <a href=""> <i class="fas fa-envelope"></i>   </a> </p>

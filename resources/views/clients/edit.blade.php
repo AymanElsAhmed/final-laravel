@@ -8,7 +8,7 @@ padding: 10px;">
 <h1 class="h1 text-center text-primary"> تعديل</h1>
 
 <div class="container">
-<form class="row g-3" dir="rtl" method="POST" action="{{ route('clients.update', [$clients->id]) }}" enctype="multipart/form-data" >
+<form class="row g-3"  method="POST" action="{{ route('clients.update', [$clients->id]) }}" enctype="multipart/form-data" >
   @csrf  
   @method('PUT')
 
