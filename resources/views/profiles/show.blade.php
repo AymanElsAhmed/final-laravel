@@ -2,8 +2,8 @@
 
 @section('content')
     {{-- @dd($postes); --}}
-    @if ($user->role == 'vendor')
-        <div class="container">
+    <div class="container">
+        @if ($user->role == 'vendor')
             <div class="row my-3">
                 <h2 class="text-center text-primary"> الملف الشخصي للتاجر </h2>
             </div>
@@ -109,11 +109,11 @@
 
 
                         <p>{{ $user->email }}
-                          <a href=""><i class="fas fa-envelope"></i></a>
+                            <a href=""><i class="fas fa-envelope"></i></a>
                         </p>
 
                         <p>{{ $user->city }}
-                          <a href="#"><i class="fas fa-house-user"></i></a>
+                            <a href="#"><i class="fas fa-house-user"></i></a>
                         </p>
 
                         <p>
@@ -124,8 +124,6 @@
 
                 </div>
             </div>
-
-            {{-- DONE --}}
         @else
             {{-- <div class="container">
                 <div class="row">
@@ -194,6 +192,6 @@
                 </div>
             </div> --}}
 
-        </div>
+    </div>
     @endif
 @endsection
