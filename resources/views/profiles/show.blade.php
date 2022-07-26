@@ -1,9 +1,80 @@
 @extends('layouts.app')
+@section('styles')
+<style>
+.rating-css div {
+    color: #ffe400;
+    font-size: 10px;
+    font-family: sans-serif;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+  }
+  .rating-css input {
+    display: none;
+  }
+  .rating-css input + label {
+    font-size: 30px;
+    text-shadow: 1px 1px 0 #8f8420;
+    cursor: pointer;
+  }
+  .rating-css input:checked + label ~ label {
+    color: #b4afaf;
+  }
+  .rating-css label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+  }</style>
+@endsection
+
 
 @section('content')
     {{-- @dd($postes); --}}
+
     <div class="container">
-        @if ($user->role == 'vendor')
+     
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form action="{{url('/rate')}}" method="POST">
+            @csrf
+            <input type="hidden" name="user_id" value="{{$user->id}}">
+                <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Rate {{$user->name}}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="rating-css card-text ">
+                    <div class="star-icon">
+                        <input type="radio" value="1" name="rate-value" checked id="rating1">
+                        <label for="rating1" class="fa fa-star"></label>
+                        <input type="radio" value="2" name="rate-value" id="rating2">
+                        <label for="rating2" class="fa fa-star"></label>
+                        <input type="radio" value="3" name="rate-value" id="rating3">
+                        <label for="rating3" class="fa fa-star"></label>
+                        <input type="radio" value="4" name="rate-value" id="rating4">
+                        <label for="rating4" class="fa fa-star"></label>
+                        <input type="radio" value="5" name="rate-value" id="rating5">
+                        <label for="rating5" class="fa fa-star"></label>
+                    </div>
+                
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+          </div>
+        </div>
+      </div>
+
+
+    @if ($user->role == 'vendor')
+        <div class="container">
+
             <div class="row my-3">
                 <h2 class="text-center text-primary"> الملف الشخصي للتاجر </h2>
             </div>
@@ -18,16 +89,14 @@
                     <div class="card-body text-center">
                         <h4 class="card-title">
                             {{ $user->name }}
-                            <a href=""><i class="fas fa-edit"></i></a>
+                            <a href="{{route('profiles.edit',$user->id)}}"><i class="fas fa-edit"></i></a>
                         </h4>
-                        <p class="card-text">
-                            <span class="fa fa-star checked" value="1"></span>
-                            <span class="fa fa-star checked" value="2"></span>
-                            <span class="fa fa-star checked" value="3"></span>
-                            <span class="fa fa-star" value="4"></span>
-                            <span class="fa fa-star" value="5"></span>
-                        </p>
-                    </div>
+                        
+
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Rate
+                          </button>
+                       
                 </div>
 
 

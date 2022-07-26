@@ -153,7 +153,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('profiles.index') }}">
+                                    <a class="dropdown-item" href="{{route('profiles.show',auth()->user()->id)}}">
                                         {{ __('My profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

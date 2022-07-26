@@ -11,7 +11,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\VendorOrderController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\RatingController;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -52,12 +52,16 @@ Route::resource('/products', ProductController::class)->middleware('is_vendor');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::post('/rate', [RatingController::class, 'store']);
+
 
 Route::resource('/clients', ClientController::class)->middleware('is_vendor');
 Route::resource('/vendors', VendorOrderController::class)->middleware('is_vendor');
 Route::resource('/comments', CommentController::class);
 Route::resource('/orders', OrderController::class);
 Route::resource('/profiles', ProfileController::class)->except(['create', 'store', 'destroy']);
+
+
 
 
 Auth::routes();
@@ -89,36 +93,35 @@ Route::get('/test', function () {
 
 /**Admin Route */
 
-    // Route::get('/users','Admin\UserController@index');
-    // Route::perfix('Admin')->group(function(){
-    //     Route::get('/users', [UserController::class, 'index']);
-     
-    // });
-    // Route::get('/users', [UserController::class, 'index']);
+// Route::get('/users','Admin\UserController@index');
+// Route::perfix('Admin')->group(function(){
+//     Route::get('/users', [UserController::class, 'index']);
 
-  
-    // Route::prefix('admin')->group(function(){
-         
-    // Route::resource('/users', UserController::class);
-    // Route::get('/users', [UserController::class, 'index']);  
-    //     });
-
-        // Route::group(['prefix' => 'admin'], function () {
-        // //    Route::get('/users', [UserController::class, 'index']);
-        //    Route::resource('/users', UserController::class);
-        // });
+// });
+// Route::get('/users', [UserController::class, 'index']);
 
 
-        // Route::group(['prefix' => 'admin','middleware'=>'is_admin'], function () {
-        //    Route::get('/users', [UserController::class, 'index']);
-        // //    Route::resource('/users', UserController::class);
-        // });
+// Route::prefix('admin')->group(function(){
+
+// Route::resource('/users', UserController::class);
+// Route::get('/users', [UserController::class, 'index']);  
+//     });
+
+// Route::group(['prefix' => 'admin'], function () {
+// //    Route::get('/users', [UserController::class, 'index']);
+//    Route::resource('/users', UserController::class);
+// });
 
 
-        Route::get('/dashboard', function()
-        {
-            return view('admin.dashboard');
-        })->middleware('is_admin');
-        // })->middleware('is_admin');
+// Route::group(['prefix' => 'admin','middleware'=>'is_admin'], function () {
+//    Route::get('/users', [UserController::class, 'index']);
+// //    Route::resource('/users', UserController::class);
+// });
 
-  Route::resource('/users', UserController::class)->middleware('is_admin');
+
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware('is_admin');
+// })->middleware('is_admin');
+
+Route::resource('/users', UserController::class)->middleware('is_admin');
