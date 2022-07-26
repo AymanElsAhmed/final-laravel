@@ -32,18 +32,7 @@ padding: 10px;">
             <input type="text" name="to" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                 >
         </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Deliver Price</label>
-            <input type="number" name="deliver_price" class="form-control" id="exampleInputEmail1"
-                aria-describedby="emailHelp" >
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Product name</label>
-            <select name="product_id" id="product_id">
-                {{-- <option value="0">{{ __('Choose Product') }}</option> --}}
-                @foreach ($products as $product)
-                    <option value="{{$product->id}}"
+	@@ -40,23 +47,24 @@
                        >{{ $product->name }}
                     </option>
                 @endforeach
@@ -60,9 +49,7 @@ padding: 10px;">
                 @endforeach
             </select>
         </div>
-
         <a href="{{route("clients.create")}}" class="btn btn-primary">أضف عميل جديد </a>
-
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

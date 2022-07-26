@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-
 @section('content')
 
 <div class="container ">
@@ -24,7 +21,7 @@
 @endforeach
 <div class="row mb-3 mt-3 g-5 "  dir="rtl">
 
-    
+
 
 @endif
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\VendorOrderController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RatingController;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -51,12 +52,16 @@ Route::resource('/products', ProductController::class)->middleware('is_vendor');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::post('/rate', [RatingController::class, 'store']);
+
 
 Route::resource('/clients', ClientController::class)->middleware('is_vendor');
 Route::resource('/vendors', VendorOrderController::class)->middleware('is_vendor');
 Route::resource('/comments', CommentController::class);
 Route::resource('/orders', OrderController::class);
 Route::resource('/profiles', ProfileController::class)->except(['create', 'store', 'destroy']);
+
+
 
 
 Auth::routes();
