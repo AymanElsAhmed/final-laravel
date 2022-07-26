@@ -30,7 +30,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return redirect()->route('orders.index');
     }
 
     /**
@@ -41,7 +41,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
         // vendor_id, Dilevery_id, post_id, client_id
         $commentId = $request['teststst'];
         $comment = Comment::find($commentId);
@@ -50,6 +49,11 @@ class OrderController extends Controller
         $postId = $comment->post->id;
         $clientId = $comment->post->client->id;
         $order = new Order;
+
+        dd($order);
+
+
+
         $order->vendor_id = $vendorId;
         $order->delivery_id = $deliveryId;
         $order->post_id = $postId;
@@ -81,7 +85,15 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Order::findOrFail($id);
+
+        dd($order);
+
+
+
+        // if ($order) {
+        //     return redirect()->route('orders.show');
+        // }
     }
 
     /**

@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Order;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class VendorOrderController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +15,11 @@ class VendorOrderController extends Controller
      */
     public function index()
     {
-        // FIXME
-        $posts = auth()->user()->posts;
-        $orders = Order::all();
+        $users=User::where('is_admin','0')->where('status','pending')->get();
+   
 
-        // $orders->where($posts->post_id == $orders->id);
+    return view("admin.pages.users",["users"=>$users]);
 
-        // dd($orders);
-
-        return view('postsorder.index', [
-            'posts' => $posts,
-            'orders' => $orders,
-        ]);
     }
 
     /**
@@ -78,9 +72,16 @@ class VendorOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $this->validate($request, [
+            'status' => 'required',
+           
+        ]);
+       
+            $user->status = $request->input('status');
+$user->save();
+        return redirect()->route("users.index");
     }
 
     /**

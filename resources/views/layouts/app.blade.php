@@ -80,7 +80,7 @@
                                         <li><a class="dropdown-item "
                                                 href="{{ route('products.index') }}">{{ __('All Products') }}</a></li>
                                         <li><a class="dropdown-item "href="{{ route('products.create') }}">
-                                                {{ __('Create Product') }}</a></li>
+                                                {{ __('Add Product') }}</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -93,7 +93,7 @@
                                         <li><a class="dropdown-item"
                                                 href="{{ route('clients.index') }}">{{ __('All Clients') }}</a></li>
                                         <li><a
-                                                class="dropdown-item"href="{{ route('clients.create') }}">{{ __('Create Client') }}</a>
+                                                class="dropdown-item"href="{{ route('clients.create') }}">{{ __('Add Client') }}</a>
                                         </li>
 
                                     </ul>
@@ -107,7 +107,7 @@
                                         <li><a class="dropdown-item "
                                                 href="{{ route('orders.index') }}">{{ __('All Orders') }}</a>
                                         <li><a class="dropdown-item "
-                                                href="{{ route('vendors.index') }}">{{ __('Posts order') }}</a>
+                                                href="{{ route('post-orders.index') }}">{{ __('Posts order') }}</a>
 
                                     </ul>
                                 </li>
@@ -135,7 +135,7 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link" role="button" data-bs-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false" v-pre href="#">
-                                    <div class="d-flex">
+                                    <div class="d-flex flex-md-row-reverse">
                                         <div
                                             class="d-flex flex-column justify-content-center align-items-center text-capitalize">
                                             <span class="text-primary">
