@@ -11,6 +11,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\VendorOrderController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryContoller;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -83,3 +85,42 @@ Route::get('/test', function () {
 //     $comments = $users->comments;
 //     return view('profile.index', compact('users', 'posts', 'comments'));
 // })->middleware('auth');
+
+
+
+/**Admin Route */
+
+    // Route::get('/users','Admin\UserController@index');
+    // Route::perfix('Admin')->group(function(){
+    //     Route::get('/users', [UserController::class, 'index']);
+     
+    // });
+    // Route::get('/users', [UserController::class, 'index']);
+
+  
+    // Route::prefix('admin')->group(function(){
+         
+    // Route::resource('/users', UserController::class);
+    // Route::get('/users', [UserController::class, 'index']);  
+    //     });
+
+        // Route::group(['prefix' => 'admin'], function () {
+        // //    Route::get('/users', [UserController::class, 'index']);
+        //    Route::resource('/users', UserController::class);
+        // });
+
+
+        // Route::group(['prefix' => 'admin','middleware'=>'is_admin'], function () {
+        //    Route::get('/users', [UserController::class, 'index']);
+        // //    Route::resource('/users', UserController::class);
+        // });
+
+
+        Route::get('/dashboard', function()
+        {
+            return view('admin.dashboard');
+        })->middleware('is_admin');
+        // })->middleware('is_admin');
+
+  Route::resource('/users', UserController::class)->middleware('is_admin');
+  Route::resource('/categories', CategoryContoller::class)->middleware('is_admin');
