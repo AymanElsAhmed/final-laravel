@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class VendorOrderController extends Controller
@@ -14,10 +16,19 @@ class VendorOrderController extends Controller
     public function index()
     {
         $posts = auth()->user()->posts;
-
+        $post = Post::find(2);
+        // dd($post->comment->order);
+        // foreach ($post->comment as $comment) {
+        //     dd($comment->order);
+        // }
+        $order = Order::where('post_id', $post->id)->exists();
+        // dd()
+        // $postOrder = Order::where('post_id', $post->id)->get();
+        // dd($order);
 
         return view('postsorder.index', [
-            'posts' => $posts
+            'posts' => $posts,
+            // 'orders' => $orders
         ]);
     }
 

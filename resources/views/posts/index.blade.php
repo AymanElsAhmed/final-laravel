@@ -32,25 +32,6 @@
     {{-- <div class="container-fluid pb-3" style="margin-top: 60px"> --}}
     <div class="container-fluid pb-3 mt-5">
         <div class="d-grid gap-3">
-            {{-- <div class="bg-light border rounded-3">
-            <div class="container">
-            
-                <ul class="list-group" id="myList">
-                  <li class="list-group-item"><a href="#">First item</a></li>
-                  <li class="list-group-item"><a href="#">Second item</a></li>
-                  <li class="list-group-item"><a href="#">Third item</a></li>
-                  <li class="list-group-item"><a href="#"> Fourth </a> </li>
-                  <li class="list-group-item"><a href="#">First item</a></li>
-                  <li class="list-group-item"><a href="#">Second item</a></li>
-                  <li class="list-group-item"><a href="#">Third item</a></li>
-                  <li class="list-group-item"><a href="#"> Fourth </a> </li>
-                  <li class="list-group-item"><a href="#">First item</a></li>
-                  <li class="list-group-item"><a href="#">Second item</a></li>
-                  <li class="list-group-item"><a href="#">Third item</a></li>
-                  <li class="list-group-item"><a href="#"> Fourth </a> </li>
-                </ul>  
-              </div>
-        </div> --}}
             <div class="bg-light border rounded-3">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     @foreach ($posts as $post)
@@ -67,18 +48,10 @@
                                         &nbsp;{{ $post['from'] }} </p>
                                     <p class="card-text"> <span class="text-muted">الى:</span> &nbsp;{{ $post['to'] }}
                                     </p>
-                                    {{-- <p class="card-text"><span>سعر التوصيل:</span> &nbsp;{{$post["deliver_price"]}}</p>
-                        <p class="card-text"> <span>اسم المنتج:</span> &nbsp;{{$post->product->name}}</p>
-                        <p class="card-text"> <span>كمية المنتج:</span> &nbsp; {{$post->product->quantity}}</p>
-                        <p class="card-text"><span>سعر المنتج:</span> &nbsp;{{$post->product->price}}</p>
-                        <p class="card-text"><span>وزن المنتج:</span> &nbsp;{{$post->product->weight}}</p> --}}
-
-
-                                    {{-- <a class="btn btn-info" href="{{ route('products.show', $post->product->id) }}">لعرض تفاصيل اكثر عن المنتج</a> --}}
+                                   
                                     <br>
                                     <div class="btn-group text-center ">
-                                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-
+                                
                                         <a class="btn btn-primary" href="{{ route('posts.show', [$post->id]) }}">عرض
                                             المنشور</a>
                                     </div>

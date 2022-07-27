@@ -1,3 +1,4 @@
+@extends('layouts.app')
 @section('content')
 
 <div class="container ">
@@ -16,8 +17,15 @@
     <p class="card-text m-auto">{{$order->post->title}}</p>
     <p class="card-text">{{$order->post->description}}</p>
     <a href="{{route("orders.show",$order->id)}}" class="btn btn-primary">عرض تفاصيل الطلبية</a>
+    <button type="button" class="btn btn-danger"
+                                                                onclick="event.preventDefault();
+                                                document.getElementById('refuse-form').submit();">حذف</button>
   </div>
 </div>
+<form id="refuse-form" action="{{route("orders.destroy",$order->id)}}" method="POST" class="d-none">
+  @csrf
+  @method('delete')
+</form> 
 @endforeach
 <div class="row mb-3 mt-3 g-5 "  dir="rtl">
 

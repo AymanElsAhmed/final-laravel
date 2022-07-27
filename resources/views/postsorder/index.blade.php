@@ -17,6 +17,7 @@
                                 </button>
                             </h2>
 
+                           
 
 
                             <div id="acc{{ $loop->iteration }}" class="accordion-collapse collapse show"
@@ -47,6 +48,9 @@
                                                         <td class="text-danger">{{ $comment->deliver_price }}</td>
                                                         <td class="text-break">{{ $comment->description }}</td>
                                                         <td>{{ $comment->delivery_date }}</td>
+                                                        @if(App\Models\Order::where('post_id', $post->id)->exists())
+                                                        <td class="text-nowrap"> هناك طلبية بالفعل لهذا المنشور </td>
+                                                        @else
                                                         <td class="text-nowrap">
                                                             <button type="button" class="btn btn-success"
                                                                 onclick="event.preventDefault();
@@ -65,7 +69,11 @@
                                                         <form id="refuse-form" action="" method="POST" class="d-none">
                                                             @csrf
                                                             @method('delete')
-                                                        </form>
+                                                        </form> 
+                                                        @endif
+                                                       
+                                                       
+                                                        
                                                     </tr>
                                                 @endforeach
                                             </tbody>

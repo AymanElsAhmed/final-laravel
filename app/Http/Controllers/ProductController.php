@@ -30,16 +30,31 @@ class ProductController extends Controller
         // $products = Product::all()->where('user_id', $user->id);
 
 
+        $products = auth()->user()->products;
+
+
+        $get_name = $request['search'];
         if ($request['search']) {
-            $searchedProducts = $products->where('name', $request['search']);
-            return view('products.index', [
-                'products' => $searchedProducts,
-            ]);
+            $search = Product::where('name', 'LIKE', '%' . $get_name . '%')->with('user')->orwhere('price', 'LIKE', '%' . $get_name . '%')->with('user')->orwhere('quantity', 'LIKE', '%' . $get_name . '%')->get();
+            // dd($products);
+            return view("products.index", ["products" => $search]);
         }
+
 
         return view('products.index', [
             'products' => $products,
         ]);
+
+        // if ($request['search']) {
+        //     $searchedProducts = $products->where('name', $request['search']);
+        //     return view('products.index', [
+        //         'products' => $searchedProducts,
+        //     ]);
+        // }
+
+        // return view('products.index', [
+        //     'products' => $products,
+        // ]);
         // if ($user->role === 'delivery') {
         //     // return redirect()->route('/');
         //     abort(403);

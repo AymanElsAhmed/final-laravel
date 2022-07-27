@@ -57,6 +57,19 @@
                         @auth
 
                             {{-- @if (auth()->user()->role == 'vendor') --}}
+                            @delivery
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ __('Orders') }}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item "
+                                            href="{{ route('orders.index') }}">{{ __('All Orders') }}</a>
+                                </ul>
+                            </li>
+                            @enddelivery
+
                             @vendor
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"

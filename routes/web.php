@@ -52,7 +52,7 @@ Route::resource('/products', ProductController::class)->middleware('is_vendor');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::post('/rate', [RatingController::class, 'store']);
+Route::post('/rate', [RatingController::class, 'store'])->middleware('auth');
 
 
 Route::resource('/clients', ClientController::class)->middleware('is_vendor');

@@ -22,14 +22,22 @@ class PostController extends Controller
     public function search(Request $request)
     {
 
-        $search = $request['search'];
-        $posts = Post::where('title', 'LIKE', '%' . $search . '%')->with('product')->orwhere('description', 'LIKE', '%' . $search . '%')->with('product')->orwhere('from', 'LIKE', '%' . $search . '%')->with('product')->orwhere('to', 'LIKE', '%' . $search . '%')->with('product')->orwhere('deliver_price', 'LIKE', '%' . $search . '%')->with('product')->get();
-        return view("posts.index", compact('posts'));
+        // $search = $request['search'];
+        // $posts = Post::where('title', 'LIKE', '%' . $search . '%')->with('product')->orwhere('description', 'LIKE', '%' . $search . '%')->with('product')->orwhere('from', 'LIKE', '%' . $search . '%')->with('product')->orwhere('to', 'LIKE', '%' . $search . '%')->with('product')->orwhere('deliver_price', 'LIKE', '%' . $search . '%')->with('product')->get();
+        // return view("posts.index", compact('posts'));
     }
 
     public function index(Request $request)
     {
         $posts = Post::all();
+        $get_name = $request['search'];
+        if ($request['search']) {
+            $search = Post::where('title', 'LIKE', '%' . $get_name . '%')->with('product')->orwhere('description', 'LIKE', '%' . $get_name . '%')->with('product')->orwhere('from', 'LIKE', '%' . $get_name . '%')->with('product')->orwhere('to', 'LIKE', '%' . $get_name . '%')->with('product')->orwhere('deliver_price', 'LIKE', '%' . $get_name . '%')->with('product')->get();
+
+            return view("posts.index", ["posts" => $search]);
+        }
+
+
         return view("posts.index", ["posts" => $posts]);
     }
 
