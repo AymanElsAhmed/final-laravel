@@ -1,318 +1,350 @@
 @extends('layouts.app')
 
-@section('styles')
-
-<style>
-  .card {
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-margin: auto;
-text-align: center;
-font-family: arial;
-}
-
-.title {
-color: grey;
-font-size: 18px;
-}
-
-button {
-border: none;
-outline: 0;
-display: inline-block;
-padding: 8px;
-color: white;
-background-color: #000;
-text-align: center;
-cursor: pointer;
-width: 100%;
-font-size: 18px;
-}
-
-a {
-text-decoration: none;
-font-size: 22px;
-color: black;
-}
-
-button:hover, a:hover {
-opacity: 0.7;
-}
-.checked {
-color: gold;
-}
-
-</style>
-@endsection
-
-
-
 @section('content')
+    <div class="container">
+        <div class="row mb-5 text-center">
+            <div class="col-sm-8 col-md-6 offset-sm-2 offset-md-0">
+                <div class="card my-sm-3 my-md-5">
+                    <img src="{{ asset('profilepic') . '/' . $order->post->user->profile_pic }}" alt="Vendor pic"
+                        class="rounded-circle m-auto mt-3" style="width:100px; height:100px; object-fit:cover">
 
-        <div class="container" >
-        <div class="row"> 
-
-            <div class=" col-md-12 col-lg-12 col-xl-12 mb-12 col-sm-12" >
-               <div class="row" > 
-                <div  class=" col-md-6 col-lg-6 col-xl-6 mb-6 col-sm-6">
-                <h2 style="text-align:center">  </h2>
-               <div class="card" style=" max-width: 700px ;  ">
-
-                <img src="{{ asset('profilepic'). '/'. $order->comment->user->profile_pic }}" alt="vendor pic"  class="rounded-circle m-auto mt-2" style="width:100px;  height:100px; " >
-
-                <h1>  {{$order->comment->user->name}}  
-                </h1>
-                <p class="title"> :{{$order->comment->user->phone_number}}</p>
-                <p class="title"> {{$order->comment->user->email}}</p>
-
-
-
-               </div>
-            </div>
-            <div  class=" col-md-6 col-lg-6 col-xl-6 mb-6 col-sm-6">
-                <h2 style="text-align:center">  </h2>
-               <div class="card" style=" max-width: 700px ;  ">
-
-                <img src="{{ asset('profilepic'). '/'. $order->post->user->profile_pic }}" alt="vendor pic" class="rounded-circle m-auto mt-2" style="width:100px;  height:100px; "  >
-
-                <h1> {{$order->post->user->name}} 
-                </h1>
-
-                <p class="title"> {{$order->post->user->phone_number}}</p>
-                <p class="title">{{$order->post->user->email}} </p>
-
-               </div>
-               </div>
-               </div>
-            <hr>
-
-      <div class="py-5">
-        <div class="container">
-          <div class="row hidden-md-up">
-            <div class="col-md-4">
-              <div class="card"style="width:300px; height:350px">
-                <div class="card-block">
+                    <h5 class="card-title display-6 text-capitalize">{{ $order->post->user->name }}</h5>
 
                     <div class="card-body">
-                      <h4 class="card-title">{{$order->client->name}}</h4>
-                      <p class="card-text"> {{$order->client->adress}}</p>
-                      <p class="card-text"> {{$order->client->phone_number}}</p>
+                        <div class="my-1">{{ $order->post->user->phone_number }}</div>
+                        <div class="my-1">{{ $order->post->user->email }}</div>
                     </div>
+
                 </div>
-              </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card"style="width:300px; height:350px">
-                  <div class="card-block ">
-                      <img class="card-img-top" src="{{ asset('productpic'). '/'. $order->post->product->product_pic }}" alt="Card image" style="width:100%">
-                      <div class="card-body">
-                        <h4 class="card-title"> {{$order->post->product->name}}</h4>
-                        <p class="card-title"> {{$order->post->product->price}}</p>
-                        <p class="card-title"> {{$order->post->product->weight}}</p>
-                        <p class="card-title"> {{$order->post->product->quantity}}</p>
+            <div class="col-sm-8 col-md-6 offset-sm-2 offset-md-0">
+                <div class="card my-sm-3 my-md-5">
+                    <img src="{{ asset('profilepic') . '/' . $order->comment->user->profile_pic }}" alt="Delivery pic"
+                        class="rounded-circle m-auto mt-3" style="width:100px;  height:100px;">
 
-                      </div>
-                  </div>
+                    <h5 class="card-title display-6 text-capitalize">{{ $order->comment->user->name }}</h5>
+
+                    <div class="card-body">
+                        <div class="my-1">{{ $order->comment->user->phone_number }}</div>
+                        <div class="my-1">{{ $order->comment->user->email }}</div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card" style="width:300px; height:350px" >
-                  <div class="card-block">
+            </div>
+        </div>
 
-                      <div class="card-body">
-                        <h4 class="card-title">total:{{$order->post->product->price + $order->comment->deliver_price}}</h4>
-                        <p class="card-text"> price:{{$order->post->product->price}} </p>
-                        <p class="card-text"> delivery_price:{{$order->comment->deliver_price}} </p>
-                        <p class="card-text"> تاريخ التسليم:{{$order->comment->delivery_date}} </p>
+        <hr>
 
-                      </div>
-                  </div>
+
+        <div class="py-5" style="min-height : 2000px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <div class="card text-white bg-dark mb-3 py-3">
+                            <div class="card-header">Client_1</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Dark card title</h5>
+                                <p class="card-text">324 sdgdsgv</p>
+                                <p class="card-text">1000000000</p>
+                            </div>
+                        </div>
+
+
+
+
+                        <div style="max-width: 540px;" class="card">
+                            <div class="row g-0 text-white bg-dark">
+                                <div class="col-md-4">
+                                    <img src="http://127.0.0.1:8000/productpic/1658663787-AymanProduct.jpg" alt="Card image"
+                                        class="img-fluid rounded-start h-100 w-100">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Product_1</h5>
+                                        <p class="card-text">
+                                            <small class="fw-bold">Price: </small>
+                                            325
+                                        </p>
+                                        <p class="card-text">
+                                            <small class="fw-bold">Weight: </small>
+                                            2
+                                        </p>
+                                        <p class="card-text">
+                                            <small class="fw-bold">Quantity: </small>
+                                            34
+                                        </p>
+                                        <p class="card-text">
+                                            <small class="text-muted">
+                                                <small class="fw-bold">From: </small>
+                                                Cairo</small>
+                                            ||
+                                            <small class="text-muted">
+                                                <small class="fw-bold">To: </small>
+                                                Giza</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-8">
+                        <div style="" class="card text-white bg-primary ">
+                            <div class="card-block">
+
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <small class="fw-bold">Total:</small>
+                                        456
+                                    </h4>
+
+                                    <p class="card-text">
+                                        <small class="fw-bold">Price:</small>
+                                        325
+                                    </p>
+                                    <small class="fw-bold">Price:</small>
+                                    <p class="card-text">
+                                        <small class="fw-bold">Delivery Price:</small>
+                                        131
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="fw-bold">Delivery Date:</small>
+                                        2022-07-24 23:06:55
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {{-- <div class="card border-dark mb-3" style="max-width: 18rem;">
+                            <div class="card-header">{{ $order->client->name }}</div>
+                            <div class="card-body text-dark">
+                                <h5 class="card-title">Dark card title</h5>
+                                <p class="card-text">{{ $order->client->adress }}</p>
+                                <p class="card-text">{{ $order->client->phone_number }}</p>
+                            </div>
+                        </div> --}}
+
+
+                {{-- <div class="card text-white bg-dark mb-3">
+                            <div class="card-header">{{ $order->client->name }}</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Dark card title</h5>
+                                <p class="card-text">{{ $order->client->adress }}</p>
+                                <p class="card-text">{{ $order->client->phone_number }}</p>
+                            </div>
+                        </div> --}}
+
+                {{-- <div class="card text-white bg-secondary mb-3">
+                            <div class="card-header">{{ $order->client->name }}</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Dark card title</h5>
+                                <p class="card-text">{{ $order->client->adress }}</p>
+                                <p class="card-text">{{ $order->client->phone_number }}</p>
+                            </div>
+                        </div> --}}
+
+                {{-- </div>
+
+                    <div class="col-md-4"> --}}
+
+
+
+
+                {{-- <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ asset('productpic') . '/' . $order->post->product->product_pic }}" alt="Card image"
+                                class="img-fluid rounded-start h-100 w-100">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $order->post->product->name }}</h5>
+                                <p class="card-text">
+                                    <small class="fw-bold">{{ __('Price: ') }}</small>
+                                    {{ $order->post->product->price }}
+                                </p>
+                                <p class="card-text">
+                                    <small class="fw-bold">{{ __('Weight: ') }}</small>
+                                    {{ $order->post->product->weight }}
+                                </p>
+                                <p class="card-text">
+                                    <small class="fw-bold">{{ __('Quantity: ') }}</small>
+                                    {{ $order->post->product->quantity }}
+                                </p>
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        <small class="fw-bold">{{ __('From: ') }}</small>
+                                        {{ $order->post->from }}</small>
+                                    || <small class="text-muted">
+                                        <small class="fw-bold">{{ __('To: ') }}</small>
+                                        {{ $order->post->to }}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+
+
+                {{-- <div class="card"style="width:300px; height:350px">
+                            <div class="card-block ">
+                                <img class="card-img-top"
+                                    src="{{ asset('productpic') . '/' . $order->post->product->product_pic }}"
+                                    alt="Card image" style="width:100%">
+                                <div class="card-body">
+                                    <h4 class="card-title"> {{ $order->post->product->name }}</h4>
+                                    <p class="card-title"> {{ $order->post->product->price }}</p>
+                                    <p class="card-title"> {{ $order->post->product->weight }}</p>
+                                    <p class="card-title"> {{ $order->post->product->quantity }}</p>
+
+                                </div>
+                            </div>
+                        </div> --}}
+                {{-- </div> --}}
+
+                {{-- <div class="col-md-4">
+                <div class="card" style="width:300px; height:350px">
+                    <div class="card-block">
+
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <small class="fw-bold">{{ __('Total:') }}</small>
+                                {{ $order->post->product->price + $order->comment->deliver_price }}
+                            </h4>
+
+                            <p class="card-text">
+                                <small class="fw-bold">{{ __('Price:') }}</small>
+                                {{ $order->post->product->price }}
+                            </p>
+                            <small class="fw-bold">{{ __('Price:') }}</small>
+                            <p class="card-text">
+                                <small class="fw-bold">{{ __('Delivery Price:') }}</small>
+                                {{ $order->comment->deliver_price }}
+                            </p>
+                            <p class="card-text">
+                                <small class="fw-bold">{{ __('Delivery Date:') }}</small>
+                                {{ $order->comment->delivery_date }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            </div>
         </div>
-      </div>
-     <hr>
-     <div class="row"> 
-           <div class="row" > 
-            <div  class=" col-md-12 col-lg-12 col-xl-12 mb-12 col-sm-12">
-            <h2 style="text-align:center">  </h2>
-           <div class="card" style=" max-width: 700px ;  ">
-
-
-
-            <h1> {{$order->post-> title}}
-
-            </h1>
-            <p class="title">  {{$order->post-> description}} </p>
-            <p class="title"> {{$order->post->from}} </p>
-            <p class="title"> {{$order->post->to}} </p>
-            <p class="title">{{$order->post->deliver_price}} </p>
-
-
-
-        </div> 
-
-
-
-    </div>
-    </div>
-    </div>
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{-- <div class="container text-center border-danger mb-3" style="border:2px solid black " dir="rtl">
- 
-  
-<div class="row">
-    <div class="col-sm-3">
-    <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-      <img src="{{ asset('profilepic'). '/'. $order->comment->user->profile_pic }}" class="card-img-top  rounded-circle" alt="..." style="width:70px; height:70px;  "></span> &nbsp; {{$order->comment->user->name}}  </p>
-        <p class="card-text">{{$order->comment->user->phone_number}}</p>
-        <p class="card-text">{{$order->comment->user->email}}</p>
-   
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-    
-    <div class="col-sm-9">
-      <div class="row">
-        <div class="col-8 col-sm-6">
-        <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="{{ asset('profilepic'). '/'. $order->post->user->profile_pic }}" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{$order->post->user->name}}</h5>
-        <p class="card-text">{{$order->post->user->phone_number}}</p>
-        <p class="card-text">{{$order->post->user->email}}</p>
-      
-      </div>
-    </div>
-  </div>
-</div>
-        </div>
-        <!-- {{$order->post->product->price + $order->comment->deliver_price}} -->
-        <div class="col-4 col-sm-6">
-        <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
-  <div class="card-header">{{$order->client->name}}</div>
-  <div class="card-body">
-    <h5 class="card-title">{{$order->client->adress}}</h5>
-    <p class="card-text">{{$order->client->phone_number}}</p>
-    </div>
-    </div> </div>
-        </div>
-      </div>
-    </div>
-  </div>
- 
-</div> --}}
-
-
-
-   {{-- <div class="col-sm-9">
-      <div class="row">
-        <div class="col-8 col-sm-6">
-        <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-    <img src="{{ asset('productpic'). '/'. $order->post->product->product_pic }}" class="card-img-top img-fluid"  alt="...">
-                        
-    </div>
-     <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{$order->post->product->name}}</h5>
-        <p class="card-text">{{$order->post->product->price}}</p>
-        <p class="card-text">{{$order->post->product->weight}}</p>
-        <p class="card-text">{{$order->post->product->quantity}}</p>
-      </div>
-    </div>
-  </div>
-</div>
-        </div>
-        </div> </div>
-  <!-- {{$order->post->product->price + $order->comment->deliver_price}} --> --}}
-
-{{-- 
-<div class="container text-center">
-  <div class="row">
-    <div class="col-sm-3">
-      Level 1: .col-sm-3
-    </div>
-    <div class="col-sm-9">
-      <div class="row">
-        <div class="col-8 col-sm-6">
-        <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
-  <div class="card-header">total:{{$order->post->product->price + $order->comment->deliver_price}}</div>
-  <div class="card-body">
-    <h5 class="card-title">price:{{$order->post->product->price}}</h5>
-    <p class="card-text">delivery_price:{{$order->comment->deliver_price}}</p>
-    <p class="card-text">تاريخ التسليم:{{$order->comment->delivery_date}}</p>
-    </div>
-    </div> </div>
-        </div>
-        <div class="col-4 col-sm-6">
-        <div class="col-4 col-sm-6">
-        <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
-  <div class="card-header">{{$order->post->title}}</div>
-  <div class="card-body">
-    <h5 class="card-title">{{$order->post->description}}</h5>
-    <p class="card-text">{{$order->post->from}}</p>
-    <p class="card-text">{{$order->post->to}}</p>
-    <p class="card-text">{{$order->post->deliver_price}}</p>
-    </div>
-    </div>
-</div>
-</div>  --}}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 @endsection

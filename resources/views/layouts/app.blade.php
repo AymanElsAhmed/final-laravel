@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+<!DOCTYPE html>
+<html dir="rtl" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Talabia') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -16,21 +16,22 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Styles -->
-    
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> --}}
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
-        integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous"> --}}
 
 
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     @yield('styles')
 
@@ -38,10 +39,11 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <em> {{ config('app.name', 'Laravel') }} </em>
+                <a class="navbar-brand d-flex justify-content-between align-items-center" href="{{ url('/') }}">
+                    <div><i class="fa-solid fa-truck fa-2x"></i></div>&nbsp;
+                    <div><em> {{ config('app.name', 'Laravel') }}</em></div>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -52,80 +54,68 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
-
                         @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ __('Posts') }}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item "
+                                            href="{{ route('posts.index') }}">{{ __('All Post') }}</a>
+                                        @authVendor
+                                    <li><a class="dropdown-item "
+                                            href="{{ route('posts.create') }}">{{ __('Add Post') }}</a>
+                                        @endauthVendor
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ __('Products') }}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item "
+                                            href="{{ route('products.index') }}">{{ __('All Products') }}</a></li>
+                                    <li><a class="dropdown-item "href="{{ route('products.create') }}">
+                                            {{ __('Add Product') }}</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ __('Clients') }}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                            {{-- @if (auth()->user()->role == 'vendor') --}}
-                            @delivery
+                                    <li>
+                                        <a class="dropdown-item"
+                                            href="{{ route('clients.index') }}">{{ __('All Clients') }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"href="{{ route('clients.create') }}">{{ __('Add Client') }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ __('Orders') }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item "
-                                            href="{{ route('orders.index') }}">{{ __('All Orders') }}</a>
+                                    <li>
+                                        <a class="dropdown-item " href="{{ route('orders.index') }}">
+                                            {{ __('All Orders') }}
+                                        </a>
+                                    <li>
+                                        <a class="dropdown-item " href="{{ route('post-orders.index') }}">
+                                            {{ __('Posts order') }}
+                                        </a>
+
                                 </ul>
                             </li>
-                            @enddelivery
-
-                            @vendor
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{ __('Posts') }}
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item "
-                                                href="{{ route('posts.index') }}">{{ __('All Post') }}</a>
-                                        <li><a class="dropdown-item "
-                                                href="{{ route('posts.create') }}">{{ __('Add Post') }}</a>
-
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{ __('Products') }}
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item "
-                                                href="{{ route('products.index') }}">{{ __('All Products') }}</a></li>
-                                        <li><a class="dropdown-item "href="{{ route('products.create') }}">
-                                                {{ __('Create Product') }}</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{ __('Clients') }}
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                                        <li><a class="dropdown-item"
-                                                href="{{ route('clients.index') }}">{{ __('All Clients') }}</a></li>
-                                        <li><a
-                                                class="dropdown-item"href="{{ route('clients.create') }}">{{ __('Create Client') }}</a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{ __('Orders') }}
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item "
-                                                href="{{ route('orders.index') }}">{{ __('All Orders') }}</a>
-                                        <li><a class="dropdown-item "
-                                                href="{{ route('vendors.index') }}">{{ __('Posts order') }}</a>
-
-                                    </ul>
-                                </li>
-                            @endvendor
-                            {{-- @endif --}}
                         @endauth
                     </ul>
 
@@ -148,10 +138,10 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link" role="button" data-bs-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false" v-pre href="#">
-                                    <div class="d-flex">
+                                    <div class="d-flex flex-md-row-reverse">
                                         <div
                                             class="d-flex flex-column justify-content-center align-items-center text-capitalize">
-                                            <span class="text-primary">
+                                            <span class="text-white">
                                                 {{ Auth::user()->name }}
                                             </span>
                                             <small class="text-muted fw-bold">
@@ -160,13 +150,14 @@
                                         </div>
                                         <div class="mx-2 d-sm-none d-md-block">
                                             <img src="{{ asset('profilepic') . '/' . auth()->user()->profile_pic }}"
-                                                class="rounded-circle card-img-top" style="width:60px; height:60px">
+                                                class="rounded-circle card-img-top"
+                                                style="width:50px; height:50px; object-fit:cover">
                                         </div>
                                     </div>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route('profiles.show',auth()->user()->id)}}">
+                                    <a class="dropdown-item" href="{{ route('profiles.show', auth()->user()->id) }}">
                                         {{ __('My profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -187,7 +178,8 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        {{-- <main class="py-4" style="background:#A5D3EB"> --}}
+        <main class="py-4" style="background:#C1D8E3">
             @yield('content')
         </main>
     </div>

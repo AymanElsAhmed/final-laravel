@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rate;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -32,15 +31,8 @@ class ProfileController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-
-        $vendorRatings = Rate::where('vendor_id', $user->id)->get();
-        $deliveryRatings = Rate::where('delivery_id', $user->id)->get();
-        // dd($ratings);
         return view('profiles.show', [
-            'user' => $user,
-            'vendorRatings' => $vendorRatings,
-            'deliveryRatings' => $deliveryRatings,
-
+            'user' => $user
         ]);
     }
 
@@ -51,16 +43,15 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    static function checkingAuth($user, $model)
+    static function checkingAuth($userid, $model)
     {
-        return auth()->check() && $user->id === $model->id ? Response::allow() :
-            abort(404);
+        return $userid === $model->id ? Response::allow() :
+            abort(503);
     }
-
 
     public function edit($id)
     {
-        $onlineUser = auth()->user();
+        $onlineUser = auth()->user()->id;
         $user = User::findOrFail($id);
 
         $this::checkingAuth($onlineUser, $user);
@@ -75,7 +66,6 @@ class ProfileController extends Controller
             'user' => $user
         ]);
     }
-
 
     /**
      * Update the specified resource in storage.

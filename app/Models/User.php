@@ -70,8 +70,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
-    public function rates()
-    {
-        return $this->hasMany(Rate::class);
-    }
 }

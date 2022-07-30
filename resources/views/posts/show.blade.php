@@ -1,354 +1,213 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container bg-lightl">
+        {{-- <div class="container"> --}}
+        <div class="row">
+            {{-- <div class="col-sm-12 offset-sm-2 offset-md-0"> --}}
+            <div class="col">
+                <img src="{{ asset('productpic') . '/' . $post->product->product_pic }}" class="img-fluid"
+                    alt="{{ $post->product->name }}">
+            </div>
+
+            <div class="col">
+                {{-- title   desc details name hr productPrice delveryPrice from to hr --}}
+                {{-- <div class="container"> --}}
+                <div class="h2">
+                    {{ $post->title }}
+                </div>
+                <h3>
+                    وصف:
+                </h3>
+                <p>{{ $post->description }}</p>
+
+                <h3>
+                    بيانات المنتج:
+                </h3>
+
+                <div>
+                    <h5>
+                        الاسم:
+                        {{ $post->product->name }}
+                    </h5>
+                    <h5>
+                        السعر:
+                        {{ $post->product->price }}
+                    </h5>
+                </div>
+            </div>
+
+        </div>
+        {{-- ROW_1 --}}
+
+
+        <!-- Comment Button -->
+
+
+        @auth
+            {{-- @delivery --}}
+                <div class="row mt-5 mb-3">
+                    <div class="col-sm-7 offset-sm-3 offset-md-0 ">
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#addcomment" role="button" aria-expanded="false"
+                            aria-controls="addcomment">
+                            {{ __('Add Comment') }}
+                        </a>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col col-md-12">
+                        <div class="collapse multi-collapse" id="addcomment">
+                            <div class="card card-body">
+                                <!-- store comment -->
+                                <form class="row g-3" method="POST" action="{{ route('comments.store') }}"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    {{-- <!-- <input class="hidden" name="post_id" value="{{$post->id}}"> --> --}}
+                                    <div class="col-12">
+                                        <label for="name" class="form-label text-primary">نبذة عن خبرتك</label>
+                                        <input type="text" class="form-control" id="description" name="description">
+                                        @error('description')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="price" class="form-label text-primary">تاريخ التسليم</label>
+                                        <input type="date" class="form-control" id="delivery_date" name="delivery_date">
+                                        @error('delivery_date')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="weight" class="form-label text-primary">سعر التوصيل</label>
+                                        <input type="number" class="form-control" id="deliver_price" name="deliver_price">
+                                        @error('deliver_price')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn btn-primary">حفظ</button>
+                                    </div>
+                                </form>
+                                <!-- end store comment -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{-- @enddelivery --}}
+        @endauth
+        <!-- end comment button -->
 
 
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-            integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        />
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-            crossorigin="anonymous"
-        />
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"
-        ></script>
-        <title>PostDetails</title>
-        <style>
-            body {
-                background-color: #aad3fe;
-            }
-            .card {
-                border: none;
-            }
-            .product {
-                background-color: #fefbf6;
-            }
-            .brand {
-                font-size: 13px;
-            }
-            .act-price {
-                color: red;
-                font-weight: 700;
-            }
-            label.radio {
-                cursor: pointer;
-            }
-            label.radio input {
-                position: absolute;
-                top: 0;
-                left: 0;
-                visibility: hidden;
-                pointer-events: none;
-            }
-            label.radio span {
-                padding: 2px 9px;
-                border: 2px solid #ff0000;
-                display: inline-block;
-                color: #ff0000;
-                border-radius: 3px;
-                text-transform: uppercase;
-            }
-            label.radio input:checked + span {
-                border-color: #ff0000;
-                background-color: #ff0000;
-                color: #fff;
-            }
-            .btn-danger {
-                background-color: #ff0000 !important;
-                border-color: #ff0000 !important;
-            }
-            .btn-danger:hover {
-                background-color: #da0606 !important;
-                border-color: #da0606 !important;
-            }
-            .btn-danger:focus {
-                box-shadow: none;
-            }
-            .cart i {
-                margin-right: 10px;
-            }
-            /*  comment style */
-
-            .comment-box {
-                padding: 5px;
-            }
-
-            .comment-area textarea {
-                resize: none;
-                border: 1px solid #ad9f9f;
-            }
-
-            .form-control:focus {
-                color: #495057;
-                background-color: #fff;
-                border-color: #ffffff;
-                outline: 0;
-                box-shadow: 0 0 0 1px rgb(255, 0, 0) !important;
-            }
-
-            .send {
-                color: #fff;
-                background-color: #ff0000;
-                border-color: #ff0000;
-            }
-
-            .send:hover {
-                color: #fff;
-                background-color: #f50202;
-                border-color: #f50202;
-            }
-
-            .rating {
-                display: flex;
-                margin-top: -10px;
-                flex-direction: row-reverse;
-                margin-left: -4px;
-                float: left;
-            }
-
-            .rating > input {
-                display: none;
-            }
-
-            .rating > label {
-                position: relative;
-                width: 19px;
-                font-size: 25px;
-                color: #ff0000;
-                cursor: pointer;
-            }
-
-            .rating > label::before {
-                content: "\2605";
-                position: absolute;
-                opacity: 0;
-            }
-
-            .rating > label:hover:before,
-            .rating > label:hover ~ label:before {
-                opacity: 1 !important;
-            }
-
-            .rating > input:checked ~ label:before {
-                opacity: 1;
-            }
-
-            .rating:hover > input:checked ~ label:before {
-                opacity: 0.4;
-            }
-        </style>
-    </head>
-    <body>
-        {{-- @dd($post->user) --}}
-        <div class="container mt-5 mb-5">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-10">
+        <div class="row">
+            @foreach ($post->comment as $comment)
+                <div class="col-sm-12 my-2">
                     <div class="card">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="product p-4">
-                                    <div
-                                        class="d-flex justify-content-between align-items-center"
-                                    >
-                                        <div class="d-flex align-items-center">
-                                            <i
-                                                class="fa fa-long-arrow-left"
-                                            ></i>
-                                            <span class="ml-1">Back</span>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 mb-3">
-                                        <h3 class="text-uppercase">
-                                            {{$post->title}}
-                                        </h3>
-                                        <h6 class="text-uppercase">Details:</h6>
-                                        <p>
-                                            
-                                            {{$post->description}}
-                                        </p>
-                                        <h5>Product info</h5>
-                                        <div>
-                                            Product Name: <span>{{$post->product->name}}</span>
-                                        </div>
-                                        <div
-                                            class="price d-flex flex-row align-items-center"
-                                        >
-                                            Product Price:
-                                            <span class="act-price">{{$post->product->price}} $</span>
-                                        </div>
-                                        <div
-                                            class="price d-flex flex-row align-items-center"
-                                        >
-                                            Service Price:
-                                            <span class="act-price">{{$post->deliver_price}}</span>
-                                        </div>
-                                        <div>
-                                            From: &nbsp; &nbsp;&nbsp;&nbsp;
-                                            <span>{{$post->from}}</span>&nbsp;
-                                            &nbsp;&nbsp;&nbsp;To: &nbsp;
-                                            &nbsp;&nbsp;&nbsp;
-                                            <span>{{$post->to}}</span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        
-                                        <img
-                                            src="{{ asset('profilepic'). '/'. $post->user->profile_pic }}"
-                                            width="70"
-                                            class="rounded-circle mt-2"
-                                        />
-                                        <div
-                                            style="
-                                                border: solid 1px;
-                                                border-radius: 10px;
-                                                padding: 5px;
-                                            "
-                                        >
-                                            <h6>{{$post->user->name}}</h6>
-                                            {{$post->user->city}}
-                                        </div>
-                                    </div>
-                                    <div class="cart mt-4 align-items-center">
-                                        <i class="fa-brands fa-facebook"></i>
-                                        <i class="fa-brands fa-pinterest"></i>
-                                        <i class="fa-brands fa-twitter"></i>
-                                    </div>
-                                </div>
+                        <div class="card-body">
+                            <div class="card-text">
+                                <span class="text-muted">
+                                    <img src="{{ asset('profilepic') . '/' . $comment->user->profile_pic }}"
+                                        class="card-img-top  rounded-circle" alt="..."
+                                        style="width:70px; height:70px;"></span>
+
+                                <span class="fw-bold fs-5">{{ $comment->user->name }}</span>
                             </div>
-                            <div class="col-md-6">
-                                <div class="images p-3">
-                                    <div class="text-center p-4">
-                                        <img
-                                            id="main-image"
-                                            src="{{ asset('productpic'). '/'. $post->product->product_pic }}"
-                                            width="400"
-                                        />
-                                    </div>
-                                    <div class="thumbnail text-center">
-                                        <img
-                                            onclick="change_image(this)"
-                                            src="prod2.webp"
-                                            width="70"
-                                        />
-                                        <img
-                                            onclick="change_image(this)"
-                                            src="prod3.webp"
-                                            width="70"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
+                            <p class="card-text">
+                                <span class="text-muted">الوصف:</span>
+                                &nbsp; {{ $comment->description }}
+                            </p>
+                            <p class="card-text">
+                                <span class="text-muted"> تاريخ التسليم :</span>
+                                &nbsp;{{ $comment->delivery_date }}
+                            </p>
+                            <p class="card-text">
+                                <span class="text-muted">سعر التوصيل:</span>
+                                &nbsp;{{ $comment->deliver_price }}
+                            </p>
+
+                            @auth
+                                @delivery
+                                    @if (auth()->user()->id === $comment->user_id)
+                                        <div class="d-flex justify-content-end">
+                                            <a class="btn btn-primary mx-2 align-self-start" data-bs-toggle="collapse"
+                                                href="#commentedit{{ $loop->iteration }}" role="button" aria-expanded="false"
+                                                aria-controls="commentedit{{ $loop->iteration }}">{{ __('Edit') }}</a>
+
+                                            <form action="{{ route('comments.destroy', $comment->id) }}" method="post"
+                                                class="mb-3">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit" class="btn btn-danger "> حذف </button>
+                                            </form>
+
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col col-md-12 col-lg-12">
+                                                <div class="collapse multi-collapse" id="commentedit{{ $loop->iteration }}">
+                                                    <div class="card card-body">
+                                                        <!-- store comment -->
+                                                        <form action="{{ route('comments.update', $comment->id) }}" method="POST">
+                                                            @method('PUT')
+                                                            @csrf
+                                                            {{-- <!-- <input class="hidden" name="post_id" value="{{$post->id}}"> --> --}}
+                                                            <div class="col-12">
+                                                                <label for="name" class="form-label text-primary">نبذة عن
+                                                                    خبرتك</label>
+                                                                <input type="text" class="form-control" id="description"
+                                                                    name="description"
+                                                                    value="{{ old('description', $comment->description) }}">
+                                                                @error('description')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <label for="price" class="form-label text-primary">تاريخ
+                                                                    التسليم</label>
+                                                                <input type="date" class="form-control" id="delivery_date"
+                                                                    name="delivery_date"
+                                                                    value="{{ old('delivery_date', $comment->delivery_date) }}">
+                                                                @error('delivery_date')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <label for="weight" class="form-label text-primary">سعر
+                                                                    التوصيل</label>
+                                                                <input type="number" class="form-control" id="deliver_price"
+                                                                    name="deliver_price"
+                                                                    value="{{ old('deliver_price', $comment->deliver_price) }}">
+                                                                @error('deliver_price')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
+                                                            </div>
+
+
+                                                            <div class="col-12 text-center">
+                                                                <button type="submit" class="btn btn-primary">حفظ</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    @endif
+                                @enddelivery
+                            @endauth
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
-
-        <div class="card">
-            <div class="row">
-                <div class="col-1">
-                    <img
-                        src="comment.webp"
-                        width="70"
-                        class="rounded-circle mt-2"
-                    />
-                </div>
-
-                <div class="col-4">
-                    <div class="comment-box ml-2">
-                        <h4>Add a comment</h4>
-
-                        <div class="rating">
-                            <input
-                                type="radio"
-                                name="rating"
-                                value="5"
-                                id="5"
-                            /><label for="5">☆</label>
-                            <input
-                                type="radio"
-                                name="rating"
-                                value="4"
-                                id="4"
-                            /><label for="4">☆</label>
-                            <input
-                                type="radio"
-                                name="rating"
-                                value="3"
-                                id="3"
-                            /><label for="3">☆</label>
-                            <input
-                                type="radio"
-                                name="rating"
-                                value="2"
-                                id="2"
-                            /><label for="2">☆</label>
-                            <input
-                                type="radio"
-                                name="rating"
-                                value="1"
-                                id="1"
-                            /><label for="1">☆</label>
-                        </div>
-
-                        <div class="comment-area">
-                            <textarea
-                                class="form-control"
-                                placeholder="Write Your offer"
-                                rows="4"
-                            ></textarea>
-                        </div>
-
-                        <div class="comment-btns mt-2">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="pull-left">
-                                        <button class="btn btn-success btn-sm">
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <div class="pull-right">
-                                        <button
-                                            class="btn btn-success send btn-sm"
-                                        >
-                                            Send
-                                            <i
-                                                class="fa fa-long-arrow-right ml-1"
-                                            ></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            function change_image(image) {
-                var container = document.getElementById("main-image");
-                container.src = image.src;
-            }
-            document.addEventListener("DOMContentLoaded", function (event) {});
-        </script>
-    </body>
-</html>
+    </div>
+@endsection

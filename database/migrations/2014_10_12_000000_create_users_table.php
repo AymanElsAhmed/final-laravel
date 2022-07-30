@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->enum('status', ['pending', 'accepted', 'refused'])->default('pending');
             $table->enum('role', ['vendor', 'delivery']);
             $table->enum('gender', ['male', 'female']);
+            $table->enum('is_admin', ['0', '1'])->default('0');
             $table->timestamps();
         });
     }

@@ -22,7 +22,7 @@ padding: 10px;">
 
     <div class="col-12">
       <label for="adress" class="form-label text-primary">العنوان</label>
-      <input type="text" class="form-control" id="adress" name="adress" value="{{ $clients->adress ? $clients->adress : old('adress') }}">
+      <input type="text" class="form-control" id="adress" name="adress" value="{{$clients->adress}}">
       @error('adress')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
@@ -31,7 +31,7 @@ padding: 10px;">
    
     <div class="col-12">
       <label for="phone_number" class="form-label text-primary">الموبايل</label>
-      <input type="number" class="form-control" id="phone_number" name="phone_number" value="{{ $clients->phone_number}}" min="0">
+      <input type="number" class="form-control" id="phone_number" name="phone_number" value="{{ $clients->phone_number}}">
       @error('phone_number')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror

@@ -1,42 +1,36 @@
-
-
-
-
-
-
 @extends('layouts.app')
 
 @section('content')
     <div class="container">
-<div class="row">
+        <div class="row">
 
-  <div class="col-md-8 offset-md-2">
+            <div class="col-md-8 offset-md-2">
 
-    <div class="card mx-8" >
-        
-        <div class="card-body">
-          <h5 class="card-title text-center text-primary" >{{$clients->name}} </h5>
-          <p class="card-text  text-center ">العنوان: {{$clients->adress}}</p>
-    
-          <p class="card-text text-center " >رقم الموبايل: {{$clients->phone_number}}</p>
-         
-          {{-- <p class="card-text"><small class="text-muted"{{$product->created_at}}></small></p> --}}
+                <div class="card mx-8">
+
+                    <div class="card-body">
+                        <h5 class="card-title text-center text-primary">{{ $clients->name }} </h5>
+                        <p class="card-text  text-center ">العنوان: {{ $clients->adress }}</p>
+
+                        <p class="card-text text-center ">رقم الموبايل: {{ $clients->phone_number }}</p>
+
+                        {{-- <p class="card-text"><small class="text-muted"{{$product->created_at}}></small></p> --}}
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto mt-2">
+                        <a href="{{ route('clients.edit', $clients->id) }}" class="btn btn-warning">تعديل </a>
+
+                        <form action="{{ route('clients.destroy', $clients->id) }}" method="post" class="mb-3">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-danger col-12"> حذف </button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <div class="d-grid gap-2 col-6 mx-auto mt-2" >
-        <a href="{{route("clients.edit" , $clients->id)}}" class="btn btn-warning">تعديل </a>
-          
-          <form action= "{{route( "clients.destroy" , $clients->id )}}" method="post" class="mb-3">
-            @csrf
-            @method('DELETE')
-            
-            <button type="submit" class="btn btn-danger col-12"> حذف  </button>
-            
-          </form>
-        </div>
-        
-      </div>
-  </div>
-</div>
 
 
     </div>
@@ -67,7 +61,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
@@ -112,14 +108,14 @@
         <div class="card-body">
          
           <h3>name: </h3>
-          <h5 class="card-title">{{$clients["name"]}}</h5>
+          <h5 class="card-title">{{ $clients['name'] }}</h5>
           <h3>address: </h3>
-          <p class="card-text">{{$clients["adress"]}}</p>
+          <p class="card-text">{{ $clients['adress'] }}</p>
           <h3>phone: </h3>
-          <p class="card-text">{{$clients["phone_number"]}}</p>
-          <a href="{{route("clients.edit" , $clients->id)}}" class="btn btn-warning">تعديل </a>
+          <p class="card-text">{{ $clients['phone_number'] }}</p>
+          <a href="{{ route('clients.edit', $clients->id) }}" class="btn btn-warning">تعديل </a>
           
-          <form action= "{{route( "clients.destroy" , $clients->id )}}" method="post" class="mb-3">
+          <form action= "{{ route('clients.destroy', $clients->id) }}" method="post" class="mb-3">
             @csrf
             @method('DELETE')
             
