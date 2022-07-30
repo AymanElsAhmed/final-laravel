@@ -63,7 +63,7 @@ Route::resource('/profiles', ProfileController::class)->except(['create', 'store
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [omeController::class, 'index'])->name('home');
 
 
 Route::get('/test', function () {

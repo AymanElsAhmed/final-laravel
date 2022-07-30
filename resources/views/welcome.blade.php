@@ -1,238 +1,336 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="ar">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('styles')
-    <style>
-        .image-aboutus-banner {
-            /* background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url("about.webp"); */
-            /* background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)); */
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
-            /* color: #fff; */
-            /* padding-top: 110px; */
-            /* padding-bottom: 110px; */
-            /* padding: 110px 0; */
-        }
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-        .image-aboutus-sm-banner {
-            /* background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url("bannel.jpeg"); */
-            /* background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)); */
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
-            /* color: #fff; */
-            /* padding-top: 30px; */
-            /* padding-bottom: 30px; */
-            /* padding: 30px 0; */
-        }
+        <title>Leadership Event HTML5 Bootstrap v5 Template</title>
 
-        .lg-text {
-            font-size: 52px;
-            font-weight: 600;
-            text-transform: none;
-            /* color: #fff; */
-        }
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
-        .image-aboutus-para {
-            /* color: #fff; */
-        }
-    </style>
-@endsection
+        <link href="{{ asset('hoome/css/bootstrap.min.css')}}" rel="stylesheet">
 
-@section('content')
-    <div class="image-aboutus-banner my-5 py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-6">
-                    <h1 class="lg-text">{{ __('About Us') }}</h1>
-                    <p class="image-aboutus-para">
-                        {{ __('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae enim,
-                                                                                                                                              accusantium beatae, ducimus earum impedit ut perferendis fuga, porro tenetur autem nisi officia et
-                                                                                                                                              nam! Tempora suscipit voluptate dolores repudiandae vero ex est aperiam qui ea, pariatur cum. Quam
-                                                                                                                                              debitis autem sunt praesentium delectus quis, cum numquam maxime? At incidunt error placeat aut
-                                                                                                                                              quia, accusamus praesentium est iure ea labore eaque qui. Quaerat, eveniet possimus ducimus maiores
-                                                                                                                                              vero accusantium facere nam molestiae aliquid animi amet eaque veniam! Quam, officiis dolorem quo
-                                                                                                                                              nulla amet quasi incidunt optio nesciunt qui quos magnam totam sapiente a voluptate, cum, adipisci
-                                                                                                                                              deserunt ipsa dolore nostrum!') }}
-                    </p>
-                </div>
-                <div class="col-md-12 col-lg-6">
-                    <img src=" {{ asset('homepage') . '/banner.jpeg' }}" class="img-fluid">
-                </div>
-            </div>
-        </div>
+        <link href="{{ asset('hoome/css/bootstrap-icons.css')}}" rel="stylesheet">
 
-        <!-- slider -->
+        <link href="{{ asset('hoome/css/templatemo-leadership-event.css')}}" rel="stylesheet">
+        
 
-        <div class="content my-3 py-5">
+    </head>
+    
+    <body>
+
+        <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <div class="row justify-content-center">
-                    {{-- <div id="carouselExampleControls" class="carousel slide mb-3 w-sm-100 w-md-50 " data-bs-ride="carousel"> --}}
-                    <div id="carouselExampleControls" class="carousel slide mb-3 w-auto" data-bs-ride="carousel">
-                        <h2 class="text-primary mt-3">{{ __('Start Your Journey With Us:') }}</h2>
 
-                        <div class="carousel-inner ">
-                            <div class="carousel-item ">
-                                <img src="{{ asset('homepage') . '/slide3.webp' }}" class="d-block w-100 " alt="...">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <a href="index.html" class="navbar-brand mx-auto mx-lg-0">
+                    <i class="bi-bullseye brand-logo"></i>
+                    <span class="brand-text">Talbat <br> web</span>
+                </a>
+
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_1">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_2">About</a>
+                        </li>
+
+                         <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_3">Help</a>
+                        </li>
+
+                        
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_7">Contact</a>
+                        </li>
+
+                       
+                    </ul>
+                <div>
+                        
+            </div>
+        </nav>
+
+        <main>
+
+            <section class="hero" id="section_1">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-5 col-12 m-auto">
+                            <div class="hero-text">
+
+                                <h1 class="text-white mb-4"><u class="text-info">Delivery</u> All things</h1>
+
+
+                                <a href="#section_2" class="custom-link bi-arrow-down arrow-icon"></a>
                             </div>
-                            <div class="carousel-item active">
-
-                                <img src="{{ asset('homepage') . '/slide2.webp' }}" class="d-block w-100 " alt="...">
-                            </div>
-                            <div class="carousel-item ">
-                                <img src="{{ asset('homepage') . '/slide1.webp' }}" class="d-block w-100" alt="...">
-                            </div>
-
-
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">{{ __('Previous') }}</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">{{ __('Next') }}</span>
-                        </button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- contact -->
-        <div class="content mt-3">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        <div class="row align-items-center">
-                            <div class="col-lg-7 mb-5 mb-lg-0">
-                                <h2 class="mb-3 text-primary">{{ __('Contact Us') }}</h2>
-                                <form class="border-right pr-5 mb-5" method="POST" id="contactForm" name="contactForm"
-                                    novalidate="novalidate">
-                                    @csrf
 
-                                    <div class="row">
-                                        <div class="col-md-6 form-group">
-                                            <div class="input-group has-validation">
-                                                <span class="input-group-text" id="inputGroupPrepend"> <i
-                                                        class="fa-solid fa-user"></i>
-                                                </span>
-                                                <input type="text" class="form-control" id="validationCustomUsername"
-                                                    aria-describedby="inputGroupPrepend" required placeholder=" First name">
-                                                <div class="invalid-feedback">
+                <div class="video-wrap">
+                    <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                        <source src="{{ asset('hoome/videos/index.webm')}}" type="video/webm">
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" name="lname" id="lname"
-                                                placeholder="Last name">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12 form-group mt-1">
-                                            <div class="input-group has-validation">
-                                                <span class="input-group-text" id="inputGroupPrepend"><i
-                                                        class="fa-solid fa-envelope"></i>
-                                                </span>
-                                                <input type="text" class="form-control" id="validationCustomUsername"
-                                                    aria-describedby="inputGroupPrepend" required placeholder=" Email">
-                                                <div class="invalid-feedback">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </section>
 
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12 form-group mt-1">
-                                            <div class="input-group has-validation">
-                                                <span class="input-group-text" id="inputGroupPrepend"> <i
-                                                        class="fa-solid fa-circle-chevron-down"></i>
-                                                </span>
-                                                <select class="form-control">
-                                                    <option hidden>{{ __('Select User type') }}</option>
-                                                    <option>{{ __('Vendor') }}</option>
-                                                    <option>{{ __('Delivery') }}</option>
-                                                    <option>{{ __('Other') }}</option>
-                                                </select>
-                                                <div class="invalid-feedback">
-                                                </div>
-                                            </div>
+           
 
-                                        </div>
 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12 form-group mt-1">
-                                            <div class="input-group has-validation">
-                                                <span class="input-group-text" id="inputGroupPrepend"><i
-                                                        class="fa-solid fa-comment-dots"></i>
-                                                </span>
-                                                <textarea class="form-control" name="message" id="message" cols="30" rows="7"
-                                                    placeholder="Write your message"></textarea>
-                                                <div class="invalid-feedback">
+            <section class="about section-padding" id="section_2">
+                <div class="container">
+                    <div class="row">
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- // FIXME --}}
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <input type="submit" value="Send Message"
-                                                class="btn btn-primary rounded-3 py-2 px-4 mt-2">
-                                            <span class="submitting"></span>
-                                        </div>
-                                    </div>
-                                </form>
-                                {{-- <div id="form-message-warning mt-4"></div> --}}
-                                <div class="visually-hidden" id="form-message-success">
-                                    {{ __('Your message was sent, thank you!') }}
+                        <div class="col-lg-10 col-12">
+                            <h2 class="mb-4">Our <u class="text-info">Story</u></h2>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                            <h3 class="mb-3">The importance of delivery web </h3>
+
+                            <p> by this web can deliver any thing safty .</p>
+
+                           
+                        </div>
+
+                        <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+                            <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut dolore</h4>
+
+                            <div class="avatar-group border-top py-5 mt-5">
+                                <img src="{{ asset('hoome/images/avatar/portrait-good-looking-brunette-young-asian-woman.jpg')}}" class="img-fluid avatar-image" alt="">
+
+                                <img src="{{ asset('hoome/images/avatar/happy-asian-man-standing-with-arms-crossed-grey-wall.jpg" class="img-fluid avatar-image avatar-image-left')}}" alt="">
+
+                                <img src="{{ asset('hoome/images/avatar/senior-man-white-sweater-eyeglasses.jpg" class="img-fluid avatar-image avatar-image-left')}}" alt="">
+
+                                <img src="{{ asset('hoome/images/avatar/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction.jpg" class="img-fluid avatar-image avatar-image-left')}}" alt="">
+
+                                <p class="d-inline">120+ People are using this web </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="speakers section-padding" id="section_3">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
+                            <div class="speakers-text-info">
+                                <h2 class="mb-4"> how to use  <u class="text-info"> it </u></h2>
+
+                                <p> doing this steps (6 steps) to can use it </p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                            <div class="speakers-thumb">
+                                <img src="{{ asset('hoome/images/avatar/Screenshot (41).png')}}" class="img-fluid speakers-image" alt="">
+
+                                <small class="speakers-featured-text">Featured</small>
+
+                                <div class="speakers-info">
+
+                                    <h5 class="speakers-title mb-0"> first step </h5>
+
+                                    <p class="speakers-text mb-0"> register </p>
+
+                                    <ul class="social-icon">
+                                        <li><a href="#" class="social-icon-link bi-facebook"></a></li>
+
+                                        <li><a href="#" class="social-icon-link bi-instagram"></a></li>
+
+                                        <li><a href="#" class="social-icon-link bi-google"></a></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="col-lg-4 ml-auto">
-                                <!-- <h3 class="mb-4 text-primary">Let's talk about everything.</h3> -->
-                                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil deleniti itaque similique magni. Magni, laboriosam perferendis maxime!</p>
-                                                                    <p><a href="#">Read more</a></p> -->
-                                <img class="w-100" src="{{ asset('homepage') . '/contact.webp' }}" alt="contact">
+                        </div>
+
+                        <div class="col-lg-12 col-12">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <div class="speakers-thumb speakers-thumb-small">
+                                        <img src="{{ asset('hoome/images/avatar/Screenshot (42).png')}}" class="img-fluid speakers-image  spekers-s" alt="">
+
+                                      <div class="speakers-info">
+                                            <h5 class="speakers-title mb-0"> seconed step</h5>
+
+                                            <p class="speakers-text mb-0"> login </p>
+
+                                          
+                                        </div> 
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <div class="speakers-thumb speakers-thumb-small">
+                                        <img src="{{ asset('hoome/images/avatar/Screenshot (43).png')}}" class="img-fluid speakers-image  spekers-s" alt="">
+
+                                        <div class="speakers-info">
+                                            <h5 class="speakers-title mb-0"> third step </h5>
+
+                                            <p class="speakers-text mb-0"> If you are registered as a conductor, you can make a comment on the order that you can make </p>
+
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <div class="speakers-thumb speakers-thumb-small">
+                                        <img src="{{ asset('hoome/images/avatar/Screenshot (44).png')}}" class="img-fluid speakers-image  spekers-s" alt="">
+
+                                        <div class="speakers-info">
+                                            <h5 class="speakers-title mb-0"> Four step </h5>
+
+                                            <p class="speakers-text mb-0"> If you are registered as a merchant, you can make a publication and a product</p>
+
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <div class="speakers-thumb speakers-thumb-small">
+                                        <img src="{{ asset('hoome/images/avatar/Screenshot (44).png')}}" class="img-fluid speakers-image spekers-s" alt="" >
+
+                                        <div class="speakers-info">
+                                            <h5 class="speakers-title mb-0"> fifth  step </h5>
+
+                                            <p class="speakers-text mb-0"> then you can make feedback for  merchant and  merchant for you  </p>
+
+                                          
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
+                </div>
+            </section>
+
+
+         
+            </section>
+
+            <section class="contact section-padding" id="section_7">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <form class="custom-form contact-form bg-white shadow-lg" action="#" method="post" role="form">
+                                <h2>Please Say Hi</h2>
+
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-12">                                    
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="Name" required="">
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12">         
+                                        <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email" required="">
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12">                                    
+                                        <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <textarea class="form-control" rows="5" id="message" name="message" placeholder="Message"></textarea>
+
+                                        <button type="submit" class="form-control">Submit</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-12 col-12 border-bottom pb-5 mb-5">
+                        <div class="d-flex">
+                            <a href="index.html" class="navbar-brand">
+                                <i class="bi-bullseye brand-logo"></i>
+                                <span class="brand-text">Talbat <br> web</span>
+                            </a>
+
+                            <ul class="social-icon ms-auto">
+                                <li><a href="#" class="social-icon-link bi-facebook"></a></li>
+
+                                <li><a href="#" class="social-icon-link bi-instagram"></a></li>
+
+                                <li><a href="#" class="social-icon-link bi-whatsapp"></a></li>
+
+                                <li><a href="#" class="social-icon-link bi-youtube"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 col-12">
+                        <ul class="footer-menu d-flex flex-wrap">
+                            <li class="footer-menu-item"><a href="#section_1" class="footer-menu-link"> HOME </a></li>
+
+                            <li class="footer-menu-item"><a href="#section_2" class="footer-menu-link">Our Story</a></li>
+
+                            <!-- <li class="footer-menu-item"><a href="#" class="footer-menu-link">Privacy and Terms</a></li> -->
+
+                            <li class="footer-menu-item"><a href="#section_7" class="footer-menu-link">Contact</a></li>
+                        </ul>
+                    </div>
+
+                        
+                    <div class="col-lg-5 col-12 ms-lg-auto">
+                        <div class="copyright-text-wrap d-flex align-items-center">
+                            <p class="copyright-text ms-lg-auto me-4 mb-0">Copyright ©Talbat web ., Ltd. 
+                            
+                            <br>All Rights Reserved. 
+          
+          					<!-- <br><br>Design: <a title="CSS Templates" rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a></p> -->
+
+                            <a href="#section_1" class="bi-arrow-up arrow-icon custom-link"></a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
+        </footer>
 
+        <!-- JAVASCRIPT FILES -->
+          <script src="{{ asset('hoome/js/jquery.min.js')}}"></script>
+        <script src="{{ asset('hoome/js/bootstrap.min.js')}}"></script>
+        <script src="{{ asset('hoome/js/jquery.sticky.js')}}"></script>
+        <script src="{{ asset('hoome/js/click-scroll.js')}}"></script>
+        <script src="{{ asset('hoome/js/custom.js')}}"></script> 
 
-        <section class="position-relative mt-5">
-            <!-- Footer -->
-            <footer class="text-center text-white position-absolute mb-0 w-100" style="background-color: #0a4275;">
-
-                @guest
-                    <div class="container pb-0">
-                        <section class="">
-                            <p class="d-flex justify-content-center align-items-center">
-                                <span class="me-3">{{ __('Register for free') }}</span>
-                                <a href="{{ route('register') }}" class="btn btn-outline-light btn-rounded">
-                                    {{ __('Register') }}
-                                </a>
-                            </p>
-                        </section>
-                    </div>
-                @else
-                    <div class="container p-4 pb-0">
-                        <section class="">
-                            <p class="d-flex justify-content-center align-items-center">
-                                {{-- {{ __('Register') }} --}}
-                            </p>
-                        </section>
-                    </div>
-                @endguest
-
-                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                    © 2022 Copyright:
-                    <a class="text-white" href="/">{{ config('app.name', 'Talabia') }}</a>
-                </div>
-            </footer>
-        </section>
-    @endsection
+    </body>
+</html>
