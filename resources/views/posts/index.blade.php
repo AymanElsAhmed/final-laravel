@@ -44,7 +44,7 @@
                                 <h1 style="color: #007EA7">{{ $post->title }}</h1>
                                 <p class="card-text">
                                     <span class="text-muted">الوصف:</span>
-                                    {{ $post->description }}
+                                    {{  Str::words( $post->description,4) }}
                                 </p>
                                 <p class="card-text">
                                     <span class="text-muted">التوصيل من :</span>

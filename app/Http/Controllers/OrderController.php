@@ -48,12 +48,9 @@ class OrderController extends Controller
         $deliveryId = $comment->user->id;
         $postId = $comment->post->id;
         $clientId = $comment->post->client->id;
+
+
         $order = new Order;
-
-        dd($order);
-
-
-
         $order->vendor_id = $vendorId;
         $order->delivery_id = $deliveryId;
         $order->post_id = $postId;

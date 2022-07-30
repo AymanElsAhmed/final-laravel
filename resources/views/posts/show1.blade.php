@@ -43,7 +43,7 @@
 
 
       @auth
-@delivery 
+@authDelivery 
 <p>
   <a class="btn btn-primary" data-bs-toggle="collapse" href="#addcomment" role="button" aria-expanded="false" aria-controls="addcomment">اضافة التعليقات</a>
 
@@ -92,7 +92,7 @@
   </div>
 
 </div>
-                        @enddelivery
+                        @endauthDelivery
 
                         @endauth
 
@@ -114,8 +114,7 @@
                         <p class="card-text"> <span  class="text-muted"> تاريخ التسليم :</span> &nbsp;{{$comment->delivery_date}}  </p>
                         <p class="card-text"> <span class="text-muted">سعر التوصيل:</span>  &nbsp;{{$comment->deliver_price}}   </p>
                         
-@auth
-@delivery   
+  
 @if(auth()->user()->id === $comment->user_id)
 <a class="btn btn-primary" data-bs-toggle="collapse" href="#commentedit{{$loop->iteration}}" role="button" aria-expanded="false" aria-controls="commentedit{{$loop->iteration}}">تعديل</a>
 <form action="{{ route("comments.destroy", $comment->id )}}" method="post" class="mb-3">
@@ -163,8 +162,7 @@
   </form>
 </div>
           @endif
-          @enddelivery
-          @endauth
+       
       </div>
     </div>
     @endforeach

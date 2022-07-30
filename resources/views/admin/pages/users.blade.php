@@ -66,19 +66,11 @@
               </thead>
               <tbody>
 
-<<<<<<< HEAD
 
     @foreach($users as $user)
 
    <tr>
    <td>{{$loop->iteration}}</td>
-=======
-    <?php $i= 0; ?>
-    @foreach($users as $user)
-   <?php $i++; ?>
-   <tr>
-   <td>{{$i}}</td>
->>>>>>> 0e1a1d4b0accf79bc1a1a511b0be1be5b69a388e
    <td>{{$user->name}}</td>
    <td>{{$user->email}}</td>
    <td>{{$user->gender}}</td>

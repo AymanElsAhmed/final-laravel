@@ -91,7 +91,7 @@ class CommentController extends Controller
         // dd($request->all());
         $request->validate([
 
-            "description" => 'required|max:255|alpha',
+            "description" => 'required|max:255',
             "delivery_date" => 'required',
             "deliver_price" => 'required|numeric',
 

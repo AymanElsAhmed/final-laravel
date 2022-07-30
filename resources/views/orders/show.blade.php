@@ -1,62 +1,13 @@
 @extends('layouts.app')
-<<<<<<< HEAD
 
-=======
-@section('styles')
-
-<style>
-  .card {
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-margin: auto;
-text-align: center;
-font-family: arial;
-}
-
-.title {
-color: grey;
-font-size: 18px;
-}
-
-button {
-border: none;
-outline: 0;
-display: inline-block;
-padding: 8px;
-color: white;
-background-color: #000;
-text-align: center;
-cursor: pointer;
-width: 100%;
-font-size: 18px;
-}
-
-a {
-text-decoration: none;
-font-size: 22px;
-color: black;
-}
-
-button:hover, a:hover {
-opacity: 0.7;
-}
-.checked {
-color: gold;
-}
-
-</style>
-@endsection
->>>>>>> 0e1a1d4b0accf79bc1a1a511b0be1be5b69a388e
 @section('content')
     <div class="container">
         <div class="row mb-5 text-center">
             <div class="col-sm-8 col-md-6 offset-sm-2 offset-md-0">
                 <div class="card my-sm-3 my-md-5">
+                    <p class="mt-2 ">اسم التاجر</p>
                     <img src="{{ asset('profilepic') . '/' . $order->post->user->profile_pic }}" alt="Vendor pic"
-<<<<<<< HEAD
                         class="rounded-circle m-auto mt-3" style="width:100px; height:100px; object-fit:cover">
-=======
-                        class="rounded-circle m-auto mt-3" style="width:100px;  height:100px;">
->>>>>>> 0e1a1d4b0accf79bc1a1a511b0be1be5b69a388e
 
                     <h5 class="card-title display-6 text-capitalize">{{ $order->post->user->name }}</h5>
 
@@ -70,6 +21,7 @@ color: gold;
 
             <div class="col-sm-8 col-md-6 offset-sm-2 offset-md-0">
                 <div class="card my-sm-3 my-md-5">
+                    <p class="mt-2 ">اسم المندوب</p>
                     <img src="{{ asset('profilepic') . '/' . $order->comment->user->profile_pic }}" alt="Delivery pic"
                         class="rounded-circle m-auto mt-3" style="width:100px;  height:100px;">
 
@@ -83,7 +35,6 @@ color: gold;
             </div>
         </div>
 
-<<<<<<< HEAD
         <hr>
 
 
@@ -91,30 +42,16 @@ color: gold;
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-
-=======
-
-
-        <hr>
+                       
 
 
 
-        <div class="py-5" style="min-height : 2000px">
-            <div class="container">
-               <div class="row">
-                    <div class="col-md-4">
-
-
-
-
-
->>>>>>> 0e1a1d4b0accf79bc1a1a511b0be1be5b69a388e
                         <div class="card text-white bg-dark mb-3 py-3">
-                            <div class="card-header">Client_1</div>
+                            <div class="card-header"> اسم العميل: {{ $order->client->name }}</div>
                             <div class="card-body">
-                                <h5 class="card-title">Dark card title</h5>
-                                <p class="card-text">324 sdgdsgv</p>
-                                <p class="card-text">1000000000</p>
+                                <h5 class="card-title"></h5>
+                                <p class="card-text">العنوان: {{ $order->client->adress }}</p>
+                                <p class="card-text">رقم الموبايل: {{ $order->client->phone_number }}</p>
                             </div>
                         </div>
 
@@ -124,32 +61,32 @@ color: gold;
                         <div style="max-width: 540px;" class="card">
                             <div class="row g-0 text-white bg-dark">
                                 <div class="col-md-4">
-                                    <img src="http://127.0.0.1:8000/productpic/1658663787-AymanProduct.jpg" alt="Card image"
+                                    <img src="{{ asset('productpic') . '/' . $order->post->product->product_pic }}" alt="Card image"
                                         class="img-fluid rounded-start h-100 w-100">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">Product_1</h5>
+                                        <h5 class="card-title">{{$order->post->product->name }}</h5>
                                         <p class="card-text">
-                                            <small class="fw-bold">Price: </small>
-                                            325
+                                            <small class="fw-bold">السعر: </small>
+                                            {{$order->post->product->price }}
                                         </p>
                                         <p class="card-text">
-                                            <small class="fw-bold">Weight: </small>
-                                            2
+                                            <small class="fw-bold">الوزن: </small>
+                                            {{$order->post->product->weight }}
                                         </p>
                                         <p class="card-text">
-                                            <small class="fw-bold">Quantity: </small>
-                                            34
+                                            <small class="fw-bold">الكمية: </small>
+                                            {{$order->post->product->quantity }}
                                         </p>
                                         <p class="card-text">
                                             <small class="text-muted">
-                                                <small class="fw-bold">From: </small>
-                                                Cairo</small>
+                                                <small class="fw-bold">من: </small>
+                                                {{$order->post->from }}</small>
                                             ||
                                             <small class="text-muted">
-                                                <small class="fw-bold">To: </small>
-                                                Giza</small>
+                                                <small class="fw-bold">الى: </small>
+                                                {{$order->post->to}}</small>
                                         </p>
                                     </div>
                                 </div>
@@ -164,24 +101,29 @@ color: gold;
                         <div style="" class="card text-white bg-primary ">
                             <div class="card-block">
 
+                                
+                  
+
                                 <div class="card-body">
                                     <h4 class="card-title">
-                                        <small class="fw-bold">Total:</small>
-                                        456
+                                        <small class="fw-bold">الإجمالي:</small>
+                                        {{ $order->post->product->price + $order->comment->deliver_price }}
                                     </h4>
 
                                     <p class="card-text">
-                                        <small class="fw-bold">Price:</small>
-                                        325
+                                        <small class="fw-bold">السعر:</small>
+                                        {{ $order->post->product->price }}
                                     </p>
-                                    <small class="fw-bold">Price:</small>
+                                    <small class="fw-bold"></small>
                                     <p class="card-text">
-                                        <small class="fw-bold">Delivery Price:</small>
-                                        131
+                                        <small class="fw-bold">سعر التوصيل:</small>
+                                        {{ $order->comment->deliver_price }}
+
                                     </p>
                                     <p class="card-text">
-                                        <small class="fw-bold">Delivery Date:</small>
-                                        2022-07-24 23:06:55
+                                        <small class="fw-bold">تاريخ التوصيل:</small>
+                                        {{ $order->comment->delivery_date }}
+
                                     </p>
                                 </div>
                             </div>

@@ -14,18 +14,30 @@ padding: 10px;">
   <div class="col-12">
       <label for="name" class="form-label text-primary">الاسم</label>
       <input type="text" class="form-control" id="name" name="name">
+      @error('name')
+      <div class="alert alert-danger">{{ $message }}</div>
+  @enderror
     </div>
     <div class="col-12">
       <label for="price" class="form-label text-primary">السعر</label>
       <input type="number" class="form-control" id="price" name="price">
+      @error('price')
+      <div class="alert alert-danger">{{ $message }}</div>
+  @enderror
     </div>
     <div class="col-12">
       <label for="weight" class="form-label text-primary">الوزن</label>
       <input type="number" class="form-control" id="weight" placeholder="الوزن اختياري" name="weight">
+      @error('weight')
+      <div class="alert alert-danger">{{ $message }}</div>
+  @enderror
     </div>
     <div class="col-12">
       <label for="quantity" class="form-label text-primary">الكمية</label>
       <input type="number" class="form-control" id="quantity" placeholder="الكمية الإفتراضيه ب 1" name="quantity">
+      @error('quantity')
+      <div class="alert alert-danger">{{ $message }}</div>
+  @enderror
     </div>
 
     <div class="col-12">
@@ -42,6 +54,9 @@ padding: 10px;">
     <div class="col-12">
         <label for="productPic" class="form-label text-primary">أضف صور المنتج</label>
         <input class="form-control" type="file" id="productPic" multiple name="product_pic">
+        @error('product_pic')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
       </div>
     <div class="col-12 text-center">
       <button type="submit" class="btn btn-primary">أضف منتج</button>

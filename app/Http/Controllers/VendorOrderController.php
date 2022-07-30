@@ -17,6 +17,7 @@ class VendorOrderController extends Controller
         // FIXME
         $posts = auth()->user()->posts;
         $orders = Order::all();
+        // dd($posts);
 
         // $orders->where($posts->post_id == $orders->id);
 

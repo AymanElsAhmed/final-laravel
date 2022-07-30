@@ -135,7 +135,7 @@
                             </p>
 
                             @auth
-                                @delivery
+                                @authDelivery
                                     @if (auth()->user()->id === $comment->user_id)
                                         <div class="d-flex justify-content-end">
                                             <a class="btn btn-primary mx-2 align-self-start" data-bs-toggle="collapse"
@@ -202,7 +202,7 @@
                                                 </div>
                                             </div>
                                     @endif
-                                @enddelivery
+                                @endauthDelivery
                             @endauth
                         </div>
                     </div>
