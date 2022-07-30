@@ -16,7 +16,6 @@ class UserController extends Controller
      */
     public function index()
     {
-
         $users = User::where('is_admin', '0')->where('status', 'pending')->get();
 
 
@@ -78,10 +77,13 @@ class UserController extends Controller
         $this->validate($request, [
             'status' => 'required',
 
+
         ]);
+
 
         $user->status = $request->input('status');
         $user->save();
+
         return redirect()->route("users.index");
     }
 

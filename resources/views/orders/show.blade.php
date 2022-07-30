@@ -1,12 +1,62 @@
 @extends('layouts.app')
+<<<<<<< HEAD
 
+=======
+@section('styles')
+
+<style>
+  .card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+margin: auto;
+text-align: center;
+font-family: arial;
+}
+
+.title {
+color: grey;
+font-size: 18px;
+}
+
+button {
+border: none;
+outline: 0;
+display: inline-block;
+padding: 8px;
+color: white;
+background-color: #000;
+text-align: center;
+cursor: pointer;
+width: 100%;
+font-size: 18px;
+}
+
+a {
+text-decoration: none;
+font-size: 22px;
+color: black;
+}
+
+button:hover, a:hover {
+opacity: 0.7;
+}
+.checked {
+color: gold;
+}
+
+</style>
+@endsection
+>>>>>>> 0e1a1d4b0accf79bc1a1a511b0be1be5b69a388e
 @section('content')
     <div class="container">
         <div class="row mb-5 text-center">
             <div class="col-sm-8 col-md-6 offset-sm-2 offset-md-0">
                 <div class="card my-sm-3 my-md-5">
                     <img src="{{ asset('profilepic') . '/' . $order->post->user->profile_pic }}" alt="Vendor pic"
+<<<<<<< HEAD
                         class="rounded-circle m-auto mt-3" style="width:100px; height:100px; object-fit:cover">
+=======
+                        class="rounded-circle m-auto mt-3" style="width:100px;  height:100px;">
+>>>>>>> 0e1a1d4b0accf79bc1a1a511b0be1be5b69a388e
 
                     <h5 class="card-title display-6 text-capitalize">{{ $order->post->user->name }}</h5>
 
@@ -33,6 +83,7 @@
             </div>
         </div>
 
+<<<<<<< HEAD
         <hr>
 
 
@@ -41,6 +92,23 @@
                 <div class="row">
                     <div class="col-md-4">
 
+=======
+
+
+        <hr>
+
+
+
+        <div class="py-5" style="min-height : 2000px">
+            <div class="container">
+               <div class="row">
+                    <div class="col-md-4">
+
+
+
+
+
+>>>>>>> 0e1a1d4b0accf79bc1a1a511b0be1be5b69a388e
                         <div class="card text-white bg-dark mb-3 py-3">
                             <div class="card-header">Client_1</div>
                             <div class="card-body">

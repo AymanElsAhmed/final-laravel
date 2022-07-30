@@ -1,4 +1,37 @@
+<<<<<<< HEAD
 
+=======
+Skip to content
+Why GitHub? 
+Team
+Enterprise
+Explore 
+Marketplace
+Pricing 
+Search
+Sign in
+Sign up
+Samir-Gamal
+/
+school-management-system
+Public
+Code
+Issues
+Pull requests
+1
+Actions
+Projects
+Wiki
+Security
+Insights
+school-management-system/resources/views/layouts/main-header.blade.php
+@Samir-Gamal
+Samir-Gamal 'UpdatAndDeleteGrades'
+Latest commit cce712a on Jan 21, 2021
+ History
+ 1 contributor
+138 lines (131 sloc)  7.12 KB
+>>>>>>> 0e1a1d4b0accf79bc1a1a511b0be1be5b69a388e
    
 <!--=================================
 header start-->

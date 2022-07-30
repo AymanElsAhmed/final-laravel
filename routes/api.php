@@ -11,8 +11,6 @@ use App\Http\Controllers\api\ClientController;
 use App\Http\Controllers\api\ProfileController;
 
 
-
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

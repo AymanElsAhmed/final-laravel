@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class VendorOrderController extends Controller
@@ -13,11 +14,17 @@ class VendorOrderController extends Controller
      */
     public function index()
     {
+        // FIXME
         $posts = auth()->user()->posts;
+        $orders = Order::all();
 
+        // $orders->where($posts->post_id == $orders->id);
+
+        // dd($orders);
 
         return view('postsorder.index', [
-            'posts' => $posts
+            'posts' => $posts,
+            'orders' => $orders,
         ]);
     }
 

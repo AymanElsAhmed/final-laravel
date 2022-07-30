@@ -117,6 +117,7 @@ Route::get('/test', function () {
 
 
 
+
 // adding group
 Route::get('/dashboard', function () {
     return view('admin.dashboard');

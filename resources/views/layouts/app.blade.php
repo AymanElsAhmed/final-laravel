@@ -114,8 +114,55 @@
                                             {{ __('Posts order') }}
                                         </a>
 
+<<<<<<< HEAD
                                 </ul>
                             </li>
+=======
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{ __('Products') }}
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item "
+                                                href="{{ route('products.index') }}">{{ __('All Products') }}</a></li>
+                                        <li><a class="dropdown-item "href="{{ route('products.create') }}">
+                                                {{ __('Add Product') }}</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{ __('Clients') }}
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('clients.index') }}">{{ __('All Clients') }}</a></li>
+                                        <li><a
+                                                class="dropdown-item"href="{{ route('clients.create') }}">{{ __('Add Client') }}</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{ __('Orders') }}
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item "
+                                                href="{{ route('orders.index') }}">{{ __('All Orders') }}</a>
+                                        <li><a class="dropdown-item "
+                                                href="{{ route('post-orders.index') }}">{{ __('Posts order') }}</a>
+
+                                    </ul>
+                                </li>
+                            @endvendor
+                            {{-- @endif --}}
+>>>>>>> 0e1a1d4b0accf79bc1a1a511b0be1be5b69a388e
                         @endauth
                     </ul>
 
