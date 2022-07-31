@@ -1,19 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" style="width: 600px;margin-top: 40px;margin-right: 5%; margin-bottom: 20px;">
-
+    {{-- // TODO --}}
+    {{-- <div class="container" style="width: 600px;margin-top: 40px;margin-right: 5%; margin-bottom: 20px;"> --}}
+    <div class="container">
         <div class="row">
             <div class="col">
-                <form class="d-flex" role="search" type="GET" action="">
+                <a href="{{ route('clients.create') }}" class="btn btn-outline-dark">{{ __('إضافة عميل') }}</a>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-sm-12 col-md-6 offset-md-0">
+                <form class="d-flex" role="search" type="GET">
                     <div class="input-group">
                         <input class="form-control me-2" name="search" type="search" aria-label="Search">
                     </div>
-                    <button class="btn btn-outline-primary" type="submit">بحث</button>
+                    <button class="btn btn-outline-primary" type="submit">{{ __('بحث') }}</button>
                 </form>
-            </div>
-            <div class="col">
-                <a href="{{ route('clients.create') }}" class="btn btn-outline-dark">اضافة عميل</a>
             </div>
         </div>
 
@@ -21,62 +24,60 @@
 
 
     <div class="container">
-        <div class="row">
-                @foreach ($clients as $client)
-                    {{-- <div class="col-"> --}}
-                    {{-- <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body text-secondary">
-                        <h5 class="card-title">secondary card title</h5>
-                        <p class="card-text text-dark">Some quick example text to build on the card title and make up the bulk of the
-                            card's content.</p>
-                    </div>
-                </div> --}}
+        <div class="row my-md-4 my-lg-5">
+            @foreach ($clients as $client)
+                <div class="col-sm-12 offset-sm-2 col-md-6 col-lg-3 offset-md-0 mb-4 my-4">
 
+                    <div class="card border-secondary shadow-sm text-center h-100" style="max-width: 20rem;">
+                        {{-- //TODO --}}
+                        {{-- <div class="card-header text-white" style="background-color:#3C66AE"> --}}
+                        <div class="card-header fw-bolder fs-5">
+                            {{ $client->name }}
+                        </div>
 
-                    <div class="col-sm-12 col-md-4 col-lg-2 offset-sm-3 offset-md-0 offset-lg-0 mb-4" style="width: 20rem;">
+                        <div class="card-body text-secondary">
+                            <p class="card-text text-dark">
+                                <span class="fw-bold">{{ __('العنوان: ') }}</span>
+                                {{ $client->adress }}
+                            </p>
 
-                        <div class="card  border-secondary shadow-sm text-center">
-                            {{-- <img src="media/1.webp" alt=""> --}}
+                            <p class="card-text text-dark">
+                                <span class="fw-bold">{{ __('المحمول: ') }}</span>
+                                {{ $client->phone_number }}
+                            </p>
 
-                            <div class="card-header text-white" style="background-color:#3C66AE">
-                                {{ $client->name }}
+                            <div class="text-center mb-2">
+                                <small class="text-muted">{{ $client->created_at->diffForHumans() }}</small>
+                            </div>
+                            <div class="row flex-column">
+                                <small class="text-muted">
+                                    <img src="{{ asset('profilepic') . '/' . $client->user->profile_pic }}"
+                                        alt="{{ $client->user->name }}" style="height:40px; width:40px; object-fit:cover;"
+                                        class="rounded-circle">
+                                </small>
+                                <small class="fw-bold">
+                                    {{ $client->user->name }}
+                                </small>
                             </div>
 
-                            <div class="card-body text-secondary">
-                                <p class="card-text text-dark">
-                                    {{ __('Adress: ') }}
-                                    {{ $client->adress }}
-                                </p>
-
-                                <p class="card-text text-dark">
-                                    {{ __('Phone: ') }}
-                                    {{ $client->phone_number }}
-                                </p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">{{ $client->created_at }}</small>
-                                </div>
-                                <div>
-                                    <small class="text-muted">
-                                        <img src="{{ asset('profilepic') . '/' . $client->user->profile_pic }}"
-                                            alt="{{ $client->user->name }}" style="height:40px; width:40px;"
-                                            class="rounded-circle">
-                                        {{ $client->user->name }}
-                                    </small>
-                                    <div class="mt-3">
-                                        <a class="btn text-white" style="background-color:#3C66AE;"
-                                            href="{{ route('clients.show', $client->id) }}">
-                                            {{-- <a class="btn btn-warning" href="{{ route('clients.show', $client->id) }}"> --}}
-                                            {{ __('Show') }}
-                                        </a>
-                                    </div>
-                                </div>
+                            <div class="mt-3">
+                                {{-- // TODO --}}
+                                {{-- <a class="btn text-white" style="background-color:#3C66AE;" --}}
+                                <a class="btn btn-primary" href="{{ route('clients.show', $client->id) }}">
+                                    {{ __('عرض') }}
+                                </a>
+                                {{-- // TODO --}}
+                                <a href="{{ route('clients.edit', $client->id) }}"
+                                    class="btn btn-outline-secondary">{{ __('تعديل') }}</a>
                             </div>
                         </div>
                     </div>
-                    @endforeach
-            
+
+                </div>
+
+                {{-- @endfor --}}
+            @endforeach
+
 
 
         </div>

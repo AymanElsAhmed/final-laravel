@@ -10,20 +10,29 @@
 
                     <div class="card-body">
                         <h5 class="card-title text-center text-primary">{{ $clients->name }} </h5>
-                        <p class="card-text  text-center ">العنوان: {{ $clients->adress }}</p>
+                        <p class="card-text  text-center ">
+                            <span class="fw-bold">{{ __('العنوان: ') }}</span>
+                            <span>{{ $clients->adress }}</span>
+                        </p>
 
-                        <p class="card-text text-center ">رقم الموبايل: {{ $clients->phone_number }}</p>
+                        <p class="card-text text-center ">
+                            <span class="fw-bold">{{ __('رقم المحمول: ') }}</span>
+                            <span>{{ $clients->phone_number }}</span>
+                        </p>
 
-                        {{-- <p class="card-text"><small class="text-muted"{{$product->created_at}}></small></p> --}}
+                        {{-- <p class="card-text">
+                            <small class="text-muted"{{ $product->created_at->diffForHumans() }}></small>
+                        </p> --}}
                     </div>
+
                     <div class="d-grid gap-2 col-6 mx-auto mt-2">
-                        <a href="{{ route('clients.edit', $clients->id) }}" class="btn btn-warning">تعديل </a>
+                        <a href="{{ route('clients.edit', $clients->id) }}" class="btn btn-warning">{{ __('تعديل ') }}</a>
 
                         <form action="{{ route('clients.destroy', $clients->id) }}" method="post" class="mb-3">
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit" class="btn btn-danger col-12"> حذف </button>
+                            <button type="submit" class="btn btn-danger col-12">{{ __('حذف') }}</button>
 
                         </form>
                     </div>
