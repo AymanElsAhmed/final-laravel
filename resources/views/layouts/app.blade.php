@@ -22,13 +22,8 @@
         integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Styles -->
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> --}}
-
-
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
-        integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
 
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -37,13 +32,13 @@
 
 </head>
 
-<body>
+<body class="bg-light">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex justify-content-between align-items-center" href="{{ url('/') }}">
-                    <div><i class="fa-solid fa-truck fa-2x"></i></div>&nbsp;
-                    <div><em> {{ config('app.name', 'Laravel') }}</em></div>
+                    <i class="fa-solid fa-truck fa-2x"></i>&nbsp;
+                    <em>{{ config('app.name', 'Talabia') }}</em>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -58,43 +53,43 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ __('Posts') }}
+                                    {{ __('المنشورات') }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item "
-                                            href="{{ route('posts.index') }}">{{ __('All Post') }}</a>
+                                            href="{{ route('posts.index') }}">{{ __('جل المنشورات') }}</a>
                                         @authVendor
                                     <li><a class="dropdown-item "
-                                            href="{{ route('posts.create') }}">{{ __('Add Post') }}</a>
+                                            href="{{ route('posts.create') }}">{{ __('منشور جديد') }}</a>
                                         @endauthVendor
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ __('Products') }}
+                                    {{ __('المنتجات') }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item "
-                                            href="{{ route('products.index') }}">{{ __('All Products') }}</a></li>
+                                            href="{{ route('products.index') }}">{{ __('جل المنتجات') }}</a></li>
                                     <li><a class="dropdown-item "href="{{ route('products.create') }}">
-                                            {{ __('Add Product') }}</a></li>
+                                            {{ __('منتج جديد') }}</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ __('Clients') }}
+                                    {{ __('الزبائن') }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                                     <li>
                                         <a class="dropdown-item"
-                                            href="{{ route('clients.index') }}">{{ __('All Clients') }}
+                                            href="{{ route('clients.index') }}">{{ __('جل الزبائن') }}
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item"href="{{ route('clients.create') }}">{{ __('Add Client') }}
+                                        <a class="dropdown-item"href="{{ route('clients.create') }}">{{ __('زبون جديد') }}
                                         </a>
                                     </li>
                                 </ul>
@@ -102,16 +97,16 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ __('Orders') }}
+                                    {{ __('الطلبيات') }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
                                         <a class="dropdown-item " href="{{ route('orders.index') }}">
-                                            {{ __('All Orders') }}
+                                            {{ __('جل الطلبيات') }}
                                         </a>
                                     <li>
                                         <a class="dropdown-item " href="{{ route('vendors.index') }}">
-                                            {{ __('Posts order') }}
+                                            {{ __('الطلبيات المعلقة') }}
                                         </a>
 
                                 </ul>
@@ -125,13 +120,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link " href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link " href="{{ route('login') }}">{{ __('دخول') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('اشتراك') }}</a>
                                 </li>
                             @endif
                         @else
@@ -158,12 +153,18 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('profiles.show', auth()->user()->id) }}">
-                                        {{ __('My profile') }}
+                                        {{ __('صفحتي') }}
                                     </a>
+
+                                    <a class="dropdown-item" href="{{ route('profiles.edit', auth()->user()->id) }}">
+                                        {{ __('تعديل') }}
+                                    </a>
+
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('خروج') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -178,8 +179,10 @@
             </div>
         </nav>
 
+        {{-- //TODO --}}
         {{-- <main class="py-4" style="background:#A5D3EB"> --}}
-        <main class="py-4" style="background:#C1D8E3">
+        {{-- <main class="py-4" style="background:#C1D8E3"> --}}
+        <main class="py-4 my-4">
             @yield('content')
         </main>
     </div>

@@ -14,7 +14,7 @@
 
                         <p class="card-text text-center ">الكمية: {{ $product->quantity }}</p>
 
-                        {{-- <p class="card-text"><small class="text-muted"{{$product->created_at}}></small></p> --}}
+                        {{-- <p class="card-text"><small class="text-muted"{{$product->created_at->diffForHumans()}}></small></p> --}}
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto mt-2">
 

@@ -45,7 +45,7 @@
 
 
         @auth
-            {{-- @delivery --}}
+            @authDelivery
                 <div class="row mt-5 mb-3">
                     <div class="col-sm-7 offset-sm-3 offset-md-0 ">
                         <a class="btn btn-primary" data-bs-toggle="collapse" href="#addcomment" role="button" aria-expanded="false"
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                 </div>
-            {{-- @enddelivery --}}
+            @endauthDelivery
         @endauth
         <!-- end comment button -->
 

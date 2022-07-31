@@ -42,7 +42,7 @@
                     <input type="hidden" name="user_id" value="{{ $user->id }}">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">
-                            {{ __('Rate ') }}{{ $user->name }}
+                            {{ __('تقييم ') }}{{ $user->name }}
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -65,8 +65,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
-                            data-bs-dismiss="modal">{{ __('Close') }}</button>
-                        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                            data-bs-dismiss="modal">{{ __('إغلاق') }}</button>
+                        <button type="submit" class="btn btn-primary">{{ __('حفظ') }}</button>
                     </div>
                 </form>
             </div>
@@ -78,10 +78,10 @@
         <div class="row my-3">
             <h2 class="text-center text-primary">
                 @vendor($user)
-                    {{ __('Vendor Profile') }}
+                    {{ __('صفحة التاجر') }}
                 @endvendor
                 @delivery($user)
-                    {{ __('Delivery Profile') }}
+                    {{ __('صفحة المندوب') }}
                 @enddelivery
             </h2>
         </div>
@@ -101,7 +101,7 @@
 
 
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        {{ __('Rate') }}
+                        {{ __('تقييم') }}
                     </button>
 
                 </div>
@@ -109,7 +109,7 @@
 
                 @vendor($user)
                     <div class="row mt-2">
-                        <h5 class="text-primary text-center mt-5">{{ __('My Posts') }}</h5>
+                        <h5 class="text-primary text-center mt-5">{{ __('منشوراتي') }}</h5>
                     </div>
                 @endvendor
 
@@ -123,16 +123,16 @@
                                         class="card-img-top" alt="{{ $post->product->name }}"
                                         style="height:200px; object-fit:cover;">
 
-                                    <div class="card-body  " style="text-align: center ">
+                                    <div class="card-body text-center">
                                         <h1 style="color: #007EA7"> {{ $post->title }}</h1>
 
                                         <p class="card-text">
-                                            <span class="text-muted">الوصف:</span> &nbsp;
+                                            <span class="text-muted">{{ __('الوصف') }}</span> &nbsp;
                                             {{ $post->description }}
                                         </p>
-                                        <div class="btn-group text-center ">
+                                        <div class="btn-group text-center">
                                             <a class="btn btn-primary" href="{{ route('posts.show', $post->id) }}">
-                                                {{ __('Show') }}
+                                                {{ __('عرض') }}
                                             </a>
                                         </div>
                                     </div>
@@ -145,34 +145,33 @@
 
                     <div class="row mt-5">
                         <h5 class=" text-primary text-center">
-                            {{ __('My Comments') }}
+                            {{ __('التعليقات') }}
                         </h5>
                     </div>
 
 
-                    {{-- @for ($i = 0; $i < 10; $i++) --}}
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                    @for ($i = 0; $i < 10; $i++)
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 
-                        <div class="col">
-                            <div class="card shadow-sm m-4 h-100">
-                                <img src="{{ asset('profilepic') . '/' . $user->profile_pic }}"
-                                    class=" rounded-circle m-auto mt-3" class="card-img-top" alt="{{ $user->name }}"
-                                    style="height: 100px; width:100px;">
+                            <div class="col">
+                                <div class="card shadow-sm m-4 h-100">
+                                    <img src="{{ asset('profilepic') . '/' . $user->profile_pic }}"
+                                        class=" rounded-circle m-auto mt-3" class="card-img-top" alt="{{ $user->name }}"
+                                        style="height: 100px; width:100px; object-fit:cover;">
 
-                                <div class="card-body  " style="text-align: center ">
-                                    <p class="card-text"><span class="text-muted">{{ __('Comment') }}</p>
+                                    <div class="card-body text-center">
+                                        <p class="card-text"><span class="text-muted">{{ __('التعليق') }}</p>
+                                    </div>
+
                                 </div>
-
-
                             </div>
-                        </div>
 
-                    </div>
-                    {{-- @endfor --}}
+                        </div>
+                    @endfor
 
 
                     <div class="row mt-5">
-                        <h5 class=" text-primary text-center">{{ __('Contact Info') }}</h5>
+                        <h5 class=" text-primary text-center">{{ __('للتواصل') }}</h5>
                     </div>
 
 
@@ -180,20 +179,17 @@
 
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 me-4 ">
 
-
                         <p>{{ $user->email }}
-                            <a href="{{ route('profiles.edit', $user->id) }}">
-                                <i class="fas fa-envelope"></i>
-                            </a>
+                            <i class="fas fa-envelope"></i>
                         </p>
 
                         <p>{{ $user->city }}
-                            <a href="#"><i class="fas fa-house-user"></i></a>
+                            <i class="fas fa-house-user"></i>
                         </p>
 
                         <p>
                             {{ $user->phone_number }}
-                            <a href="#"><i class="fas fa-phone"></i></a>
+                            <i class="fas fa-phone"></i>
                         </p>
                     </div>
 
