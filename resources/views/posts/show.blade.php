@@ -16,24 +16,14 @@
                 <div class="h2">
                     {{ $post->title }}
                 </div>
-                <h3>
-                    وصف:
-                </h3>
+                <h3>وصف:</h3>
                 <p>{{ $post->description }}</p>
 
-                <h3>
-                    بيانات المنتج:
-                </h3>
+                <h3>بيانات المنتج:</h3>
 
                 <div>
-                    <h5>
-                        الاسم:
-                        {{ $post->product->name }}
-                    </h5>
-                    <h5>
-                        السعر:
-                        {{ $post->product->price }}
-                    </h5>
+                    <h5>الاسم: {{ $post->product->name }}</h5>
+                    <h5>السعر: {{ $post->product->price }}</h5>
                 </div>
             </div>
 
@@ -46,60 +36,60 @@
 
         @auth
             @authDelivery
-                <div class="row mt-5 mb-3">
-                    <div class="col-sm-7 offset-sm-3 offset-md-0 ">
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#addcomment" role="button" aria-expanded="false"
-                            aria-controls="addcomment">
-                            {{ __('Add Comment') }}
-                        </a>
-                    </div>
+            <div class="row mt-5 mb-3">
+                <div class="col-sm-7 offset-sm-3 offset-md-0 ">
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#addcomment" role="button" aria-expanded="false"
+                        aria-controls="addcomment">
+                        {{ __('اضف تعليقا') }}
+                    </a>
                 </div>
+            </div>
 
 
 
-                <div class="row">
-                    <div class="col col-md-12">
-                        <div class="collapse multi-collapse" id="addcomment">
-                            <div class="card card-body">
-                                <!-- store comment -->
-                                <form class="row g-3" method="POST" action="{{ route('comments.store') }}"
-                                    enctype="multipart/form-data">
-                                    @csrf
-                                    {{-- <!-- <input class="hidden" name="post_id" value="{{$post->id}}"> --> --}}
-                                    <div class="col-12">
-                                        <label for="name" class="form-label text-primary">نبذة عن خبرتك</label>
-                                        <input type="text" class="form-control" id="description" name="description">
-                                        @error('description')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+            <div class="row">
+                <div class="col col-md-12">
+                    <div class="collapse multi-collapse" id="addcomment">
+                        <div class="card card-body">
+                            <!-- store comment -->
+                            <form class="row g-3" method="POST" action="{{ route('comments.store') }}"
+                                enctype="multipart/form-data">
+                                @csrf
+                                {{-- <!-- <input class="hidden" name="post_id" value="{{$post->id}}"> --> --}}
+                                <div class="col-12">
+                                    <label for="name" class="form-label text-primary">نبذة عن خبرتك</label>
+                                    <input type="text" class="form-control"
+                                        id="description" name="description">
+                                </div>
 
-                                    <div class="col-12">
-                                        <label for="price" class="form-label text-primary">تاريخ التسليم</label>
-                                        <input type="date" class="form-control" id="delivery_date" name="delivery_date">
-                                        @error('delivery_date')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                <div class="col-12">
+                                    <label for="price" class="form-label text-primary">تاريخ التسليم</label>
+                                    <input type="date" class="form-control"
+                                        id="delivery_date" name="delivery_date">
+                                    
+                                </div>
 
-                                    <div class="col-12">
-                                        <label for="weight" class="form-label text-primary">سعر التوصيل</label>
-                                        <input type="number" class="form-control" id="deliver_price" name="deliver_price">
-                                        @error('deliver_price')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                <div class="col-12">
+                                    <label for="weight" class="form-label text-primary">سعر التوصيل</label>
+                                    <input type="text" class="form-control"
+                                        id="deliver_price" name="deliver_price">
+                                    @error('deliver_price')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
 
 
-                                    <div class="col-12 text-center">
-                                        <button type="submit" class="btn btn-primary">حفظ</button>
-                                    </div>
-                                </form>
-                                <!-- end store comment -->
-                            </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary">حفظ</button>
+                                </div>
+                            </form>
+                            <!-- end store comment -->
                         </div>
                     </div>
                 </div>
+            </div>
             @endauthDelivery
         @endauth
         <!-- end comment button -->
@@ -136,72 +126,81 @@
 
                             @auth
                                 @authDelivery
-                                    @if (auth()->user()->id === $comment->user_id)
-                                        <div class="d-flex justify-content-end">
-                                            <a class="btn btn-primary mx-2 align-self-start" data-bs-toggle="collapse"
-                                                href="#commentedit{{ $loop->iteration }}" role="button" aria-expanded="false"
-                                                aria-controls="commentedit{{ $loop->iteration }}">{{ __('Edit') }}</a>
+                                @if (auth()->user()->id === $comment->user_id)
+                                    <div class="d-flex justify-content-end">
+                                        <a class="btn btn-primary mx-2 align-self-start" data-bs-toggle="collapse"
+                                            href="#commentedit{{ $loop->iteration }}" role="button" aria-expanded="false"
+                                            aria-controls="commentedit{{ $loop->iteration }}">{{ __('تعديل') }}</a>
 
-                                            <form action="{{ route('comments.destroy', $comment->id) }}" method="post"
-                                                class="mb-3">
-                                                @csrf
-                                                @method('DELETE')
+                                        <form action="{{ route('comments.destroy', $comment->id) }}" method="post"
+                                            class="mb-3">
+                                            @csrf
+                                            @method('DELETE')
 
-                                                <button type="submit" class="btn btn-danger "> حذف </button>
-                                            </form>
+                                            <button type="submit" class="btn btn-danger "> حذف </button>
+                                        </form>
 
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col col-md-12 col-lg-12">
-                                                <div class="collapse multi-collapse" id="commentedit{{ $loop->iteration }}">
-                                                    <div class="card card-body">
-                                                        <!-- store comment -->
-                                                        <form action="{{ route('comments.update', $comment->id) }}" method="POST">
-                                                            @method('PUT')
-                                                            @csrf
-                                                            {{-- <!-- <input class="hidden" name="post_id" value="{{$post->id}}"> --> --}}
-                                                            <div class="col-12">
-                                                                <label for="name" class="form-label text-primary">نبذة عن
-                                                                    خبرتك</label>
-                                                                <input type="text" class="form-control" id="description"
-                                                                    name="description"
-                                                                    value="{{ old('description', $comment->description) }}">
-                                                                @error('description')
-                                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <label for="price" class="form-label text-primary">تاريخ
-                                                                    التسليم</label>
-                                                                <input type="date" class="form-control" id="delivery_date"
-                                                                    name="delivery_date"
-                                                                    value="{{ old('delivery_date', $comment->delivery_date) }}">
-                                                                @error('delivery_date')
-                                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <label for="weight" class="form-label text-primary">سعر
-                                                                    التوصيل</label>
-                                                                <input type="number" class="form-control" id="deliver_price"
-                                                                    name="deliver_price"
-                                                                    value="{{ old('deliver_price', $comment->deliver_price) }}">
-                                                                @error('deliver_price')
-                                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                                @enderror
-                                                            </div>
+                                    </div>
 
 
-                                                            <div class="col-12 text-center">
-                                                                <button type="submit" class="btn btn-primary">حفظ</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
+                                    <div class="row">
+                                        <div class="col col-md-12 col-lg-12">
+                                            <div class="collapse multi-collapse" id="commentedit{{ $loop->iteration }}">
+                                                <div class="card card-body">
+                                                    <!-- store comment -->
+                                                    <form action="{{ route('comments.update', $comment->id) }}" method="POST">
+                                                        @method('PUT')
+                                                        @csrf
+                                                        {{-- <!-- <input class="hidden" name="post_id" value="{{$post->id}}"> --> --}}
+                                                        <div class="col-12">
+                                                            <label for="name" class="form-label text-primary">نبذة عن
+                                                                خبرتك</label>
+                                                            <input type="text"
+                                                                class="form-control"
+                                                                id="description" name="description"
+                                                                value="{{ old('description', $comment->description) }}">
+                                                            @error('description')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label for="price" class="form-label text-primary">تاريخ
+                                                                التسليم</label>
+                                                            <input type="date"
+                                                                class="form-control"
+                                                                id="delivery_date" name="delivery_date"
+                                                                value="{{ old('delivery_date', $comment->delivery_date) }}">
+                                                            @error('delivery_date')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label for="weight" class="form-label text-primary">سعر
+                                                                التوصيل</label>
+                                                            <input type="number"
+                                                                class="form-control"
+                                                                id="deliver_price" name="deliver_price"
+                                                                value="{{ old('deliver_price', $comment->deliver_price) }}">
+                                                            @error('deliver_price')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+
+
+                                                        <div class="col-12 text-center">
+                                                            <button type="submit" class="btn btn-primary">حفظ</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
-                                    @endif
+                                        </div>
+                                @endif
                                 @endauthDelivery
                             @endauth
                         </div>

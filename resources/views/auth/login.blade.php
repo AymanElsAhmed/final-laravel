@@ -48,14 +48,16 @@
                         {{-- <div class="form-check"> --}}
                         <div class="d-flex justify-content-around align-items-center mb-4">
                             {{-- <div>
-                                <input class="form-check-input" type="checkbox"   name="remember"  id="remember" {{ old('remember') ? 'checked' : '' }} />
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                    {{ old('remember') ? 'checked' : '' }} />
                                 <label class="form-check-label" for="form1Example3"> {{ __('Remember Me') }} </label>
-                                </div> --}}
+                            </div>
+
                             @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('نسيت كلمة السر؟') }}
                                 </a>
-                            @endif
+                            @endif --}}
 
                         </div>
 

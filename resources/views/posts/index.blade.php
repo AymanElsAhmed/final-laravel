@@ -3,7 +3,8 @@
 @section('content')
     <div class="container">
         @if ($posts->count() == 0)
-            <h3>{{ __('لا يوجد منشورات') }}</h3>
+            <h3 class="mb-3">{{ __('لا توجد منشورات') }}</h3>
+            <a class="btn btn-primary" href="{{ route('posts.create') }}">{{ __('اضف منشورا جديدا') }}</a>
         @else
             <div class="row">
                 <div class="col-sm-8 col-md-9">
@@ -17,7 +18,7 @@
                 </div>
 
                 <div class="col-sm-3 col-md-2 offset-md-1">
-                    <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ __('اضف منشور') }}</a>
+                    <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ __('اضف منشورا') }}</a>
                 </div>
             </div>
         @endif
@@ -27,14 +28,9 @@
 
     <div class="container pb-3 mt-5">
         <div class="d-grid gap-3">
-
-            {{-- <div class="bg-light border rounded-3"> --}}
             <div class="row">
-
                 @foreach ($posts as $post)
-                    {{-- <div class="col-sm-12 col-md-4 col-lg-2 offset-sm-3 offset-md-0 offset-lg-0 mb-4" style="width: 20rem;"> --}}
                     <div class="col-sm-12 col-md-4 col-lg-2 offset-sm-2 offset-md-0 offset-lg-0 mb-4" style="width: 23rem;">
-
                         <div class="card shadow-sm text-center h-100">
                             <img src="{{ asset('productpic') . '/' . $post->product->product_pic }}"
                                 class="card-img-top img-fluid" alt="{{ $post->product->name }}"
@@ -60,7 +56,14 @@
 
                                 <div class="btn-group">
                                     <a class="btn btn-primary" href="{{ route('posts.show', $post->id) }}">
-                                        {{ __('عرض') }}</a>
+                                        {{ __('عرض') }}
+                                    </a>
+                                    {{-- //FIXME --}}
+                                    {{-- @vendor --}}
+                                    <a class="btn btn-outline-primary" href="{{ route('posts.edit', $post->id) }}">
+                                        {{ __('تعديل') }}
+                                    </a>
+                                    {{-- @endvendor --}}
                                 </div>
                             </div>
 
@@ -75,9 +78,7 @@
                         </div>
                     </div>
                 @endforeach
-
             </div>
-
         </div>
     </div>
 @endsection

@@ -3,7 +3,8 @@
 @section('content')
     <div class="container">
         @if ($products->count() == 0)
-            <h3>{{ __('No Posts Yet') }}</h3>
+            <h3 class="mb-3">{{ __('لا توجد منتجات') }}</h3>
+            <a class="btn btn-primary" href="{{ route('products.create') }}">{{ __('اضف منتجا جديدا') }}</a>
         @else
             <div class="row">
                 <div class="col-sm-8 col-md-9">
@@ -12,12 +13,12 @@
 
                         <input class="form-control me-2" name="search" type="search" aria-label="Search">
 
-                        <button class="btn btn-primary" type="submit">{{ __('Search') }}</button>
+                        <button class="btn btn-primary" type="submit">{{ __('ابحث') }}</button>
                     </form>
                 </div>
 
                 <div class="col-sm-4 col-md-3 offset-md-0">
-                    <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ __('Add Product') }}</a>
+                    <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ __('اضف منتجا') }}</a>
                 </div>
             </div>
         @endif
@@ -41,16 +42,22 @@
                             <h5 class="card-title text-center text-primary">{{ $product->name }}</h5>
 
 
-                            <p class="card-text text-center">السعر: {{ $product->price }}</p>
+                            <p class="card-text text-center">
+                                <span class="text-muted">{{ __('السعر: ') }}</span>
+                                {{ $product->price }}
+                            </p>
 
-                            <p class="card-text text-center">الكمية: {{ $product->quantity }}</p>
+                            <p class="card-text text-center">
+                                {{ __('الكمية: ') }}
+                                {{ $product->quantity }}
+                            </p>
 
                             <div class="text-center">
                                 <a href="{{ route('products.show', $product->id) }}"
-                                    class="btn btn-primary">{{ __('Show') }}</a>
+                                    class="btn btn-outline-primary">{{ __('عرض') }}</a>
 
                                 <a href="{{ route('products.edit', $product->id) }}"
-                                    class="btn btn-warning">{{ __('Edit') }}</a>
+                                    class="btn btn-outline-warning">{{ __('تعديل') }}</a>
 
                                 <form action="{{ route('products.destroy', $product->id) }}" method="post"
                                     class="d-inline">
@@ -58,7 +65,7 @@
 
                                     @method('DELETE')
 
-                                    <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
+                                    <button type="submit" class="btn btn-danger">{{ __('حذف') }}</button>
 
                                 </form>
                             </div>
