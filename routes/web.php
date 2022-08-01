@@ -13,9 +13,27 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryContoller;
+use App\Http\Controllers\Admin\AdminClientController;
+use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\TestController;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
+
+
+
+
+
+
+
+Route::name('admin.')->prefix('admin')->group(function () {
+    Route::resource('/posts', AdminPostController::class)->middleware('is_admin');
+    Route::get('/tests', [TestController::class, 'index'])->name('tests')->middleware('is_admin');
+    Route::resource('/products', AdminProductController::class)->middleware('is_admin');
+});
+
+
 
 
 Route::get('/', function () {
@@ -46,8 +64,8 @@ Route::resource('/posts', PostController::class);
 // crud  (only vendor can make all of crud operation on it)
 Route::resource('/products', ProductController::class)->middleware('is_vendor');
 
-// categories routes 
-//  All users can only read 
+// categories routes
+//  All users can only read
 //  Vendor can assign it to his product while creation
 
 
@@ -63,7 +81,7 @@ Route::resource('/profiles', ProfileController::class)->except(['create', 'store
 
 Auth::routes();
 
-Route::get('/home', [omeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/test', function () {
@@ -101,7 +119,7 @@ Route::get('/test', function () {
 // Route::prefix('admin')->group(function(){
 
 // Route::resource('/users', UserController::class);
-// Route::get('/users', [UserController::class, 'index']);  
+// Route::get('/users', [UserController::class, 'index']);
 //     });
 
 // Route::group(['prefix' => 'admin'], function () {
@@ -123,6 +141,8 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware('is_admin');
 // })->middleware('is_admin');
+
+
 
 Route::resource('/users', UserController::class)->middleware('is_admin');
 Route::resource('/categories', CategoryContoller::class)->middleware('is_admin');

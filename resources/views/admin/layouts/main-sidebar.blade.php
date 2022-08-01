@@ -44,6 +44,22 @@
                         </ul>
                     </li>
 
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#content-menu">
+                            <div class="pull-left"><i class="fas fa-chalkboard"></i></i><span
+                                    class="right-nav-text">إدارة محتوى الموقع</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="content-menu" class="collapse" data-parent="#sidebarnav">
+                        <li><a href="{{route('categories.index')}}">المنشورات</a></li>
+                        <li><a href="{{route('categories.index')}}">المنتجات</a></li>
+                        <li><a href="{{route('categories.index')}}">العملاء</a></li>
+                       
+                        </ul>
+                    </li>
+
+
 
                 </ul>
             </div>
