@@ -10,8 +10,8 @@
                     @if ($posts->count() == 0)
                         <div class="row">
                             <div class="col">
-                                <h3>{{ __('You have no Orders yet') }}</h3>
-                                <a class="btn btn-primary" href="{{ route('orders.store') }}">{{ __('Add Order') }}</a>
+                                <h3>{{ __('لا يوجد طلبيات') }}</h3>
+                                <a class="btn btn-primary" href="{{ route('orders.store') }}">{{ __('اضف طلبية') }}</a>
                             </div>
                         </div>
                     @else
@@ -65,17 +65,17 @@
                                                                             onclick="event.preventDefault();
                                                                     document.getElementById('accept-form').submit();  "
                                                                             value="{{ $comment->id }}"
-                                                                            name="test">{{ __('Accept') }}
+                                                                            >{{ __('قبول') }}
                                                                         </button>
-                                                                        <button type="button" class="btn btn-danger"
+                                                                        {{-- <button type="button" class="btn btn-danger"
                                                                             onclick="event.preventDefault();
-                                                                    document.getElementById('refuse-form').submit();">{{ __('Reject') }}</button>
+                                                                    document.getElementById('refuse-form').submit();">{{ __('رفض') }}</button> --}}
                                                                     </td>
                                                                     <form id="accept-form" action="{{ route('orders.store') }}"
                                                                         method="POST" class="d-none">
                                                                         @csrf
                                                                         <input class="d-none" type="text"
-                                                                            value="{{ $comment->id }}" name="teststst">
+                                                                            value="{{ $comment->id }}" name="commentid">
                                                                     </form>
                                                                     <form id="refuse-form" action="{{ route('orders.index') }}"
                                                                         method="POST" class="d-none">

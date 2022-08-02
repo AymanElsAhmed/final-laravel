@@ -60,9 +60,16 @@
                                     </a>
                                     {{-- //FIXME --}}
                                     {{-- @vendor --}}
+                                    @auth
+                                        
+                                    @if (auth()->user()->id  === $post->user_id)
+                                    
+                                    
                                     <a class="btn btn-outline-primary" href="{{ route('posts.edit', $post->id) }}">
                                         {{ __('تعديل') }}
                                     </a>
+                                    @endif
+                                    @endauth
                                     {{-- @endvendor --}}
                                 </div>
                             </div>

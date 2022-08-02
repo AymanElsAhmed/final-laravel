@@ -34,7 +34,7 @@
 
 <body class="bg-light">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm sticky-topl">
             <div class="container">
                 <a class="navbar-brand d-flex justify-content-between align-items-center" href="{{ url('/') }}">
                     <i class="fa-solid fa-truck fa-2x"></i>&nbsp;
@@ -64,6 +64,7 @@
                                         @endauthVendor
                                 </ul>
                             </li>
+                            @authVendor
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,6 +77,7 @@
                                             {{ __('منتج جديد') }}</a></li>
                                 </ul>
                             </li>
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -94,6 +96,8 @@
                                     </li>
                                 </ul>
                             </li>
+                            @endauthVendor
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -104,10 +108,14 @@
                                         <a class="dropdown-item " href="{{ route('orders.index') }}">
                                             {{ __('كل الطلبيات') }}
                                         </a>
+
+                                        @authVendor
                                     <li>
                                         <a class="dropdown-item " href="{{ route('vendors.index') }}">
                                             {{ __('الطلبيات المعلقة') }}
                                         </a>
+                                    </li>
+                                    @endauthVendor
 
                                 </ul>
                             </li>
@@ -126,7 +134,7 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('اشتراك') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('حسابا جديدا') }}</a>
                                 </li>
                             @endif
                         @else
@@ -179,19 +187,78 @@
             </div>
         </nav>
 
-        <main class="py-4 my-4">
+        <main class="py-4 min-vh-100">
             @yield('content')
         </main>
 
-        <footer class="p-3 bg-dark text-white">
+        <footer class="p-3 bg-dark text-white position-absolute w-100">
+
             <div class="container">
-                <ul class="p-30">
-                    <li>يسبم</li>
-                    <li>ثقلثق</li>
-                    <li>حصيؤ</li>
-                </ul>
+                <div class="row align-items-center">
+
+                    <div class="col-lg-12 col-12 border-bottom pb-5 mb-5">
+                        <div class="d-flex">
+                            <a href="/" class="navbar-brand">
+                                <span class="brand-text">Talabia</span>
+                            </a>
+
+                            <ul class="list-unstyled d-flex justify-content-between ms-auto">
+                                <li>
+                                    <a href="#" class="">
+                                        <i class="fa-brands fa-square-facebook fa-2x"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="">
+                                        <i class="fa-brands fa-square-instagram fa-2x"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="">
+                                        <i class="fa-brands fa-square-whatsapp fa-2x"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="">
+                                        <i class="fa-brands fa-youtube fa-2x"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 col-12">
+                        <ul class="d-flex list-unstyled">
+                            <li class="me-3">
+                                <a href="#section_1" class="">الرئيسية</a>
+                            </li>
+
+                            <li class="me-3">
+                                <a href="#section_2" class="">قصتنا</a>
+                            </li>
+
+                            <li class=""><a href="#section_7" class="footer-menu-link">للتواصل</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="col-lg-5 col-12 ms-lg-auto">
+                        <div class="copyright-text-wrap d-flex align-items-center">
+                            <p class="copyright-text ms-lg-auto me-4 mb-0">حقوق الطبع &copy; Talabia.
+
+                                <br>كل الحقوق محفوظة.
+                                <a href="#section_1" class="bi-arrow-up arrow-icon custom-link"></a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </footer>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">

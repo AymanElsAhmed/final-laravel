@@ -10,8 +10,6 @@
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
 
-                    {{-- //TODO --}}
-                    {{-- <h1 style="text-align: center; color:#3C66AE">{{ __('Sign in') }}</h1> --}}
                     <h1 class="text-center">{{ __('تسجيل دخول') }}</h1>
 
                     <form method="POST" action="{{ route('login') }}">
@@ -42,26 +40,6 @@
                                 </span>
                             @enderror
                         </div>
-
-                        {{-- <div class="d-flex align-items-center mb-4"> --}}
-                        <!-- Checkbox -->
-                        {{-- <div class="form-check"> --}}
-                        <div class="d-flex justify-content-around align-items-center mb-4">
-                            {{-- <div>
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                    {{ old('remember') ? 'checked' : '' }} />
-                                <label class="form-check-label" for="form1Example3"> {{ __('Remember Me') }} </label>
-                            </div>
-
-                            @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('نسيت كلمة السر؟') }}
-                                </a>
-                            @endif --}}
-
-                        </div>
-
-                        {{-- </div> --}}
 
                         <div class="form-outline mb-4 d-grid gap-2">
                             <button style="background: #3C66AE;border:#3C66AE;color:white" type="submit"

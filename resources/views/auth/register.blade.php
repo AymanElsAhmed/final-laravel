@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- //TODO --}}
-    {{-- <section class="vh-100" style="background-color: #eee;"> --}}
     <div class="container">
         <div class="row"
             style="background: url(https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp) center center no-repeat">
@@ -11,8 +9,6 @@
                 <div class="card text-black rounded-3 shadow">
                     <div class="card-body">
                         <div class="row">
-                            {{-- //TODO --}}
-                            {{-- <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1"> --}}
                             <div class="col-sm-12">
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">{{ __('اشترك الآن') }}</p>
 
@@ -21,8 +17,6 @@
                                     @csrf
 
                                     <div class="d-flex align-items-center mb-4">
-                                        {{-- <i class="fas fa-user fa-lg me-3 fa-fw"></i> --}}
-
                                         <div class="form-outline flex-fill mb-0">
                                             <label class="form-label" for="name">{{ __('الاسم') }}</label>
 
@@ -39,7 +33,6 @@
                                     </div>
 
                                     <div class="d-flex  align-items-center mb-4">
-                                        {{-- <i class="fas fa-envelope fa-lg me-3 fa-fw"></i> --}}
 
                                         <div class="form-outline flex-fill mb-0">
                                             <label class="form-label" for="email">{{ __('البريد الإلكتروني') }}</label>
@@ -57,7 +50,6 @@
                                     </div>
 
                                     <div class="d-flex  align-items-center mb-4">
-                                        {{-- <i class="fas fa-lock fa-lg me-3 fa-fw"></i> --}}
                                         <div class="form-outline flex-fill mb-0">
                                             <label class="form-label" for="password">{{ __('كلمة السر') }}</label>
                                             <input type="password" id="password" name="password"
@@ -73,7 +65,6 @@
 
 
                                     <div class="d-flex  align-items-center mb-4">
-                                        {{-- <i class="fas fa-key fa-lg me-3 fa-fw"></i> --}}
                                         <div class="form-outline flex-fill mb-0">
                                             <label class="form-label"
                                                 for="password_confirmation">{{ __('تأكيد كلمة السر') }}
@@ -91,7 +82,6 @@
 
 
                                     <div class="d-flex  align-items-center mb-4">
-                                        {{-- <i class="fas fa-lock fa-lg me-3 fa-fw"></i> --}}
                                         <div class="form-outline flex-fill mb-0">
                                             <label class="form-label" for="phone_number">{{ __('رقم المحمول') }}</label>
                                             <input type="text" id="phone_number" name="phone_number"
@@ -109,7 +99,6 @@
 
 
                                     <div class="d-flex  align-items-center mb-4">
-                                        {{-- <i class="fas fa-key fa-lg me-3 fa-fw"></i> --}}
                                         <div class="form-outline flex-fill mb-0">
                                             <label class="form-label" for="profile_pic">{{ __('إضافة صورة للحساب') }}
                                             </label>
@@ -175,6 +164,7 @@
                                     <div class="d-flex  align-items-center mb-4">
                                         {{-- <i class="fas fa-key fa-lg me-3 fa-fw"></i> --}}
                                         <div class="form-outline flex-fill mb-0">
+                                            {{-- // FIXME --}}
                                             <label class="form-label" for="national_id_pic">{{ __('وجه الرقم القومي') }}
                                             </label>
                                             <input
@@ -190,7 +180,8 @@
 
                                     <div class="d-flex  align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
-                                            <label class="form-label" for="national_id_pic">{{ __('ظهر الرقم القومي') }}
+                                            {{-- // FIXME --}}
+                                            <label class="form-label" for="national_id_pic">{{ __('الرقم القومي') }}
                                             </label>
                                             <input
                                                 class="form-control @error('national_id_second_pic') is-invalid @enderror"
@@ -214,7 +205,7 @@
                                             <label class="form-check-label" for="vendorUser">{{ __('تاجر') }}</label>
                                         </div>
                                         <div class="form-check form-check-inline mb-0 me-4">
-                                            <input class="form-check-input @error('gender') is-invalid @enderror"
+                                            <input class="form-check-input @error('role') is-invalid @enderror"
                                                 type="radio" name="role" id="deliveryUser" value="delivery" />
                                             <label class="form-check-label"
                                                 for="deliveryUser">{{ __('مندوب توصيل') }}</label>

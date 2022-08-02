@@ -178,37 +178,6 @@
             </div>
 
 
-
-
-            <div class="row mt-5">
-                <h5 class="text-primary text-center">
-                    {{ __('التعليقات') }}
-                </h5>
-            </div>
-
-
-            {{-- //FIXME --}}
-            @unless($post->commment == null)
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-
-                    <div class="col">
-                        <div class="card shadow-sm m-4 h-100">
-                            <img src="{{ asset('profilepic') . '/' . $user->profile_pic }}"
-                                class=" rounded-circle m-auto mt-3" class="card-img-top" alt="{{ $user->name }}"
-                                style="height: 100px; width:100px; object-fit:cover;">
-
-                            <div class="card-body text-center">
-                                <p class="card-text"><span class="text-muted">{{ __('التعليق') }}</p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            @else
-                <p class="text-muted text-center fw-bold mb-5">{{ __('لا يوجد أية تعليقات حتى الآن') }}</p>
-            @endunless
-
         </div>
 
     </div>

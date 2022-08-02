@@ -17,7 +17,7 @@
                             <div class="col-12">
                                 <label for="name" class="form-label text-primary">{{ __('الاسم') }}</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    id="name" name="name" placeholder="برجاء ادخال الاسم">
+                                    id="name" name="name" placeholder="برجاء ادخال الاسم" value="{{ old('name') }}">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -27,7 +27,7 @@
                             <div class="col-12">
                                 <label for="adress" class="form-label text-primary">{{ __('العنوان') }}</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    id="adress" name="adress" placeholder="برجاء ادخال العنوان">
+                                    id="adress" name="adress" placeholder="برجاء ادخال العنوان"  value="{{ old('adress') }}">
                                 @error('adress')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                             <div class="col-12">
                                 <label for="phone_number" class="form-label text-primary">{{ __('المحمول') }}</label>
                                 <input type="text" class="form-control @error('phone_number') is-invalid @enderror"
-                                    id="phone_number" name="phone_number" placeholder="برجاء ادخال رقم المحمول">
+                                    id="phone_number" name="phone_number" placeholder="برجاء ادخال رقم المحمول"  value="{{ old('phone_number') }}">
                                 @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

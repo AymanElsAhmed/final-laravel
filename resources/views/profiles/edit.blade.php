@@ -8,7 +8,7 @@
 
 
                     <div class="container py-5">
-                        <h1 class="text-center text-primary">{{ __('تعديل عميل') }}</h1>
+                        <h1 class="text-center text-primary">{{ __('تعديل الحساب') }}</h1>
                    
                         <form method="POST" action="{{ route('profiles.update', $user->id) }}" enctype="multipart/form-data">
                             @csrf

@@ -19,8 +19,15 @@ use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
+    return view('homepage');
+});
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
+
+
 // Route::get('/image', function () {
 //     return view('image');
 // });
@@ -62,8 +69,6 @@ Route::resource('/profiles', ProfileController::class)->except(['create', 'store
 
 
 Auth::routes();
-
-Route::get('/home', [omeController::class, 'index'])->name('home');
 
 
 Route::get('/test', function () {

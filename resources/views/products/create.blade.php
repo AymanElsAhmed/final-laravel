@@ -18,7 +18,7 @@
                                 <div class="col-12">
                                     <label for="name"
                                         class="form-label  text-primary @error('name') is-invalid @enderror">{{ __('الاسم') }}</label>
-                                    <input type="text" class="form-control" id="name" name="name">
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -28,7 +28,7 @@
                                 <div class="col-12">
                                     <label for="price"
                                         class="form-label text-primary @error('price') is-invalid @enderror">{{ __('السعر') }}</label>
-                                    <input type="text" class="form-control" id="price" name="price">
+                                    <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}">
                                     @error('price')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
                                     <label for="weight"
                                         class="form-label text-primary @error('weight') is-invalid @enderror">{{ __('الوزن') }}</label>
                                     <input type="text" class="form-control" id="weight" placeholder="الوزن اختياري"
-                                        name="weight">
+                                        name="weight" value="{{ old('weight') }}">
                                     @error('weight')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -50,7 +50,7 @@
                                     <label for="quantity"
                                         class="form-label text-primary @error('quantity') is-invalid @enderror">{{ __('الكمية') }}</label>
                                     <input type="text" class="form-control" id="quantity"
-                                        placeholder="الكمية الإفتراضيه ب 1" name="quantity">
+                                        placeholder="الكمية الإفتراضيه ب 1" name="quantity" value="{{ old('quantity') }}">
                                     @error('quantity')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -65,9 +65,18 @@
                                         <option value="0" name="category_id">{{ __('اختر تصنيفا') }}</option>
 
                                         @foreach ($cats as $cat)
-                                            <option value="{{ $cat->id }}" name="category_id">{{ $cat->name }}
-                                            </option>
+                                        <option value="{{ old('id', $cat->id) }}" name="category_id">
+                                            {{-- {{ $cat->id == $product->cat_id ? 'selected' : '' }}> --}}
+                                            {{ $cat->name }}
+                                        </option>
                                         @endforeach
+                                        {{-- @foreach ($products as $product)
+                                        <option value="{{ old('id', $product->id) }}"
+                                            {{ $product->id == $post->product_id ? 'selected' : '' }}>
+                                            {{ $product->name }}
+                                        </option>
+                                    @endforeach --}}
+
                                     </select>
                                 </div>
 

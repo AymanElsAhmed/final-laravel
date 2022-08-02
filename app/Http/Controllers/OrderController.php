@@ -42,7 +42,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         // vendor_id, Dilevery_id, post_id, client_id
-        $commentId = $request['teststst'];
+        $commentId = $request['commentid'];
         $comment = Comment::find($commentId);
         $vendorId = $comment->post->user->id;
         $deliveryId = $comment->user->id;
@@ -82,9 +82,9 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $order = Order::findOrFail($id);
+        // $order = Order::findOrFail($id);
 
-        dd($order);
+        // dd($order);
 
 
 
