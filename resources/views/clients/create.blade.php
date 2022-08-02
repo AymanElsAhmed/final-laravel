@@ -13,6 +13,7 @@
                         <form class="row g-3" method="POST" action="{{ route('clients.store') }}"
                             enctype="multipart/form-data">
                             @csrf
+                            
                             <div class="col-12">
                                 <label for="name" class="form-label text-primary">{{ __('الاسم') }}</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"

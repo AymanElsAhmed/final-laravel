@@ -41,9 +41,9 @@
                     @csrf
                     <input type="hidden" name="user_id" value="{{ $user->id }}">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
+                        <h4 class="modal-title" id="exampleModalLabel">
                             {{ __('تقييم ') }}{{ $user->name }}
-                        </h5>
+                        </h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -73,8 +73,10 @@
         </div>
     </div>
 
-    <div class="container">
 
+
+
+    <div class="container">
         <div class="row my-3">
             <h2 class="text-center text-primary">
                 @vendor($user)
@@ -88,7 +90,7 @@
 
 
         <div class="row">
-            <div class="card h-100">
+            <div class="card w--md-50">
                 <img class="card-img-top rounded-circle m-auto mt-5"
                     src="{{ asset('profilepic') . '/' . $user->profile_pic }}" alt="{{ $user->name }}"
                     style="height: 140px; width:140px; object-fit:cover">
@@ -107,94 +109,107 @@
                 </div>
 
 
-                @vendor($user)
-                    <div class="row mt-2">
-                        <h5 class="text-primary text-center mt-5">{{ __('منشوراتي') }}</h5>
-                    </div>
-                @endvendor
+                {{-- <div class="row mt-5">
+                    <h5 class=" text-primary text-center">{{ __('للتواصل') }}</h5>
+                </div> --}}
 
 
-                <div class="row">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-                        @foreach ($user->posts as $post)
-                            <div class="col">
-                                <div class="card shadow-sm my-4 h-100">
-                                    <img src="{{ asset('productpic') . '/' . $post->product->product_pic }}"
-                                        class="card-img-top" alt="{{ $post->product->name }}"
-                                        style="height:200px; object-fit:cover;">
+                <div class="row text-center my-3">
 
-                                    <div class="card-body text-center">
-                                        <h1 style="color: #007EA7"> {{ $post->title }}</h1>
-
-                                        <p class="card-text">
-                                            <span class="text-muted">{{ __('الوصف') }}</span> &nbsp;
-                                            {{ $post->description }}
-                                        </p>
-                                        <div class="btn-group text-center">
-                                            <a class="btn btn-primary" href="{{ route('posts.show', $post->id) }}">
-                                                {{ __('عرض') }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-
-
-
-                    <div class="row mt-5">
-                        <h5 class=" text-primary text-center">
-                            {{ __('التعليقات') }}
-                        </h5>
-                    </div>
-
-
-                    @for ($i = 0; $i < 10; $i++)
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-
-                            <div class="col">
-                                <div class="card shadow-sm m-4 h-100">
-                                    <img src="{{ asset('profilepic') . '/' . $user->profile_pic }}"
-                                        class=" rounded-circle m-auto mt-3" class="card-img-top" alt="{{ $user->name }}"
-                                        style="height: 100px; width:100px; object-fit:cover;">
-
-                                    <div class="card-body text-center">
-                                        <p class="card-text"><span class="text-muted">{{ __('التعليق') }}</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    @endfor
-
-
-                    <div class="row mt-5">
-                        <h5 class=" text-primary text-center">{{ __('للتواصل') }}</h5>
-                    </div>
-
-
-
-
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 me-4 ">
-
+                    <div class="col">
                         <p>{{ $user->email }}
                             <i class="fas fa-envelope"></i>
                         </p>
+                    </div>
 
+                    <div class="col">
                         <p>{{ $user->city }}
                             <i class="fas fa-house-user"></i>
                         </p>
+                    </div>
 
+                    <div class="col">
                         <p>
                             {{ $user->phone_number }}
                             <i class="fas fa-phone"></i>
                         </p>
                     </div>
+                </div>
 
+
+
+
+            </div>
+
+
+            @vendor($user)
+                <div class="row mt-2">
+                    <h5 class="text-primary text-center mt-5">{{ __('منشوراتي') }}</h5>
+                </div>
+            @endvendor
+
+
+            <div class="row mb-5">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                    @foreach ($user->posts as $post)
+                        <div class="col">
+                            <div class="card shadow-sm my-4 h-100">
+                                <img src="{{ asset('productpic') . '/' . $post->product->product_pic }}"
+                                    class="card-img-top" alt="{{ $post->product->name }}"
+                                    style="height:200px; object-fit:cover;">
+
+                                <div class="card-body text-center">
+                                    <h1 style="color: #007EA7"> {{ $post->title }}</h1>
+
+                                    <p class="card-text">
+                                        <span class="text-muted">{{ __('الوصف') }}</span> &nbsp;
+                                        {{ $post->description }}
+                                    </p>
+                                    <div class="btn-group text-center">
+                                        <a class="btn btn-primary" href="{{ route('posts.show', $post->id) }}">
+                                            {{ __('عرض') }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
 
+
+
+
+            <div class="row mt-5">
+                <h5 class="text-primary text-center">
+                    {{ __('التعليقات') }}
+                </h5>
+            </div>
+
+
+            {{-- //FIXME --}}
+            @unless($post->commment == null)
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+
+                    <div class="col">
+                        <div class="card shadow-sm m-4 h-100">
+                            <img src="{{ asset('profilepic') . '/' . $user->profile_pic }}"
+                                class=" rounded-circle m-auto mt-3" class="card-img-top" alt="{{ $user->name }}"
+                                style="height: 100px; width:100px; object-fit:cover;">
+
+                            <div class="card-body text-center">
+                                <p class="card-text"><span class="text-muted">{{ __('التعليق') }}</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            @else
+                <p class="text-muted text-center fw-bold mb-5">{{ __('لا يوجد أية تعليقات حتى الآن') }}</p>
+            @endunless
+
         </div>
-    @endsection
+
+    </div>
+@endsection

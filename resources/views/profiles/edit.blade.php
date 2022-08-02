@@ -1,18 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- // TODO --}}
-    {{-- <div style="margin: auto; width: 50%; box-shadow: 1px 2px 3px 4px rgba(104, 145, 184, 0.4); padding: 10px;"> --}}
-
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="m-auto py-2 w-md-50 shadow-lg rounded-3">
 
-                    <h1 class="h1 text-center text-primary">{{ __('تعديل') }}</h1>
 
-                    {{-- <div class="row g-3"> --}}
-
+                    <div class="container py-5">
+                        <h1 class="text-center text-primary">{{ __('تعديل عميل') }}</h1>
+                   
                         <form method="POST" action="{{ route('profiles.update', $user->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -50,15 +47,24 @@
                             <div class="col-12">
                                 <label for="userPic" class="form-label text-primary">{{ __('الصورة الشخصية') }}</label>
 
-                                <input class="form-control" type="file" id="userPic" multiple name="profile_pic"
-                                    value="{{ $user->profile_pic ? asset('profilepic') . '/' . $user->profile_pic : old('profile_pic') }}">
+                                <div class="row">
+                                    <div class="col">
+                                        <input class="form-control" type="file" id="userPic" multiple
+                                            name="profile_pic"
+                                            value="{{ $user->profile_pic ? asset('profilepic') . '/' . $user->profile_pic : old('profile_pic') }}">
+                                    </div>
 
-                                <img src="{{ asset('profilepic') . '/' . $user->profile_pic }}" alt=""
-                                    class="img-fluid">
+                                    <div class="col">
+                                        <img class="img-fluid img-thumbnail"
+                                            src="{{ asset('profilepic') . '/' . $user->profile_pic }}" alt=""
+                                            class="img-fluid">
+                                    </div>
+                                </div>
+
 
                             </div>
 
-                            <div class="col-12 text-center">
+                            <div class="col-12 text-center mt-3 me-auto">
                                 <button type="submit" class="btn btn-primary">{{ __('حفظ') }}</button>
                             </div>
                         </form>

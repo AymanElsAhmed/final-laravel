@@ -57,7 +57,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item "
-                                            href="{{ route('posts.index') }}">{{ __('جل المنشورات') }}</a>
+                                            href="{{ route('posts.index') }}">{{ __('كل المنشورات') }}</a>
                                         @authVendor
                                     <li><a class="dropdown-item "
                                             href="{{ route('posts.create') }}">{{ __('منشور جديد') }}</a>
@@ -71,7 +71,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item "
-                                            href="{{ route('products.index') }}">{{ __('جل المنتجات') }}</a></li>
+                                            href="{{ route('products.index') }}">{{ __('كل المنتجات') }}</a></li>
                                     <li><a class="dropdown-item "href="{{ route('products.create') }}">
                                             {{ __('منتج جديد') }}</a></li>
                                 </ul>
@@ -85,7 +85,7 @@
 
                                     <li>
                                         <a class="dropdown-item"
-                                            href="{{ route('clients.index') }}">{{ __('جل الزبائن') }}
+                                            href="{{ route('clients.index') }}">{{ __('كل الزبائن') }}
                                         </a>
                                     </li>
                                     <li>
@@ -102,7 +102,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
                                         <a class="dropdown-item " href="{{ route('orders.index') }}">
-                                            {{ __('جل الطلبيات') }}
+                                            {{ __('كل الطلبيات') }}
                                         </a>
                                     <li>
                                         <a class="dropdown-item " href="{{ route('vendors.index') }}">
@@ -179,12 +179,19 @@
             </div>
         </nav>
 
-        {{-- //TODO --}}
-        {{-- <main class="py-4" style="background:#A5D3EB"> --}}
-        {{-- <main class="py-4" style="background:#C1D8E3"> --}}
         <main class="py-4 my-4">
             @yield('content')
         </main>
+
+        <footer class="p-3 bg-dark text-white">
+            <div class="container">
+                <ul class="p-30">
+                    <li>يسبم</li>
+                    <li>ثقلثق</li>
+                    <li>حصيؤ</li>
+                </ul>
+            </div>
+        </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
